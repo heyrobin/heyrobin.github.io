@@ -5,7 +5,7 @@ excerpt: "<b>Technology:</b>
             <img src='/images/Amazon.jpg'><br/>
             <i>Statistical Analysis</i>"
 collection: portfolio
-link: "/page/AMA.md"
+link: "https://heyrobin.github.io/portfolio/AMA"
 
 ---
 WE HAAVE HERE
