@@ -5,5 +5,5 @@ excerpt: "<b>Technology:</b>
             <img src='/images/Amazon.jpg'><br/>
             <i>Statistical Analysis</i>"
 collection: portfolio
-link: Portfolio/
+link: Portfolio/Amazon.md
 ---
