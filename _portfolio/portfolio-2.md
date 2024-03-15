@@ -1,6 +1,6 @@
 ---
-title: "Malaria vaccine antigen identification for <i>P. falciparum</i> (source code)"
-excerpt: "<b>ML technique:</b> Positive-Unlabeled Learning<br/><br/><img src='/images/malaria_vaccine_antigen_identification_Pf.jpg'><br/>Under review by <i>npj Systems Biology and Applications</i>"
+title: "HR - Data analysis <i>Indepth Analysis</i>"
+excerpt: "<b>Technology:</b>Power BI<br/><br/><img src='/images/HR-Analytics.png'><br/>Data Analysis <i>HR analysis</i>"
 collection: portfolio
-link: https://rtchou.github.io/malaria-antigen-identification-pf
+link: 
 ---

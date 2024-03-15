@@ -1,6 +1,9 @@
 ---
-title: "Multifunctional peptide engineering (source code)"
-excerpt: "<b>ML technique:</b> Super Learning/Stacked Ensemble<br/><br/><img src='/images/multifunctional_peptide_engineering.jpg'><br/><i>Nature Communications (2023)</i>"
+title: "Amazon : Data Analysis of Ecommerce"
+excerpt: "<b>ML technique:</b> 
+                Azure, Power BI, Pandas, Statistics<br/><br/>
+            <img src='/images/amazon.jpg'><br/>
+            <i>Statistical Analysis</i>"
 collection: portfolio
-link: https://RTChou.github.io/multifunctional-peptide-engineering
+link: 
 ---
