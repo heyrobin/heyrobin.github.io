@@ -5,5 +5,5 @@ excerpt: "<b>ML technique:</b>
             <img src='/images/amazon.jpg'><br/>
             <i>Statistical Analysis</i>"
 collection: portfolio
-link: 
+link: https://heyrobin.github.io/
 ---
