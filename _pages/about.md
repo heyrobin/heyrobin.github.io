@@ -25,8 +25,4 @@ Research projects
   <hr class="solid">
 {% endfor %}
 
-Fun facts
-======
-
-<p class="archive__item-excerpt" itemprop="description"><img src='/images/fun_facts.jpg'></p>
 
