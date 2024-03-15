@@ -11,7 +11,9 @@ redirect_from:
 About me
 ======
 
-Data Scientist and Ph.D. Candidate with over 6 years of proficiency in machine learning, data science, and statistical analysis. Extensive experience in collaborating and communicating with experts from interdisciplinary fields. Passionate about crafting innovative AI and ML solutions, staying up-to-date with technology advancements such as generative AI, and emphasizing model interpretability for explainable results.
+With over 3 years of experience in executing analytics projects, I have a proven track record of delivering successful outcomes. My expertise lies in creating compelling visualizations and specializing in Power BI and SQL. Additionally, I am proficient in Python, MySQL, Excel, and Azure Data Warehousing.
+
+I have dedicated over 3 years to self-study in Data Science and Machine Learning. I hold certifications in Machine Learning and Deep Learning from Coursera and Jovian. My diverse project experience and contributions to Kaggle as a Notebooks Grandmaster, where I share high-quality and engaging notebooks on various topics and domains, showcase my expertise. I am currently ranked among the top 87 Kaggle users globally.
 
 Research projects
 ======

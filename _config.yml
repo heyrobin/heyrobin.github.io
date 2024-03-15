@@ -82,11 +82,11 @@ analytics:
 author:
   name             : "heyrobin"
   avatar           : "profile.jpg"
-  bio              : "Data Scientist | PhD Candidate | Machine Learning | Deep Learning | Statistical Data Analysis"
-  location         : "College Park, MD"
+  bio              : "Data Analyst in Product | Ecommerce | Kaggle Grandmaster| Statistics"
+  location         : "New Delhi, India"
   employer         :
   pubmed           : 
-  googlescholar    : "https://scholar.google.com/citations?hl=en&user=1Zl_n9MAAAAJ&view_op=list_works&sortby=pubdate"
+  googlescholar    : #"https://scholar.google.com/citations?hl=en&user=1Zl_n9MAAAAJ&view_op=list_works&sortby=pubdate"
   email            :
   researchgate     :  # example: "https://www.researchgate.net/profile/yourprofile"
   uri              :
@@ -96,13 +96,13 @@ author:
   flickr           :
   facebook         :
   foursquare       :
-  github           : "RTChou"
+  github           : "heyrobin"
   google_plus      :
   keybase          :
   instagram        :
   impactstory      : #"https://profiles.impactstory.org/u/xxxx-xxxx-xxxx-xxxx"
   lastfm           :
-  linkedin         : "reneetichou"
+  linkedin         : "heyrobin"
   orcid            : 
   pinterest        :
   soundcloud       :
