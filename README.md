@@ -1,3 +1,3 @@
-# Renee Ti Chou's personal site
+# Hey Robin Personal Website
 
 Adapted from https://academicpages.github.io
