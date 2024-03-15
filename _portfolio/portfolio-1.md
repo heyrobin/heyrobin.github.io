@@ -1,9 +1,7 @@
 ---
-title: "Amazon: Data Analysis of Ecommerce"
-excerpt: "<b>Technology:</b> 
-                Azure, Power BI, Pandas, Statistics<br/><br/>
-            <img src='/images/Amazon.jpg'><br/>
-            <i>Statistical Analysis</i>"
+title: "Portfolio item number 1"
+excerpt: "Short description of portfolio item number 1<br/><img src='/images/500x300.png'>"
 collection: portfolio
-permalink: /portfolio/amazon-data-analysis-of-ecommerce/
 ---
+
+This is an item in your portfolio. It can be have images or nice text. If you name the file .md, it will be parsed as markdown. If you name the file .html, it will be parsed as HTML. 
