@@ -14,3 +14,6 @@ Final Dashboard : [ClickHere](https://app.powerbi.com/view?r=eyJrIjoiZDAzYzg3YTc
 <h3><b>Azure Architecture</b></h3>
 <img src='/images/amazon-DW Architecture.png'>
 
+
+<h3><b>Dataset Dictionary</b></h3>
+<img src='/images/Data Dictonary.png'>
