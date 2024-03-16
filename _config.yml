@@ -21,7 +21,7 @@ repository               : "academicpages/Heyrobin.github.io"
 #               Additional customization can be done by editing /_includes/author-profile.html
 author:
   # Biographic information
-  avatar           : "profile.png"
+  avatar           : "profile.jpg"
   name             : "Robin Singh"
   pronouns         : # example: "she/her"  
   bio              : "Data Analyst in Product | Ecommerce | Kaggle Grandmaster| Statistics"
