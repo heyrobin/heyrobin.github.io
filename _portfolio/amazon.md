@@ -11,6 +11,6 @@ Final Dashboard : [ClickHere](https://app.powerbi.com/view?r=eyJrIjoiODNhNDU5YmY
 
 
 
-<b><h3>Azure Architecture</h3></b>
+<h3><b>Azure Architecture</b></h3>
 <img src='/images/amazon-DW Architecture.png'>
 
