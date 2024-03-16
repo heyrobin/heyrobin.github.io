@@ -11,14 +11,14 @@ Final Dashboard : [ClickHere](https://app.powerbi.com/view?r=eyJrIjoiZDAzYzg3YTc
 
 
 
-<h3><b>Azure Architecture</b></h3>
+<h3><b>1. Azure Architecture</b></h3>
 <img src='/images/amazon-DW Architecture.png'>
 
 
-<h3><b>Dataset Dictionary</b></h3>
+<h3><b>2. Dataset Dictionary</b></h3>
 <img src='/images/Data Dictonary.png'>
 
-<h3><b>Dashboard</b></h3>
+<h3><b>3. Dashboard</b></h3>
 <img src='/images/Dashboard-info.png'>
 
 Final Dashboard : [ClickHere](https://app.powerbi.com/view?r=eyJrIjoiZDAzYzg3YTctM2MxMy00ZWRhLTg2NzQtNjdlN2Y0NDE0MThlIiwidCI6ImFlNjBlMDU1LTAzMTEtNGJlNi04ODI3LTc5Y2VjMWNiMmYyMCIsImMiOjZ9)
