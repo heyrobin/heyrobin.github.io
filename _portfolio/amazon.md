@@ -10,7 +10,7 @@ In the realm of e-commerce giants like Amazon, data analysis is the backbone of 
 
 Dataset: [data.world](https://data.world/anilsharma87)
 
-Final Dashboard : [ClickHere](https://app.powerbi.com/view?r=eyJrIjoiZDAzYzg3YTctM2MxMy00ZWRhLTg2NzQtNjdlN2Y0NDE0MThlIiwidCI6ImFlNjBlMDU1LTAzMTEtNGJlNi04ODI3LTc5Y2VjMWNiMmYyMCIsImMiOjZ9)
+Final Dashboard : [ClickHere](https://app.powerbi.com/view?r=eyJrIjoiMGU4YjAxYTYtOGMxMy00NTk4LTk5MTgtYzI2YjIxYzQ4NDJhIiwidCI6ImFlNjBlMDU1LTAzMTEtNGJlNi04ODI3LTc5Y2VjMWNiMmYyMCIsImMiOjZ9)
 
 <h3><b>1. Azure Architecture</b></h3>
 <img src='/images/amazon-DW Architecture.png'>
@@ -21,4 +21,4 @@ Final Dashboard : [ClickHere](https://app.powerbi.com/view?r=eyJrIjoiZDAzYzg3YTc
 <h3><b>3. Dashboard</b></h3>
 <img src='/images/Dashboard-info.png'>
 
-Final Dashboard : [ClickHere](https://app.powerbi.com/view?r=eyJrIjoiZDAzYzg3YTctM2MxMy00ZWRhLTg2NzQtNjdlN2Y0NDE0MThlIiwidCI6ImFlNjBlMDU1LTAzMTEtNGJlNi04ODI3LTc5Y2VjMWNiMmYyMCIsImMiOjZ9)
+Final Dashboard : [ClickHere](https://app.powerbi.com/view?r=eyJrIjoiMGU4YjAxYTYtOGMxMy00NTk4LTk5MTgtYzI2YjIxYzQ4NDJhIiwidCI6ImFlNjBlMDU1LTAzMTEtNGJlNi04ODI3LTc5Y2VjMWNiMmYyMCIsImMiOjZ9)
