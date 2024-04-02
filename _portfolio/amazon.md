@@ -24,4 +24,4 @@ Final Dashboard : [ClickHere](https://app.powerbi.com/view?r=eyJrIjoiMGU4YjAxYTY
 Final Dashboard : [ClickHere](https://app.powerbi.com/view?r=eyJrIjoiMGU4YjAxYTYtOGMxMy00NTk4LTk5MTgtYzI2YjIxYzQ4NDJhIiwidCI6ImFlNjBlMDU1LTAzMTEtNGJlNi04ODI3LTc5Y2VjMWNiMmYyMCIsImMiOjZ9&embedImagePlaceholder=true&pageName=ReportSectionfc8cfa104c5ed2938703)
 
 
-<iframe src="https://docs.google.com/presentation/d/e/2PACX-1vQDxnLSfZvFqxbRcyGEH9rZ-i2v-JuQW3WYD4VRbm3D3xAQzw1tHC2enyq7PCGORljZgTUrWPRA_M4Z/embed?start=true&loop=true&delayms=5000" frameborder="0" width="960" height="569" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe>
+<iframe src="https://docs.google.com/presentation/d/e/2PACX-1vQDxnLSfZvFqxbRcyGEH9rZ-i2v-JuQW3WYD4VRbm3D3xAQzw1tHC2enyq7PCGORljZgTUrWPRA_M4Z/embed?start=true&loop=true&delayms=5000" frameborder="0" width="480" height="299" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe>
