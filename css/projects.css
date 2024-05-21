@@ -1,0 +1,100 @@
+.project-details p {
+    font-family: 'harriet';
+    font-weight: bold;
+    font-size: 22px;
+    
+    margin-bottom: -05px;
+    color: #333333;
+    
+}
+
+
+.list-container{
+    width: 22%;
+   
+}
+
+
+.list-container li a {
+    text-decoration: none;
+    color: #4C4E4D;
+    font-family: 'Balto-Bold';
+    font-size: 20px;
+    padding-left: 7px;
+
+    
+    
+}
+
+.list-container li a:hover {
+    text-decoration: underline;
+    
+}
+
+.list-container {
+    list-style-type: none; /* Remove default list styling */
+    padding-left: 0; /* Remove default padding */
+    
+    
+}
+
+.list-container li {
+    border-bottom: 1px dashed black; /* Adds a border */
+    padding-bottom: 20px; /* Adds spacing below the text */
+    margin-bottom: 20px; /* Adds spacing between items */
+    display: flex; /* Align items in a row */
+    align-items: center; /* Center align items vertically */
+    
+    font-family: 'Balto-Bold';
+    font-size: 25px;
+    color: #4F7177;
+}
+
+.list-container li:last-child {
+    border-bottom: none; /* Removes the border from the last item */
+    margin-bottom: 0; /* Removes the margin from the last item */
+}
+
+.circle {
+    display: inline-flex; /* Flexbox for centering content */
+    justify-content: center; /* Center content horizontally */
+    align-items: center; /* Center content vertically */
+    width: 55px; /* Set width of the circle */
+    height: 30px; /* Set height of the circle */
+    border-radius: 50%; /* Makes the element a circle */
+    background-color: #FFF200; /* Yellow background color */
+    color: black; /* Text color */
+    font-size: 16px;
+    font-weight: bold; /* Bold text */
+    margin-right: 10px; /* Space between circle and text */
+    font-style: italic;
+}
+
+@media only screen and (max-width: 768px) {
+
+
+    .list-container{
+        width: 80%;
+    }
+
+    .list-container li {
+
+        font-size: 20px;
+
+    }
+
+    .list-container li a {
+     font-size: 18px;
+    }
+
+    .circle {
+
+        width: 42px; /* Set width of the circle */
+        height: 30px; /* Set height of the circle */
+        border-radius: 50%; /* Makes the element a circle */
+
+    }
+
+    
+
+}

@@ -1,0 +1,9 @@
+@font-face {
+    font-family: 'Balto';
+    src: local('Balto Book'), local('Balto-Book'),
+        url('Balto-Book.woff2') format('woff2'),
+        url('Balto-Book.woff') format('woff'),
+        url('Balto-Book.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+  }

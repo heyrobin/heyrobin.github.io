@@ -1,0 +1,209 @@
+/* Define custom fonts */
+@font-face {
+    font-family: 'Balto-Bold';
+    src: url('/fonts/Balto-Bold/Balto-Bold.woff') format('truetype');
+    font-weight: bold;
+}
+
+@font-face {
+    font-family: 'Balto-Book';
+    src: url('/fonts/Balto-Book/Balto-Book.woff') format('truetype');
+    font-weight: normal;
+}
+
+@font-face {
+    font-family: 'harriet';
+    src: url('/fonts/harriet/HARRIETTEXTBOLDITALIC.OTF') format('truetype');
+    font-weight: normal;
+}
+
+/* Define the custom text selection highlighter */
+::selection {
+    background-color: #fff200; /* Background color of the highlighted text */
+    color: black; /* Text color of the highlighted text */
+}
+
+/* For Firefox */
+::-moz-selection {
+    background-color: #fff200; /* Background color of the highlighted text */
+    color: black; /* Text color of the highlighted text */
+}
+
+body {
+    margin: 0;
+    font-family: 'Balto-Book'; /* Use the custom normal font */
+    display: flex;
+    height: 100%;
+    background-color: white;
+    color: #4C4E4D;
+}
+
+
+.container {
+    display: flex;
+    width: 100%;
+}
+
+
+
+/* Main content */
+.main-content {
+    width: 80%;
+    padding: 40px;
+    box-sizing: border-box;
+    margin-left: 20%; /* Adjust main content to the right of the sidebar */
+    overflow-y: auto; /* Allow vertical scrolling */
+}
+
+.about-me {
+    font-size: 18px;
+    
+    width: 60%;
+    font-family: Balto-Bold;
+}
+
+.about-me p{
+    font-size: 18px;
+    
+    width: 100%;
+    font-family: Balto-Book;
+}
+
+.filter-buttons {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap; /* Allow wrapping for smaller screens */
+}
+
+.filter-button {
+    padding: 10px 20px;
+    margin: 0 5px;
+    border: none;
+    background-color: white;
+    color: black;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+    font-weight: bold;
+    font-family: 'Balto-Bold'; /* Use the custom bold font */
+}
+
+.filter-button.active {
+    background-color: #ddd; /* Changed active button color for better visibility */
+}
+
+.filter-button:hover {
+    background-color: #fff200;
+}
+
+/* Style for the projects container */
+.projects {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    margin-top: 20px;
+}
+
+/* Style for each individual project */
+.project {
+    width: 30%;
+    margin-bottom: 20px;
+    text-align: center;
+    border-radius: 8px;
+    background-color: #F1F3F2;
+}
+
+/* Style for the project images */
+.project img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+}
+
+/* Style for project titles */
+.project h3 {
+    margin-top: 10px;
+    font-size: 18px;
+    font-family: 'Balto-Bold'; /* Use the custom bold font */
+}
+
+.project a {
+    color: #4F7177;
+    font-weight: bold;
+    font-family: 'Balto-Bold'; /* Use the custom bold font */
+}
+
+/* Style for the project thumbnail container */
+.project-thumbnail {
+    position: relative;
+    overflow: hidden;
+}
+
+/* Style for the project description */
+.project-description {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 8px;
+    background-color: rgba(0, 0, 0, 0.7);
+    color: white;
+    padding: 40px;
+    box-sizing: border-box;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+/* Show project description on hover */
+.project-thumbnail:hover .project-description {
+    opacity: 1;
+}
+
+/* For screens smaller than 768px (tablets and phones) */
+@media only screen and (max-width: 768px) {
+    .container {
+        flex-direction: column;
+    }
+
+    .main-content {
+        width: 100%;
+        padding: 20px;
+        margin-left: 0; /* Reset margin for smaller screens */
+    }
+
+    .about-me {
+        width: 100%;
+    }
+
+    .projects {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .project {
+        width: 80%;
+    }
+}
+
+/* For screens smaller than 480px (phones) */
+@media only screen and (max-width: 480px) {
+    .filter-button {
+        margin-bottom: 10px;
+    }
+}
+
+
+
+/* Change anchor tag styles */
+a {
+    text-decoration: none;
+    color: white;
+}
+
+/* Change anchor tag styles on hover */
+a:hover {
+    color: #333333; /* Corrected color hex code */
+}
+

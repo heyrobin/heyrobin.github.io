@@ -1,0 +1,129 @@
+/* Sidebar */
+.sidebar {
+    width: 20%;
+    background-color: #F1F3F2;
+    color: white;
+    padding: 20px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: fixed; /* Fixed positioning to stick */
+    top: 0; /* Stick to the top */
+    bottom: 0; /* Extend to the bottom */
+    overflow-y: auto; /* Allow vertical scrolling */
+}
+.profile {
+    margin-top: 100px;
+}
+
+.profile-details {
+    margin-top: 20px;
+}
+
+.profile-picture {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    margin-bottom: 20px;
+    background-size: cover;
+    background-position: center;
+}
+
+.profile-details h2 {
+    margin-bottom: 5px;
+    font-size: 24px;
+    color: #4C4E4D;
+    font-family: 'Balto-Bold'; /* Use the custom bold font */
+}
+
+.profile-details p {
+    margin: 5px 0;
+    font-size: 16px;
+    color: #4C4E4D;
+    font-family: 'Balto-Book'; /* Use the custom normal font */
+}
+
+.social-links {
+    margin-top: 15px;
+}
+
+.social-links a {
+    display: inline-block;
+    margin: 0 9px;
+}
+
+.social-links img {
+    width: 24px;
+    height: 24px;
+    vertical-align: middle;
+}
+
+
+
+
+.navbar {
+    width: 100%;
+    height: 60px;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+}
+
+.navbar a {
+    color:#555; /* Text color for links */
+    text-decoration: none; /* Remove underline from links */
+    font-weight: bold;
+    font-family: 'Balto-Bold'; /* Use the custom bold font */
+    padding: 0 15px; /* Add padding to make the background color more visible */
+    transition: background-color 0.3s, color 0.3s; /* Smooth transition for hover effects */
+}
+
+.navbar a:hover {
+    color: black; /* Color when hovered */
+    background-color: yellow;
+}
+
+
+.resume-download {
+    margin-top: 20px;
+    background-color: #4F7177;
+    text-align: center;
+    padding: 10px 20px;
+    border-radius: 5px;
+    color: white;
+    display: inline-block;
+    text-decoration: none;
+    transition: background-color 0.3s, color 0.3s;
+    
+}
+
+.resume-download:hover {
+    background-color: #333333;
+    color: white;
+}
+
+.resume-download:hover a {
+    
+    color: #fff200;
+    font-family: 'Balto-Bold';
+}
+
+@media only screen and (max-width: 768px) {
+
+
+    .sidebar {
+        position: static; /* Reset position for smaller screens */
+        width: 100%; /* Occupy full width on smaller screens */
+        margin-bottom: 20px; /* Add margin to separate from main content */
+    }
+
+    .profile {
+        margin-top: 10px;
+        
+    }
+
+
+}
