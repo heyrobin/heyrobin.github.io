@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="620" viewBox="0 0 1200 620">
+  <rect width="1200" height="620" fill="#fffdf7"/>
+  <rect x="40" y="30" width="1120" height="560" fill="none" stroke="#0f0f0f" stroke-width="4"/>
+  <text x="60" y="75" font-family="Arial, sans-serif" font-size="30" font-weight="700" fill="#0f0f0f">Spark ETL Pipeline Flow</text>
+
+  <rect x="80" y="220" width="180" height="100" fill="#fff200" stroke="#0f0f0f" stroke-width="3"/>
+  <text x="120" y="278" font-family="Arial, sans-serif" font-size="22" font-weight="700" fill="#0f0f0f">Ingest</text>
+
+  <rect x="320" y="220" width="180" height="100" fill="#ffffff" stroke="#0f0f0f" stroke-width="3"/>
+  <text x="352" y="278" font-family="Arial, sans-serif" font-size="22" font-weight="700" fill="#0f0f0f">Validate</text>
+
+  <rect x="560" y="220" width="180" height="100" fill="#ffffff" stroke="#0f0f0f" stroke-width="3"/>
+  <text x="600" y="278" font-family="Arial, sans-serif" font-size="22" font-weight="700" fill="#0f0f0f">Transform</text>
+
+  <rect x="800" y="220" width="180" height="100" fill="#ffffff" stroke="#0f0f0f" stroke-width="3"/>
+  <text x="860" y="278" font-family="Arial, sans-serif" font-size="22" font-weight="700" fill="#0f0f0f">Load</text>
+
+  <rect x="960" y="90" width="180" height="100" fill="#ffffff" stroke="#0f0f0f" stroke-width="3"/>
+  <text x="995" y="148" font-family="Arial, sans-serif" font-size="22" font-weight="700" fill="#0f0f0f">Monitor</text>
+
+  <rect x="960" y="380" width="180" height="130" fill="#ffffff" stroke="#0f0f0f" stroke-width="3"/>
+  <text x="1005" y="432" font-family="Arial, sans-serif" font-size="20" font-weight="700" fill="#0f0f0f">Alerts</text>
+  <text x="985" y="462" font-family="Arial, sans-serif" font-size="16" fill="#0f0f0f">Retries + SLA status</text>
+
+  <line x1="260" y1="270" x2="320" y2="270" stroke="#0f0f0f" stroke-width="4"/>
+  <line x1="500" y1="270" x2="560" y2="270" stroke="#0f0f0f" stroke-width="4"/>
+  <line x1="740" y1="270" x2="800" y2="270" stroke="#0f0f0f" stroke-width="4"/>
+  <line x1="980" y1="220" x2="1045" y2="190" stroke="#0f0f0f" stroke-width="4"/>
+  <line x1="980" y1="320" x2="1045" y2="380" stroke="#0f0f0f" stroke-width="4"/>
+</svg>

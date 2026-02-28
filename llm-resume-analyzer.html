@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>LLM Resume Analyzer | Robin Singh</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<header class="masthead">
+    <a class="brand-block home-link" href="index.html" aria-label="Go to homepage">
+        <p class="eyebrow">Portfolio</p>
+        <h1>Robin Singh</h1>
+    </a>
+    <nav class="section-nav">
+        <a href="big-data.html">Big Data</a>
+        <a href="ai.html">AI</a>
+    </nav>
+    <div class="top-bar">
+        <button class="menu-toggle" id="menuToggle" type="button" aria-label="Toggle menu">&#9776;</button>
+        <button class="dark-toggle" id="darkToggle" type="button" aria-label="Toggle dark mode">&#127769;</button>
+    </div>
+</header>
+
+<div class="container single-column">
+    <main class="content story-page">
+        <a class="back-link" href="ai.html">&larr; Back to AI</a>
+        <header class="story-header">
+            <p class="card-tag">AI</p>
+            <h2>LLM Resume Analyzer</h2>
+            <p class="story-meta">Role: AI Engineer | Stack: NLP, Semantic Matching, Prompt Evaluation</p>
+        </header>
+        <section class="story-content">
+            <p>Developed a resume intelligence tool that scores candidate fit against role requirements and explains the score in plain language. The objective was faster triage for recruiters and clearer improvement signals for applicants.</p>
+            <h3>Scope</h3>
+            <p>Built a hybrid pipeline combining deterministic parsing, vector similarity, and LLM-generated commentary. The system evaluates must-have skills, seniority evidence, project relevance, and keyword quality in one report.</p>
+            <h3>Architecture Snapshot</h3>
+            <figure class="case-figure">
+                <img src="assets/llm-resume-workflow.svg" alt="LLM resume analyzer workflow from resume and job description parsers to vector match, rule engine and feedback output.">
+                <figcaption>Hybrid scoring stack: parser + rules + embeddings + LLM explanation layer.</figcaption>
+            </figure>
+            <h3>Impact Metrics</h3>
+            <div class="metrics-grid">
+                <div class="metric-card">
+                    <span class="metric-value">-52%</span>
+                    <span class="metric-label">Screening Time</span>
+                </div>
+                <div class="metric-card">
+                    <span class="metric-value">+28%</span>
+                    <span class="metric-label">Shortlist Precision</span>
+                </div>
+                <div class="metric-card">
+                    <span class="metric-value">4.6/5</span>
+                    <span class="metric-label">Recruiter Satisfaction</span>
+                </div>
+            </div>
+            <h3>Execution Notes</h3>
+            <p>Added confidence scoring and deterministic penalties for missing critical requirements to reduce hallucinated recommendations. Prompt templates were tuned for concise, role-specific feedback that remains readable by non-technical users.</p>
+        </section>
+    </main>
+</div>
+
+<script src="scripts.js"></script>
+</body>
+</html>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Azure Data Lake Architecture | Robin Singh</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<header class="masthead">
+    <a class="brand-block home-link" href="index.html" aria-label="Go to homepage">
+        <p class="eyebrow">Portfolio</p>
+        <h1>Robin Singh</h1>
+    </a>
+    <nav class="section-nav">
+        <a href="big-data.html">Big Data</a>
+        <a href="ai.html">AI</a>
+    </nav>
+    <div class="top-bar">
+        <button class="menu-toggle" id="menuToggle" type="button" aria-label="Toggle menu">&#9776;</button>
+        <button class="dark-toggle" id="darkToggle" type="button" aria-label="Toggle dark mode">&#127769;</button>
+    </div>
+</header>
+
+<div class="container single-column">
+    <main class="content story-page">
+        <a class="back-link" href="big-data.html">&larr; Back to Big Data</a>
+        <header class="story-header">
+            <p class="card-tag">Big Data</p>
+            <h2>Azure Data Lake Architecture</h2>
+            <p class="story-meta">Role: Data Engineer | Stack: ADLS, Databricks, Azure Data Factory, Power BI</p>
+        </header>
+        <section class="story-content">
+            <p>Rebuilt a fragmented reporting stack into a governed lakehouse with clear medallion layers. The goal was to reduce data incidents, improve dashboard freshness, and make onboarding of new data domains predictable.</p>
+            <h3>Scope</h3>
+            <p>Integrated 9 source systems (CRM, ERP, billing, and web events) into ADLS through Azure Data Factory. Standardized 120+ raw tables into curated Silver models and 30 domain-focused Gold marts for BI consumption.</p>
+            <h3>Architecture Snapshot</h3>
+            <figure class="case-figure">
+                <img src="assets/azure-lakehouse-architecture.svg" alt="Azure lakehouse architecture with Bronze Silver Gold layers and governance controls.">
+                <figcaption>Medallion flow with quality checks, governance policies, and business marts.</figcaption>
+            </figure>
+            <h3>Impact Metrics</h3>
+            <div class="metrics-grid">
+                <div class="metric-card">
+                    <span class="metric-value">-42%</span>
+                    <span class="metric-label">Pipeline Failures</span>
+                </div>
+                <div class="metric-card">
+                    <span class="metric-value">-31%</span>
+                    <span class="metric-label">Compute Cost</span>
+                </div>
+                <div class="metric-card">
+                    <span class="metric-value">+2.4x</span>
+                    <span class="metric-label">Data Onboarding Speed</span>
+                </div>
+            </div>
+            <h3>Execution Notes</h3>
+            <p>Added schema drift detection, data contracts for critical entities, and row-level audit columns across all curated layers. Partitioning and compaction strategy in Databricks reduced scan volume while keeping SLA consistency for daily reporting.</p>
+        </section>
+    </main>
+</div>
+
+<script src="scripts.js"></script>
+</body>
+</html>

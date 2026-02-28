@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Spark ETL Pipeline | Robin Singh</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<header class="masthead">
+    <a class="brand-block home-link" href="index.html" aria-label="Go to homepage">
+        <p class="eyebrow">Portfolio</p>
+        <h1>Robin Singh</h1>
+    </a>
+    <nav class="section-nav">
+        <a href="big-data.html">Big Data</a>
+        <a href="ai.html">AI</a>
+    </nav>
+    <div class="top-bar">
+        <button class="menu-toggle" id="menuToggle" type="button" aria-label="Toggle menu">&#9776;</button>
+        <button class="dark-toggle" id="darkToggle" type="button" aria-label="Toggle dark mode">&#127769;</button>
+    </div>
+</header>
+
+<div class="container single-column">
+    <main class="content story-page">
+        <a class="back-link" href="big-data.html">&larr; Back to Big Data</a>
+        <header class="story-header">
+            <p class="card-tag">Big Data</p>
+            <h2>Spark ETL Pipeline</h2>
+            <p class="story-meta">Role: Data Engineer | Stack: Spark, Delta Lake, Orchestration, Monitoring</p>
+        </header>
+        <section class="story-content">
+            <p>Engineered a Spark ETL platform for high-volume transaction data where existing jobs were slow, brittle, and expensive under peak load. The redesign focused on deterministic processing, easier recovery, and stronger observability.</p>
+            <h3>Scope</h3>
+            <p>Processed ~180 million daily records from event and operational sources into Delta tables used by revenue, retention, and operations dashboards. Added end-to-end lineage and run-level quality signals for each stage.</p>
+            <h3>Architecture Snapshot</h3>
+            <figure class="case-figure">
+                <img src="assets/spark-etl-flow.svg" alt="Spark ETL pipeline showing ingest validate transform load with monitoring and alerts.">
+                <figcaption>End-to-end ETL path with quality gates, retries, and monitoring hooks.</figcaption>
+            </figure>
+            <h3>Impact Metrics</h3>
+            <div class="metrics-grid">
+                <div class="metric-card">
+                    <span class="metric-value">-38%</span>
+                    <span class="metric-label">Job Runtime</span>
+                </div>
+                <div class="metric-card">
+                    <span class="metric-value">-27%</span>
+                    <span class="metric-label">Compute Spend</span>
+                </div>
+                <div class="metric-card">
+                    <span class="metric-value">99.3%</span>
+                    <span class="metric-label">Pipeline Success Rate</span>
+                </div>
+            </div>
+            <h3>Execution Notes</h3>
+            <p>Implemented incremental watermarking, optimized partition strategy for skewed keys, and made all writes idempotent. Added threshold-based alerting and SLA dashboards so incidents are detected early and resolved with clear failure context.</p>
+        </section>
+    </main>
+</div>
+
+<script src="scripts.js"></script>
+</body>
+</html>

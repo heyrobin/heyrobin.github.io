@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="620" viewBox="0 0 1200 620">
+  <rect width="1200" height="620" fill="#fffdf7"/>
+  <rect x="40" y="30" width="1120" height="560" fill="none" stroke="#0f0f0f" stroke-width="4"/>
+  <text x="60" y="75" font-family="Arial, sans-serif" font-size="30" font-weight="700" fill="#0f0f0f">Anime Story Generator Pipeline</text>
+
+  <rect x="90" y="220" width="210" height="110" fill="#fff200" stroke="#0f0f0f" stroke-width="3"/>
+  <text x="130" y="268" font-family="Arial, sans-serif" font-size="20" font-weight="700" fill="#0f0f0f">User Prompt</text>
+  <text x="122" y="296" font-family="Arial, sans-serif" font-size="16" fill="#0f0f0f">Theme + character</text>
+
+  <rect x="360" y="220" width="210" height="110" fill="#ffffff" stroke="#0f0f0f" stroke-width="3"/>
+  <text x="390" y="268" font-family="Arial, sans-serif" font-size="20" font-weight="700" fill="#0f0f0f">Prompt Builder</text>
+  <text x="390" y="296" font-family="Arial, sans-serif" font-size="16" fill="#0f0f0f">Scene structure + tone</text>
+
+  <rect x="630" y="220" width="210" height="110" fill="#ffffff" stroke="#0f0f0f" stroke-width="3"/>
+  <text x="677" y="268" font-family="Arial, sans-serif" font-size="20" font-weight="700" fill="#0f0f0f">LLM</text>
+  <text x="662" y="296" font-family="Arial, sans-serif" font-size="16" fill="#0f0f0f">Draft generation</text>
+
+  <rect x="900" y="220" width="210" height="110" fill="#ffffff" stroke="#0f0f0f" stroke-width="3"/>
+  <text x="924" y="268" font-family="Arial, sans-serif" font-size="20" font-weight="700" fill="#0f0f0f">Episode Output</text>
+  <text x="930" y="296" font-family="Arial, sans-serif" font-size="16" fill="#0f0f0f">Story + dialogue</text>
+
+  <rect x="630" y="390" width="290" height="110" fill="#ffffff" stroke="#0f0f0f" stroke-width="3"/>
+  <text x="675" y="436" font-family="Arial, sans-serif" font-size="20" font-weight="700" fill="#0f0f0f">Memory Store</text>
+  <text x="668" y="464" font-family="Arial, sans-serif" font-size="16" fill="#0f0f0f">Characters, arcs, events</text>
+
+  <line x1="300" y1="275" x2="360" y2="275" stroke="#0f0f0f" stroke-width="4"/>
+  <line x1="570" y1="275" x2="630" y2="275" stroke="#0f0f0f" stroke-width="4"/>
+  <line x1="840" y1="275" x2="900" y2="275" stroke="#0f0f0f" stroke-width="4"/>
+  <line x1="735" y1="330" x2="735" y2="390" stroke="#0f0f0f" stroke-width="4"/>
+  <line x1="920" y1="445" x2="1005" y2="330" stroke="#0f0f0f" stroke-width="4"/>
+</svg>

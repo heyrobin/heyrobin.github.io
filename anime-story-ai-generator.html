@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Anime Story AI Generator | Robin Singh</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<header class="masthead">
+    <a class="brand-block home-link" href="index.html" aria-label="Go to homepage">
+        <p class="eyebrow">Portfolio</p>
+        <h1>Robin Singh</h1>
+    </a>
+    <nav class="section-nav">
+        <a href="big-data.html">Big Data</a>
+        <a href="ai.html">AI</a>
+    </nav>
+    <div class="top-bar">
+        <button class="menu-toggle" id="menuToggle" type="button" aria-label="Toggle menu">&#9776;</button>
+        <button class="dark-toggle" id="darkToggle" type="button" aria-label="Toggle dark mode">&#127769;</button>
+    </div>
+</header>
+
+<div class="container single-column">
+    <main class="content story-page">
+        <a class="back-link" href="ai.html">&larr; Back to AI</a>
+        <header class="story-header">
+            <p class="card-tag">AI</p>
+            <h2>Anime Story AI Generator</h2>
+            <p class="story-meta">Role: AI Engineer | Stack: LLM APIs, Prompt Templates, Session Memory</p>
+        </header>
+        <section class="story-content">
+            <p>Built an AI story engine that generates episodic anime narratives with consistent character behavior and scene continuity. The product target was repeat engagement, not one-off prompt output.</p>
+            <h3>Scope</h3>
+            <p>Designed multi-step generation flow: world setup, episode outline, dialogue pass, and continuity check. Added session memory so previous events and character traits persist across episodes.</p>
+            <h3>Architecture Snapshot</h3>
+            <figure class="case-figure">
+                <img src="assets/anime-ai-pipeline.svg" alt="AI story generator pipeline from user prompt to prompt builder, LLM output and memory store.">
+                <figcaption>Prompt orchestration pipeline with a memory loop for long-form narrative consistency.</figcaption>
+            </figure>
+            <h3>Impact Metrics</h3>
+            <div class="metrics-grid">
+                <div class="metric-card">
+                    <span class="metric-value">+46%</span>
+                    <span class="metric-label">7-Day Retention</span>
+                </div>
+                <div class="metric-card">
+                    <span class="metric-value">-34%</span>
+                    <span class="metric-label">Manual Regenerations</span>
+                </div>
+                <div class="metric-card">
+                    <span class="metric-value">+39%</span>
+                    <span class="metric-label">Session Length</span>
+                </div>
+            </div>
+            <h3>Execution Notes</h3>
+            <p>Introduced structured prompt templates, style guardrails, and memory scoring to control narrative drift. Output quality checks flagged contradictions before delivery, improving trust in multi-episode generation.</p>
+        </section>
+    </main>
+</div>
+
+<script src="scripts.js"></script>
+</body>
+</html>

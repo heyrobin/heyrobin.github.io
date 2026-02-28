@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="620" viewBox="0 0 1200 620">
+  <rect width="1200" height="620" fill="#fffdf7"/>
+  <rect x="40" y="30" width="1120" height="560" fill="none" stroke="#0f0f0f" stroke-width="4"/>
+  <text x="60" y="75" font-family="Arial, sans-serif" font-size="30" font-weight="700" fill="#0f0f0f">Azure Lakehouse Architecture</text>
+
+  <rect x="70" y="140" width="260" height="120" fill="#fff200" stroke="#0f0f0f" stroke-width="3"/>
+  <text x="95" y="190" font-family="Arial, sans-serif" font-size="24" font-weight="700" fill="#0f0f0f">Source Systems</text>
+  <text x="95" y="220" font-family="Arial, sans-serif" font-size="18" fill="#0f0f0f">CRM, Billing, Web, ERP</text>
+
+  <rect x="400" y="120" width="220" height="90" fill="#ffffff" stroke="#0f0f0f" stroke-width="3"/>
+  <text x="445" y="173" font-family="Arial, sans-serif" font-size="22" font-weight="700" fill="#0f0f0f">Bronze</text>
+
+  <rect x="400" y="250" width="220" height="90" fill="#ffffff" stroke="#0f0f0f" stroke-width="3"/>
+  <text x="452" y="303" font-family="Arial, sans-serif" font-size="22" font-weight="700" fill="#0f0f0f">Silver</text>
+
+  <rect x="400" y="380" width="220" height="90" fill="#ffffff" stroke="#0f0f0f" stroke-width="3"/>
+  <text x="460" y="433" font-family="Arial, sans-serif" font-size="22" font-weight="700" fill="#0f0f0f">Gold</text>
+
+  <rect x="720" y="160" width="360" height="140" fill="#ffffff" stroke="#0f0f0f" stroke-width="3"/>
+  <text x="760" y="212" font-family="Arial, sans-serif" font-size="22" font-weight="700" fill="#0f0f0f">Data Quality + Governance</text>
+  <text x="760" y="246" font-family="Arial, sans-serif" font-size="18" fill="#0f0f0f">Schema checks, lineage, RBAC</text>
+
+  <rect x="720" y="350" width="360" height="120" fill="#ffffff" stroke="#0f0f0f" stroke-width="3"/>
+  <text x="765" y="402" font-family="Arial, sans-serif" font-size="22" font-weight="700" fill="#0f0f0f">Power BI + APIs</text>
+  <text x="765" y="436" font-family="Arial, sans-serif" font-size="18" fill="#0f0f0f">Business-ready marts</text>
+
+  <line x1="330" y1="200" x2="400" y2="165" stroke="#0f0f0f" stroke-width="4"/>
+  <line x1="510" y1="210" x2="510" y2="250" stroke="#0f0f0f" stroke-width="4"/>
+  <line x1="510" y1="340" x2="510" y2="380" stroke="#0f0f0f" stroke-width="4"/>
+  <line x1="620" y1="300" x2="720" y2="230" stroke="#0f0f0f" stroke-width="4"/>
+  <line x1="620" y1="430" x2="720" y2="410" stroke="#0f0f0f" stroke-width="4"/>
+</svg>

@@ -1,0 +1,3 @@
+# No Python dependencies are required for this project.
+# Optional local server command:
+# python -m http.server 8000
