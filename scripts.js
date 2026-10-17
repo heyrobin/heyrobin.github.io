@@ -90,13 +90,6 @@ document.addEventListener("DOMContentLoaded", function () {
                     link.rel = "noopener noreferrer";
                     link.textContent = shorten(post.caption, 120);
                     item.appendChild(link);
-                    const date = new Date(post.time);
-                    if (!Number.isNaN(date.getTime())) {
-                        const time = document.createElement("time");
-                        time.dateTime = date.toISOString();
-                        time.textContent = date.toLocaleDateString(undefined, { day: "numeric", month: "short", year: "numeric" });
-                        item.appendChild(time);
-                    }
                     list.appendChild(item);
                 });
                 list.hidden = false;
