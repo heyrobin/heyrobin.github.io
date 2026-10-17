@@ -20,7 +20,7 @@
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:image" content="https://heyrobin.github.io/assets/og-image.png">
     <script type="application/ld+json">
-    {"@context": "https://schema.org", "@graph": [{"@type": "Person", "@id": "https://heyrobin.github.io/#robin", "name": "Robin Singh", "jobTitle": "Senior Data Engineer", "url": "https://heyrobin.github.io/", "image": "https://heyrobin.github.io/icons/robin-singh.jpg", "email": "mailto:heyrobinsingh@gmail.com", "sameAs": ["https://github.com/heyrobin", "https://www.linkedin.com/in/heyrobin/", "https://www.kaggle.com/heyrobin"], "knowsAbout": ["Data engineering", "Lakehouse architecture", "Streaming pipelines", "Apache Spark", "Microsoft Fabric", "Azure", "Databricks", "Delta Lake", "Power BI", "Python", "SQL", "LLM applications"]}, {"@type": "WebSite", "@id": "https://heyrobin.github.io/#site", "url": "https://heyrobin.github.io/", "name": "Robin Singh", "publisher": {"@id": "https://heyrobin.github.io/#robin"}}]}
+    {"@context": "https://schema.org", "@graph": [{"@type": "Person", "@id": "https://heyrobin.github.io/#robin", "name": "Robin Singh", "jobTitle": "Senior Data Engineer", "url": "https://heyrobin.github.io/", "image": "https://heyrobin.github.io/icons/robin-singh.jpg", "email": "mailto:heyrobinsingh@gmail.com", "sameAs": ["https://github.com/heyrobin", "https://www.linkedin.com/in/heyrobin/", "https://www.kaggle.com/heyrobin", "https://www.instagram.com/robin.sql/"], "knowsAbout": ["Data engineering", "Lakehouse architecture", "Streaming pipelines", "Apache Spark", "Microsoft Fabric", "Azure", "Databricks", "Delta Lake", "Power BI", "Python", "SQL", "LLM applications"]}, {"@type": "WebSite", "@id": "https://heyrobin.github.io/#site", "url": "https://heyrobin.github.io/", "name": "Robin Singh", "publisher": {"@id": "https://heyrobin.github.io/#robin"}}]}
     </script>
 
     <link rel="icon" type="image/svg+xml" href="icons/favicon.svg">
@@ -147,46 +147,69 @@
 
     <section class="section" id="work" aria-labelledby="work-title">
         <div class="wrap">
-            <h2 class="display-2 section-title" id="work-title">Selected <em>case studies.</em></h2>
-            <div class="case-list">
-            <a class="case" style="--case: #1479b8" href="microsoft-fabric-eventstream-temperature.html">
-                <div class="case-visual"><img src="assets/fabric-card.svg" alt="Fabric Eventstream temperature dashboard" loading="lazy"></div>
-                <div class="case-info">
-                    <p class="case-kicker">Real-time streaming</p>
-                    <h3>Fabric Eventstream <span class="case-arrow" aria-hidden="true">&rarr;</span></h3>
-                    <p class="case-summary">A near-real-time IoT pipeline in Microsoft Fabric that streams sensor temperature telemetry into live Power BI monitoring for operations teams.</p>
-                    <p class="case-metric"><strong>&lt;5s</strong><span>end-to-end latency</span></p>
+            <div class="work-layout">
+                <div>
+                    <h2 class="display-2 section-title" id="work-title">Selected <em>case studies.</em></h2>
+                    <ul class="proj-list">
+                <li>
+                    <a class="proj" style="--case: #1479b8" href="microsoft-fabric-eventstream-temperature.html">
+                        <span class="proj-text">
+                            <span class="proj-kicker">Real-time streaming</span>
+                            <span class="proj-title">Fabric Eventstream</span>
+                            <span class="proj-meta"><strong>&lt;5s</strong> end-to-end latency</span>
+                        </span>
+                        <span class="proj-thumb"><img src="assets/fabric-card.svg" alt="" loading="lazy" decoding="async"></span>
+                    </a>
+                </li>
+                <li>
+                    <a class="proj" style="--case: #159957" href="azure-data-lake-architecture.html">
+                        <span class="proj-text">
+                            <span class="proj-kicker">Lakehouse architecture</span>
+                            <span class="proj-title">Azure Data Lake</span>
+                            <span class="proj-meta"><strong>&minus;42%</strong> pipeline failures</span>
+                        </span>
+                        <span class="proj-thumb"><img src="assets/lakehouse-card.svg" alt="" loading="lazy" decoding="async"></span>
+                    </a>
+                </li>
+                <li>
+                    <a class="proj" style="--case: #e25a1c" href="spark-etl-pipeline.html">
+                        <span class="proj-text">
+                            <span class="proj-kicker">High-volume batch</span>
+                            <span class="proj-title">Spark ETL Pipeline</span>
+                            <span class="proj-meta"><strong>180M</strong> records processed daily</span>
+                        </span>
+                        <span class="proj-thumb"><img src="assets/spark-card.svg" alt="" loading="lazy" decoding="async"></span>
+                    </a>
+                </li>
+                <li>
+                    <a class="proj" style="--case: #6d28d9" href="llm-resume-analyzer.html">
+                        <span class="proj-text">
+                            <span class="proj-kicker">Applied AI</span>
+                            <span class="proj-title">LLM Resume Analyzer</span>
+                            <span class="proj-meta"><strong>&minus;52%</strong> screening time</span>
+                        </span>
+                        <span class="proj-thumb"><img src="assets/llm-card.svg" alt="" loading="lazy" decoding="async"></span>
+                    </a>
+                </li>
+                <li>
+                    <a class="proj" style="--case: #d6336c" href="anime-story-ai-generator.html">
+                        <span class="proj-text">
+                            <span class="proj-kicker">Generative AI</span>
+                            <span class="proj-title">Anime Story AI Generator</span>
+                            <span class="proj-meta"><strong>+46%</strong> 7-day retention</span>
+                        </span>
+                        <span class="proj-thumb"><img src="assets/anime-ai-pipeline.svg" alt="" loading="lazy" decoding="async"></span>
+                    </a>
+                </li>
+                    </ul>
                 </div>
-            </a>
-            <a class="case" style="--case: #159957" href="azure-data-lake-architecture.html">
-                <div class="case-visual"><img src="assets/lakehouse-card.svg" alt="Azure lakehouse architecture diagram" loading="lazy"></div>
-                <div class="case-info">
-                    <p class="case-kicker">Lakehouse architecture</p>
-                    <h3>Azure Data Lake <span class="case-arrow" aria-hidden="true">&rarr;</span></h3>
-                    <p class="case-summary">Rebuilt a fragmented reporting stack into a governed lakehouse with clear medallion layers, fewer data incidents and fresher dashboards.</p>
-                    <p class="case-metric"><strong>&minus;42%</strong><span>pipeline failures</span></p>
-                </div>
-            </a>
-            <a class="case" style="--case: #e25a1c" href="spark-etl-pipeline.html">
-                <div class="case-visual"><img src="assets/spark-card.svg" alt="Spark ETL pipeline architecture diagram" loading="lazy"></div>
-                <div class="case-info">
-                    <p class="case-kicker">High-volume batch</p>
-                    <h3>Spark ETL Pipeline <span class="case-arrow" aria-hidden="true">&rarr;</span></h3>
-                    <p class="case-summary">Re-engineered slow, brittle transaction jobs into deterministic, recoverable Spark pipelines with stronger observability under peak load.</p>
-                    <p class="case-metric"><strong>180M</strong><span>records processed daily</span></p>
-                </div>
-            </a>
-            <a class="case" style="--case: #6d28d9" href="llm-resume-analyzer.html">
-                <div class="case-visual"><img src="assets/llm-card.svg" alt="LLM resume analyzer workflow diagram" loading="lazy"></div>
-                <div class="case-info">
-                    <p class="case-kicker">Applied AI</p>
-                    <h3>LLM Resume Analyzer <span class="case-arrow" aria-hidden="true">&rarr;</span></h3>
-                    <p class="case-summary">Scores candidate fit against role requirements and explains the score in plain language, for faster recruiter triage and clearer feedback.</p>
-                    <p class="case-metric"><strong>&minus;52%</strong><span>screening time</span></p>
-                </div>
-            </a>
+                <aside class="ig-box" aria-labelledby="ig-title" data-instagram data-feed="instagram.json" data-handle="robin.sql">
+                    <h2 class="ig-title" id="ig-title">Latest on Instagram</h2>
+                    <ol class="ig-list" data-ig-list hidden></ol>
+                    <p class="ig-empty" data-ig-empty>Short explainers on SQL, data engineering and system design, posted as <strong>@robin.sql</strong>.</p>
+                    <a class="ig-follow" href="https://www.instagram.com/robin.sql/" target="_blank" rel="noopener noreferrer">Follow @robin.sql <span aria-hidden="true">&nearr;</span></a>
+                </aside>
             </div>
-            <p class="more-link">Also: <a href="anime-story-ai-generator.html">Anime story AI generator</a></p>
         </div>
     </section>
 
@@ -207,7 +230,7 @@
 <footer class="site-footer">
     <div class="wrap footer-row">
         <span>&copy; <span data-year>2026</span> Robin Singh</span>
-        <nav aria-label="Elsewhere"><a href="https://github.com/heyrobin" target="_blank" rel="noopener noreferrer">GitHub</a><a href="https://www.linkedin.com/in/heyrobin/" target="_blank" rel="noopener noreferrer">LinkedIn</a><a href="https://www.kaggle.com/heyrobin" target="_blank" rel="noopener noreferrer">Kaggle</a><a href="mailto:heyrobinsingh@gmail.com">Email</a></nav>
+        <nav aria-label="Elsewhere"><a href="https://github.com/heyrobin" target="_blank" rel="noopener noreferrer">GitHub</a><a href="https://www.linkedin.com/in/heyrobin/" target="_blank" rel="noopener noreferrer">LinkedIn</a><a href="https://www.kaggle.com/heyrobin" target="_blank" rel="noopener noreferrer">Kaggle</a><a href="https://www.instagram.com/robin.sql/" target="_blank" rel="noopener noreferrer">Instagram</a><a href="mailto:heyrobinsingh@gmail.com">Email</a></nav>
     </div>
 </footer>
 <script src="scripts.js" defer></script>

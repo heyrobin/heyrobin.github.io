@@ -67,34 +67,22 @@
         </div>
     </header>
     <div class="wrap">
-        <div class="mini-grid">
-        <a class="mini" style="--case: #1479b8" href="microsoft-fabric-eventstream-temperature.html">
-            <div class="case-visual"><img src="assets/fabric-card.svg" alt="Fabric Eventstream temperature dashboard" loading="lazy"></div>
-            <div class="mini-body">
-                <p class="case-kicker">Real-time streaming</p>
-                <h2>Fabric Eventstream <span class="case-arrow" aria-hidden="true">&rarr;</span></h2>
-                <p>A near-real-time IoT pipeline in Microsoft Fabric that streams sensor temperature telemetry into live Power BI monitoring for operations teams.</p>
-                <p class="case-metric"><strong>&lt;5s</strong><span>end-to-end latency</span></p>
-            </div>
-        </a>
-        <a class="mini" style="--case: #159957" href="azure-data-lake-architecture.html">
-            <div class="case-visual"><img src="assets/lakehouse-card.svg" alt="Azure lakehouse architecture diagram" loading="lazy"></div>
-            <div class="mini-body">
-                <p class="case-kicker">Lakehouse architecture</p>
-                <h2>Azure Data Lake <span class="case-arrow" aria-hidden="true">&rarr;</span></h2>
-                <p>Rebuilt a fragmented reporting stack into a governed lakehouse with clear medallion layers, fewer data incidents and fresher dashboards.</p>
-                <p class="case-metric"><strong>&minus;42%</strong><span>pipeline failures</span></p>
-            </div>
-        </a>
-        <a class="mini" style="--case: #e25a1c" href="spark-etl-pipeline.html">
-            <div class="case-visual"><img src="assets/spark-card.svg" alt="Spark ETL pipeline architecture diagram" loading="lazy"></div>
-            <div class="mini-body">
-                <p class="case-kicker">High-volume batch</p>
-                <h2>Spark ETL Pipeline <span class="case-arrow" aria-hidden="true">&rarr;</span></h2>
-                <p>Re-engineered slow, brittle transaction jobs into deterministic, recoverable Spark pipelines with stronger observability under peak load.</p>
-                <p class="case-metric"><strong>180M</strong><span>records processed daily</span></p>
-            </div>
-        </a>
+        <div class="card-grid">
+            <a class="card" style="--case: #1479b8" href="microsoft-fabric-eventstream-temperature.html">
+                <span class="card-img"><img src="assets/fabric-card.svg" alt="" loading="lazy" decoding="async"></span>
+                <span class="card-title">Fabric Eventstream</span>
+                <span class="card-meta">Real-time streaming &middot; <strong>&lt;5s</strong> end-to-end latency</span>
+            </a>
+            <a class="card" style="--case: #159957" href="azure-data-lake-architecture.html">
+                <span class="card-img"><img src="assets/lakehouse-card.svg" alt="" loading="lazy" decoding="async"></span>
+                <span class="card-title">Azure Data Lake</span>
+                <span class="card-meta">Lakehouse architecture &middot; <strong>&minus;42%</strong> pipeline failures</span>
+            </a>
+            <a class="card" style="--case: #e25a1c" href="spark-etl-pipeline.html">
+                <span class="card-img"><img src="assets/spark-card.svg" alt="" loading="lazy" decoding="async"></span>
+                <span class="card-title">Spark ETL Pipeline</span>
+                <span class="card-meta">High-volume batch &middot; <strong>180M</strong> records processed daily</span>
+            </a>
         </div>
     </div>
 </main>
@@ -102,7 +90,7 @@
 <footer class="site-footer">
     <div class="wrap footer-row">
         <span>&copy; <span data-year>2026</span> Robin Singh</span>
-        <nav aria-label="Elsewhere"><a href="https://github.com/heyrobin" target="_blank" rel="noopener noreferrer">GitHub</a><a href="https://www.linkedin.com/in/heyrobin/" target="_blank" rel="noopener noreferrer">LinkedIn</a><a href="https://www.kaggle.com/heyrobin" target="_blank" rel="noopener noreferrer">Kaggle</a><a href="mailto:heyrobinsingh@gmail.com">Email</a></nav>
+        <nav aria-label="Elsewhere"><a href="https://github.com/heyrobin" target="_blank" rel="noopener noreferrer">GitHub</a><a href="https://www.linkedin.com/in/heyrobin/" target="_blank" rel="noopener noreferrer">LinkedIn</a><a href="https://www.kaggle.com/heyrobin" target="_blank" rel="noopener noreferrer">Kaggle</a><a href="https://www.instagram.com/robin.sql/" target="_blank" rel="noopener noreferrer">Instagram</a><a href="mailto:heyrobinsingh@gmail.com">Email</a></nav>
     </div>
 </footer>
 <script src="scripts.js" defer></script>
