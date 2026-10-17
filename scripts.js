@@ -1,220 +1,102 @@
 document.addEventListener("DOMContentLoaded", function () {
-    const buttons = document.querySelectorAll(".filter");
-    const toolButtons = document.querySelectorAll(".tool-filter");
-    const cards = document.querySelectorAll(".project-card");
-    const darkToggle = document.getElementById("darkToggle");
-    const themeIcon = darkToggle ? darkToggle.querySelector(".theme-icon") : null;
-    const contactTrigger = document.getElementById("contactTrigger");
-    const contactDialog = document.getElementById("contactDialog");
-    const contactDialogClose = document.getElementById("contactDialogClose");
-    const transitionDurationMs = 300;
+    const root = document.documentElement;
+    const header = document.querySelector("[data-header]");
+    const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-    const animatePageIn = () => {
-
-        document.body.classList.remove("page-exit");
-        const reveal = () => document.body.classList.add("page-ready");
-        requestAnimationFrame(reveal);
-        // rAF can be skipped in background tabs; never leave the page invisible.
-        window.setTimeout(reveal, 60);
-    };
-
-    const isInternalNavigableLink = (link, event) => {
-        if (!link || event.defaultPrevented) {
-            return false;
-        }
-        if (event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) {
-            return false;
-        }
-        if (link.target && link.target !== "_self") {
-            return false;
-        }
-        if (link.hasAttribute("download")) {
-            return false;
-        }
-
-        const rawHref = link.getAttribute("href");
-        if (!rawHref || rawHref.startsWith("#") || rawHref.startsWith("mailto:") || rawHref.startsWith("tel:")) {
-            return false;
-        }
-
-        const url = new URL(link.href, window.location.href);
-        if (url.origin !== window.location.origin) {
-            return false;
-        }
-        if (url.pathname === window.location.pathname && url.search === window.location.search) {
-            return false;
-        }
-        return true;
-    };
-
-    const getSavedTheme = () => {
-        try {
-            return localStorage.getItem("theme");
-        } catch (e) {
-            return null;
-        }
-    };
-
-    const saveTheme = (value) => {
-        try {
-            localStorage.setItem("theme", value);
-        } catch (e) {
-            // Ignore storage errors (private mode / blocked storage).
-        }
-    };
-
-    const updateThemeControl = () => {
-        if (!darkToggle) {
+    // THEME
+    const themeToggle = document.querySelector("[data-theme-toggle]");
+    const applyThemeLabel = () => {
+        if (!themeToggle) {
             return;
         }
-
-        const isDark = document.body.classList.contains("dark");
-        darkToggle.setAttribute("aria-label", isDark ? "Switch to light mode" : "Switch to dark mode");
-        if (themeIcon) {
-            themeIcon.src = isDark ? "icons/switch-darkmode.svg" : "icons/switch.svg";
-        } else {
-            darkToggle.textContent = isDark ? "Light" : "Dark";
+        const isDark = root.getAttribute("data-theme") === "dark";
+        themeToggle.setAttribute("aria-label", isDark ? "Switch to light theme" : "Switch to dark theme");
+    };
+    themeToggle?.addEventListener("click", function () {
+        const next = root.getAttribute("data-theme") === "dark" ? "light" : "dark";
+        root.setAttribute("data-theme", next);
+        try {
+            localStorage.setItem("theme", next);
+        } catch (e) {
+            // Storage can be blocked (private mode); the theme still applies for this page.
         }
+        applyThemeLabel();
+    });
+    applyThemeLabel();
+
+    // MOBILE MENU
+    const menuToggle = document.querySelector("[data-menu-toggle]");
+    const setMenu = (open) => {
+        if (!header || !menuToggle) {
+            return;
+        }
+        header.classList.toggle("menu-open", open);
+        menuToggle.setAttribute("aria-expanded", String(open));
+        menuToggle.setAttribute("aria-label", open ? "Close menu" : "Open menu");
     };
-
-    // FILTERING
-    let activeCategory = "all";
-    let activeTool = "all";
-
-    const applyProjectFilters = () => {
-        cards.forEach((card) => {
-            const categoryMatch = activeCategory === "all" || card.classList.contains(activeCategory);
-            const cardTools = (card.dataset.tools || "")
-                .split(",")
-                .map((t) => t.trim().toLowerCase())
-                .filter(Boolean);
-            const toolMatch = activeTool === "all" || cardTools.includes(activeTool);
-
-            card.style.display = categoryMatch && toolMatch ? "block" : "none";
-        });
-    };
-
-    buttons.forEach((btn) => {
-        btn.addEventListener("click", function () {
-            buttons.forEach((b) => b.classList.remove("active"));
-            this.classList.add("active");
-            activeCategory = this.dataset.filter || "all";
-            applyProjectFilters();
-        });
+    menuToggle?.addEventListener("click", () => setMenu(!header.classList.contains("menu-open")));
+    document.querySelectorAll("#site-nav a").forEach((link) => link.addEventListener("click", () => setMenu(false)));
+    document.addEventListener("keydown", (event) => {
+        if (event.key === "Escape") {
+            setMenu(false);
+        }
     });
 
-    toolButtons.forEach((btn) => {
-        btn.setAttribute("aria-pressed", btn.classList.contains("active") ? "true" : "false");
-        btn.addEventListener("click", function () {
-            const selectedTool = (this.dataset.tool || "all").toLowerCase();
-            const wasActive = this.classList.contains("active");
-
-            toolButtons.forEach((b) => {
-                b.classList.remove("active");
-                b.setAttribute("aria-pressed", "false");
-            });
-
-            if (wasActive) {
-                activeTool = "all";
-            } else {
-                this.classList.add("active");
-                this.setAttribute("aria-pressed", "true");
-                activeTool = selectedTool;
-            }
-            applyProjectFilters();
-        });
-    });
-
-    // DARK MODE
-    if (darkToggle) {
-        darkToggle.addEventListener("click", function () {
-            document.body.classList.toggle("dark");
-
-            if (document.body.classList.contains("dark")) {
-                saveTheme("dark");
-            } else {
-                saveTheme("light");
-            }
-            updateThemeControl();
-        });
+    // HEADER STATE
+    if (header) {
+        const updateHeader = () => header.classList.toggle("is-scrolled", window.scrollY > 12);
+        updateHeader();
+        window.addEventListener("scroll", updateHeader, { passive: true });
     }
 
-    // LOAD SAVED THEME
-    if (getSavedTheme() === "dark") {
-        document.body.classList.add("dark");
-    }
-    updateThemeControl();
-
-    // CONTACT OPTIONS
-    if (contactTrigger && contactDialog) {
-        contactTrigger.addEventListener("click", function () {
-            contactDialog.showModal();
-        });
-        contactDialogClose?.addEventListener("click", function () {
-            contactDialog.close();
-        });
-        contactDialog.addEventListener("click", function (event) {
-            if (event.target === contactDialog) {
-                contactDialog.close();
-            }
-        });
-    }
-
-    // FOOTER YEAR
-    const yearEl = document.getElementById("year");
-    if (yearEl) {
-        yearEl.textContent = new Date().getFullYear();
-    }
-
-    // SCROLL MOTION
-    const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    const revealItems = document.querySelectorAll("[data-reveal]");
-    const countItems = document.querySelectorAll("[data-count]");
-
-    const countUp = (el) => {
-        const target = Number(el.dataset.count);
-        const durationMs = 1100;
-        const start = performance.now();
-        const step = (now) => {
-            const t = Math.min((now - start) / durationMs, 1);
-            const eased = 1 - Math.pow(1 - t, 3);
-            el.textContent = Math.round(target * eased);
-            if (t < 1) {
-                requestAnimationFrame(step);
-            }
-        };
-        requestAnimationFrame(step);
-    };
-
-    // Reveal by measuring on scroll rather than IntersectionObserver alone:
-    // observers can be delayed in some embedded or background views, which left sections blank.
-    let pendingReveal = Array.from(revealItems);
-    const revealInView = () => {
-        const triggerLine = window.innerHeight * 1.1;
-        pendingReveal = pendingReveal.filter((el) => {
-            if (el.getBoundingClientRect().top > triggerLine) {
-                return true;
-            }
-            el.classList.add("is-visible");
-            // If the animation is throttled or stalls, still end up fully visible.
-            window.setTimeout(() => el.classList.add("reveal-done"), 1200);
-            return false;
-        });
-        if (!pendingReveal.length) {
-            window.removeEventListener("scroll", revealInView);
-            window.removeEventListener("resize", revealInView);
-        }
-    };
-
+    // SCROLL REVEAL
+    // Measured on scroll instead of relying on IntersectionObserver alone, which can fire late in
+    // embedded or throttled views and leave sections blank.
+    const revealItems = Array.from(document.querySelectorAll("[data-reveal]"));
     if (prefersReducedMotion) {
         revealItems.forEach((el) => el.classList.add("is-visible", "reveal-done"));
     } else {
+        let pending = revealItems;
+        const revealInView = () => {
+            const triggerLine = window.innerHeight * 1.1;
+            pending = pending.filter((el) => {
+                if (el.getBoundingClientRect().top > triggerLine) {
+                    return true;
+                }
+                el.classList.add("is-visible");
+                // Safety net: end fully visible even if the animation is throttled.
+                window.setTimeout(() => el.classList.add("reveal-done"), 1300);
+                return false;
+            });
+            if (!pending.length) {
+                window.removeEventListener("scroll", revealInView);
+                window.removeEventListener("resize", revealInView);
+            }
+        };
         revealInView();
         window.addEventListener("scroll", revealInView, { passive: true });
         window.addEventListener("resize", revealInView);
     }
+    window.setTimeout(() => root.classList.add("motion-settled"), 2400);
 
-    if (!prefersReducedMotion && "IntersectionObserver" in window) {
+    // COUNT-UP
+    const countItems = document.querySelectorAll("[data-count]");
+    if (!prefersReducedMotion && "IntersectionObserver" in window && countItems.length) {
+        const countUp = (el) => {
+            const target = Number(el.dataset.count);
+            const start = performance.now();
+            const durationMs = 1200;
+            const step = (now) => {
+                const t = Math.min((now - start) / durationMs, 1);
+                el.textContent = Math.round(target * (1 - Math.pow(1 - t, 3)));
+                if (t < 1) {
+                    requestAnimationFrame(step);
+                } else {
+                    el.textContent = target;
+                }
+            };
+            requestAnimationFrame(step);
+        };
         const countObserver = new IntersectionObserver((entries, observer) => {
             entries.forEach((entry) => {
                 if (entry.isIntersecting) {
@@ -226,37 +108,53 @@ document.addEventListener("DOMContentLoaded", function () {
         countItems.forEach((el) => countObserver.observe(el));
     }
 
-    // Same safety net for the hero entrance.
-    window.setTimeout(() => document.documentElement.classList.add("motion-settled"), 2200);
-
-    // HEADER STATE
-    const siteHeader = document.querySelector(".site-header, .masthead");
-    if (siteHeader) {
-        const updateHeader = () => siteHeader.classList.toggle("is-scrolled", window.scrollY > 12);
-        updateHeader();
-        window.addEventListener("scroll", updateHeader, { passive: true });
+    // TABLE OF CONTENTS
+    const tocLinks = Array.from(document.querySelectorAll(".toc a"));
+    if (tocLinks.length) {
+        const sections = tocLinks.map((link) => document.querySelector(link.getAttribute("href"))).filter(Boolean);
+        const updateToc = () => {
+            const line = window.innerHeight * 0.35;
+            let active = sections[0];
+            sections.forEach((section) => {
+                if (section.getBoundingClientRect().top <= line) {
+                    active = section;
+                }
+            });
+            tocLinks.forEach((link) => link.classList.toggle("is-active", link.getAttribute("href") === "#" + active.id));
+        };
+        updateToc();
+        window.addEventListener("scroll", updateToc, { passive: true });
     }
 
-    // PAGE TRANSITIONS
-    animatePageIn();
-
-    document.addEventListener("click", function (event) {
-        const link = event.target.closest("a");
-        if (!isInternalNavigableLink(link, event)) {
+    // TOAST + COPY EMAIL
+    const toast = document.querySelector("[data-toast]");
+    let toastTimer;
+    const showToast = (message) => {
+        if (!toast) {
             return;
         }
-
-        event.preventDefault();
-        document.body.classList.remove("page-ready");
-        document.body.classList.add("page-exit");
-
-        const destination = link.href;
-        window.setTimeout(function () {
-            window.location.href = destination;
-        }, transitionDurationMs);
+        toast.textContent = message;
+        toast.classList.add("is-shown");
+        window.clearTimeout(toastTimer);
+        toastTimer = window.setTimeout(() => toast.classList.remove("is-shown"), 2200);
+    };
+    document.querySelectorAll("[data-copy]").forEach((button) => {
+        button.addEventListener("click", async function () {
+            const value = this.dataset.copy;
+            try {
+                await navigator.clipboard.writeText(value);
+                showToast("Email copied: " + value);
+            } catch (e) {
+                showToast(value);
+            }
+        });
     });
 
-    window.addEventListener("pageshow", function () {
-        animatePageIn();
+    // PRINT
+    document.querySelectorAll("[data-print]").forEach((button) => button.addEventListener("click", () => window.print()));
+
+    // FOOTER YEAR
+    document.querySelectorAll("[data-year]").forEach((el) => {
+        el.textContent = new Date().getFullYear();
     });
 });
