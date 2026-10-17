@@ -186,19 +186,35 @@ document.addEventListener("DOMContentLoaded", function () {
         requestAnimationFrame(step);
     };
 
-    if (prefersReducedMotion || !("IntersectionObserver" in window)) {
-        revealItems.forEach((el) => el.classList.add("is-visible"));
-    } else {
-        const revealObserver = new IntersectionObserver((entries, observer) => {
-            entries.forEach((entry) => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add("is-visible");
-                    observer.unobserve(entry.target);
-                }
-            });
-        }, { rootMargin: "0px 0px -8% 0px", threshold: 0.12 });
-        revealItems.forEach((el) => revealObserver.observe(el));
+    // Reveal by measuring on scroll rather than IntersectionObserver alone:
+    // observers can be delayed in some embedded or background views, which left sections blank.
+    let pendingReveal = Array.from(revealItems);
+    const revealInView = () => {
+        const triggerLine = window.innerHeight * 1.1;
+        pendingReveal = pendingReveal.filter((el) => {
+            if (el.getBoundingClientRect().top > triggerLine) {
+                return true;
+            }
+            el.classList.add("is-visible");
+            // If the animation is throttled or stalls, still end up fully visible.
+            window.setTimeout(() => el.classList.add("reveal-done"), 1200);
+            return false;
+        });
+        if (!pendingReveal.length) {
+            window.removeEventListener("scroll", revealInView);
+            window.removeEventListener("resize", revealInView);
+        }
+    };
 
+    if (prefersReducedMotion) {
+        revealItems.forEach((el) => el.classList.add("is-visible", "reveal-done"));
+    } else {
+        revealInView();
+        window.addEventListener("scroll", revealInView, { passive: true });
+        window.addEventListener("resize", revealInView);
+    }
+
+    if (!prefersReducedMotion && "IntersectionObserver" in window) {
         const countObserver = new IntersectionObserver((entries, observer) => {
             entries.forEach((entry) => {
                 if (entry.isIntersecting) {
@@ -209,6 +225,9 @@ document.addEventListener("DOMContentLoaded", function () {
         }, { threshold: 0.6 });
         countItems.forEach((el) => countObserver.observe(el));
     }
+
+    // Same safety net for the hero entrance.
+    window.setTimeout(() => document.documentElement.classList.add("motion-settled"), 2200);
 
     // HEADER STATE
     const siteHeader = document.querySelector(".site-header, .masthead");

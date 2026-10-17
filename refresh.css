@@ -207,9 +207,15 @@ html, body { overflow-x: clip; }
 .js [data-reveal] { opacity: 0; }
 .js [data-reveal].is-visible {
     opacity: 1;
-    animation: rise .85s var(--ease-out) backwards;
-    animation-delay: calc(var(--d, 0) * 120ms);
+    animation: revealUp .6s var(--ease-out) backwards;
+    animation-delay: calc(var(--d, 0) * 80ms);
 }
+@keyframes revealUp {
+    from { opacity: 0; transform: translateY(16px); }
+}
+.js [data-reveal].reveal-done,
+.motion-settled.js .hero > :not(.hero-flow),
+.motion-settled.js .hero-line { animation: none; }
 
 /* ---------- Section headings ---------- */
 .intro-copy h2,
@@ -391,6 +397,8 @@ body.dark .metric-card { background: #1b1d22; }
 @media (max-width: 680px) {
     .site-header { padding: 14px 16px; }
     .masthead { padding: 14px 16px; }
+    /* Keep footer links clear of the fixed theme toggle. */
+    .site-footer { padding-bottom: 72px; }
     .hero { margin-top: 24px; }
     .hero h1 { font-size: clamp(3rem, 14vw, 4.6rem); }
     .hero-copy { font-size: .94rem; }
