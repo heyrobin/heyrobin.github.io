@@ -6,6 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/svg+xml" href="icons/favicon.svg">
     <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="refresh.css">
+    <script>document.documentElement.classList.add("js");</script>
 </head>
 <body>
 <header class="masthead">
@@ -36,12 +38,12 @@
             <h3>Scope</h3>
             <p>Designed multi-step generation flow: world setup, episode outline, dialogue pass, and continuity check. Added session memory so previous events and character traits persist across episodes.</p>
             <h3>Architecture Snapshot</h3>
-            <figure class="case-figure">
+            <figure class="case-figure" data-reveal>
                 <img src="assets/anime-ai-pipeline.svg" alt="AI story generator pipeline from user prompt to prompt builder, LLM output and memory store.">
                 <figcaption>Prompt orchestration pipeline with a memory loop for long-form narrative consistency.</figcaption>
             </figure>
             <h3>Impact Metrics</h3>
-            <div class="metrics-grid">
+            <div class="metrics-grid" data-reveal>
                 <div class="metric-card">
                     <span class="metric-value">+46%</span>
                     <span class="metric-label">7-Day Retention</span>

@@ -166,6 +166,58 @@ document.addEventListener("DOMContentLoaded", function () {
         yearEl.textContent = new Date().getFullYear();
     }
 
+    // SCROLL MOTION
+    const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const revealItems = document.querySelectorAll("[data-reveal]");
+    const countItems = document.querySelectorAll("[data-count]");
+
+    const countUp = (el) => {
+        const target = Number(el.dataset.count);
+        const durationMs = 1100;
+        const start = performance.now();
+        const step = (now) => {
+            const t = Math.min((now - start) / durationMs, 1);
+            const eased = 1 - Math.pow(1 - t, 3);
+            el.textContent = Math.round(target * eased);
+            if (t < 1) {
+                requestAnimationFrame(step);
+            }
+        };
+        requestAnimationFrame(step);
+    };
+
+    if (prefersReducedMotion || !("IntersectionObserver" in window)) {
+        revealItems.forEach((el) => el.classList.add("is-visible"));
+    } else {
+        const revealObserver = new IntersectionObserver((entries, observer) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add("is-visible");
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { rootMargin: "0px 0px -8% 0px", threshold: 0.12 });
+        revealItems.forEach((el) => revealObserver.observe(el));
+
+        const countObserver = new IntersectionObserver((entries, observer) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    countUp(entry.target);
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.6 });
+        countItems.forEach((el) => countObserver.observe(el));
+    }
+
+    // HEADER STATE
+    const siteHeader = document.querySelector(".site-header, .masthead");
+    if (siteHeader) {
+        const updateHeader = () => siteHeader.classList.toggle("is-scrolled", window.scrollY > 12);
+        updateHeader();
+        window.addEventListener("scroll", updateHeader, { passive: true });
+    }
+
     // PAGE TRANSITIONS
     animatePageIn();
 

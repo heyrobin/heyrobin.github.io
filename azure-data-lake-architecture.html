@@ -6,6 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/svg+xml" href="icons/favicon.svg">
     <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="refresh.css">
+    <script>document.documentElement.classList.add("js");</script>
 </head>
 <body>
 <header class="masthead">
@@ -31,7 +33,7 @@
             <h2>Azure Data Lake Architecture</h2>
             <p class="story-meta">Role: Data Engineer | Stack: ADLS, Databricks, Azure Data Factory, Power BI</p>
         </header>
-        <section class="project-overview" aria-labelledby="overview-title">
+        <section class="project-overview" data-reveal aria-labelledby="overview-title">
             <h3 id="overview-title">Project overview</h3>
             <div class="overview-grid">
                 <p><strong>Focus</strong>Governed lakehouse architecture</p>
@@ -45,12 +47,12 @@
             <h3>Project scope</h3>
             <p>Integrated 9 source systems (CRM, ERP, billing, and web events) into ADLS through Azure Data Factory. Standardized 120+ raw tables into curated Silver models and 30 domain-focused Gold marts for BI consumption.</p>
             <h3>Architecture Snapshot</h3>
-            <figure class="case-figure">
+            <figure class="case-figure" data-reveal>
                 <img src="assets/azure-lakehouse-architecture.svg" alt="Azure lakehouse architecture with Bronze Silver Gold layers and governance controls.">
                 <figcaption>Medallion flow with quality checks, governance policies, and business marts.</figcaption>
             </figure>
             <h3>Impact Metrics</h3>
-            <div class="metrics-grid">
+            <div class="metrics-grid" data-reveal>
                 <div class="metric-card">
                     <span class="metric-value">-42%</span>
                     <span class="metric-label">Pipeline Failures</span>

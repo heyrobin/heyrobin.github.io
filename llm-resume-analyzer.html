@@ -6,6 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/svg+xml" href="icons/favicon.svg">
     <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="refresh.css">
+    <script>document.documentElement.classList.add("js");</script>
 </head>
 <body>
 <header class="masthead">
@@ -31,7 +33,7 @@
             <h2>LLM Resume Analyzer</h2>
             <p class="story-meta">Role: AI Engineer | Stack: NLP, Semantic Matching, Prompt Evaluation</p>
         </header>
-        <section class="project-overview" aria-labelledby="overview-title">
+        <section class="project-overview" data-reveal aria-labelledby="overview-title">
             <h3 id="overview-title">Project overview</h3>
             <div class="overview-grid">
                 <p><strong>Focus</strong>Explainable candidate evaluation</p>
@@ -45,12 +47,12 @@
             <h3>Project scope</h3>
             <p>Built a hybrid pipeline combining deterministic parsing, vector similarity, and LLM-generated commentary. The system evaluates must-have skills, seniority evidence, project relevance, and keyword quality in one report.</p>
             <h3>Architecture Snapshot</h3>
-            <figure class="case-figure">
+            <figure class="case-figure" data-reveal>
                 <img src="assets/llm-resume-workflow.svg" alt="LLM resume analyzer workflow from resume and job description parsers to vector match, rule engine and feedback output.">
                 <figcaption>Hybrid scoring stack: parser + rules + embeddings + LLM explanation layer.</figcaption>
             </figure>
             <h3>Impact Metrics</h3>
-            <div class="metrics-grid">
+            <div class="metrics-grid" data-reveal>
                 <div class="metric-card">
                     <span class="metric-value">-52%</span>
                     <span class="metric-label">Screening Time</span>

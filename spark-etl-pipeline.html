@@ -6,6 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/svg+xml" href="icons/favicon.svg">
     <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="refresh.css">
+    <script>document.documentElement.classList.add("js");</script>
 </head>
 <body>
 <header class="masthead">
@@ -31,7 +33,7 @@
             <h2>Spark ETL Pipeline</h2>
             <p class="story-meta">Role: Data Engineer | Stack: Spark, Delta Lake, Orchestration, Monitoring</p>
         </header>
-        <section class="project-overview" aria-labelledby="overview-title">
+        <section class="project-overview" data-reveal aria-labelledby="overview-title">
             <h3 id="overview-title">Project overview</h3>
             <div class="overview-grid">
                 <p><strong>Focus</strong>High-volume batch processing</p>
@@ -45,12 +47,12 @@
             <h3>Project scope</h3>
             <p>Processed ~180 million daily records from event and operational sources into Delta tables used by revenue, retention, and operations dashboards. Added end-to-end lineage and run-level quality signals for each stage.</p>
             <h3>Architecture Snapshot</h3>
-            <figure class="case-figure">
+            <figure class="case-figure" data-reveal>
                 <img src="assets/spark-etl-flow.svg" alt="Spark ETL pipeline showing ingest validate transform load with monitoring and alerts.">
                 <figcaption>End-to-end ETL path with quality gates, retries, and monitoring hooks.</figcaption>
             </figure>
             <h3>Impact Metrics</h3>
-            <div class="metrics-grid">
+            <div class="metrics-grid" data-reveal>
                 <div class="metric-card">
                     <span class="metric-value">-38%</span>
                     <span class="metric-label">Job Runtime</span>

@@ -6,6 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/svg+xml" href="icons/favicon.svg">
     <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="refresh.css">
+    <script>document.documentElement.classList.add("js");</script>
 </head>
 <body>
 <header class="masthead">
@@ -31,7 +33,7 @@
             <h2>Microsoft Fabric Eventstream Temperature Streaming</h2>
             <p class="story-meta">Role: Data Engineer | Stack: Microsoft Fabric, Eventstream, KQL Database, Power BI</p>
         </header>
-        <section class="project-overview" aria-labelledby="overview-title">
+        <section class="project-overview" data-reveal aria-labelledby="overview-title">
             <h3 id="overview-title">Project overview</h3>
             <div class="overview-grid">
                 <p><strong>Focus</strong>Near-real-time operational monitoring</p>
@@ -47,13 +49,13 @@
             <p>Simulated 3 sensors with continuous temperature payloads, pushed events into Fabric Eventstream, and routed data to analytical storage for reporting and anomaly checks. Designed dashboard slices by sensor and time interval for easy trend tracking.</p>
 
             <h3>Power BI Dashboard</h3>
-            <figure class="case-figure">
+            <figure class="case-figure" data-reveal>
                 <img src="assets/fabric-temperature-dashboard.svg" alt="Power BI line chart dashboard showing Sensor 1, Sensor 2 and Sensor 3 temperature trends.">
                 <figcaption>Live temperature trend view for three streaming sensors in Power BI.</figcaption>
             </figure>
 
             <h3>Impact Metrics</h3>
-            <div class="metrics-grid">
+            <div class="metrics-grid" data-reveal>
                 <div class="metric-card">
                     <span class="metric-value">&lt;5s</span>
                     <span class="metric-label">End-to-End Latency</span>
