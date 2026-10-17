@@ -41,13 +41,6 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     });
 
-    // HEADER STATE
-    if (header) {
-        const updateHeader = () => header.classList.toggle("is-scrolled", window.scrollY > 12);
-        updateHeader();
-        window.addEventListener("scroll", updateHeader, { passive: true });
-    }
-
     // INSTAGRAM SIDEBAR
     // Reads posts from data-feed: a Behold.so feed, Instagram Graph API JSON, or a plain list.
     // Captions are inserted as text and only instagram.com links are used.
