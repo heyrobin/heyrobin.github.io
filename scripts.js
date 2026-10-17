@@ -1,7 +1,6 @@
 document.addEventListener("DOMContentLoaded", function () {
     const root = document.documentElement;
     const header = document.querySelector("[data-header]");
-    const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
     // THEME
     const themeToggle = document.querySelector("[data-theme-toggle]");
@@ -48,36 +47,6 @@ document.addEventListener("DOMContentLoaded", function () {
         updateHeader();
         window.addEventListener("scroll", updateHeader, { passive: true });
     }
-
-    // SCROLL REVEAL
-    // Measured on scroll instead of relying on IntersectionObserver alone, which can fire late in
-    // embedded or throttled views and leave sections blank.
-    const revealItems = Array.from(document.querySelectorAll("[data-reveal]"));
-    if (prefersReducedMotion) {
-        revealItems.forEach((el) => el.classList.add("is-visible", "reveal-done"));
-    } else {
-        let pending = revealItems;
-        const revealInView = () => {
-            const triggerLine = window.innerHeight * 1.1;
-            pending = pending.filter((el) => {
-                if (el.getBoundingClientRect().top > triggerLine) {
-                    return true;
-                }
-                el.classList.add("is-visible");
-                // Safety net: end fully visible even if the animation is throttled.
-                window.setTimeout(() => el.classList.add("reveal-done"), 1300);
-                return false;
-            });
-            if (!pending.length) {
-                window.removeEventListener("scroll", revealInView);
-                window.removeEventListener("resize", revealInView);
-            }
-        };
-        revealInView();
-        window.addEventListener("scroll", revealInView, { passive: true });
-        window.addEventListener("resize", revealInView);
-    }
-    window.setTimeout(() => root.classList.add("motion-settled"), 2400);
 
     // PRINT
     document.querySelectorAll("[data-print]").forEach((button) => button.addEventListener("click", () => window.print()));

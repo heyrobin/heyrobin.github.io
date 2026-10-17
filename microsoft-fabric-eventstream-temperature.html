@@ -24,9 +24,10 @@
     </script>
 
     <link rel="icon" type="image/svg+xml" href="icons/favicon.svg">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500;1,600&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&family=JetBrains+Mono:wght@400;500;600&display=swap">
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,600;1,600&amp;display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,600;1,600&amp;display=swap" media="print" onload="this.media='all'">
+    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,600;1,600&amp;display=swap"></noscript>
     <link rel="stylesheet" href="site.css">
     <script>
         (function () {
@@ -73,27 +74,27 @@
                 <div><dt>Outcome</dt><dd>Live telemetry with under-five-second latency</dd></div>
             </dl>
             <div class="metrics">
-                <div class="metric" data-reveal style="--d: 0"><strong>&lt;5s</strong><span>End-to-end latency</span></div>
-                <div class="metric" data-reveal style="--d: 1"><strong>99.2%</strong><span>Stream uptime</span></div>
-                <div class="metric" data-reveal style="--d: 2"><strong>3x</strong><span>Faster incident visibility</span></div>
+                <div class="metric"><strong>&lt;5s</strong><span>End-to-end latency</span></div>
+                <div class="metric"><strong>99.2%</strong><span>Stream uptime</span></div>
+                <div class="metric"><strong>3x</strong><span>Faster incident visibility</span></div>
             </div>
         </div>
     </header>
 
     <div class="wrap article">
         <div class="prose">
-            <section id="scope" data-reveal>
+            <section id="scope">
                 <h2>Project scope</h2>
                 <p>Simulated 3 sensors with continuous temperature payloads, pushed events into Fabric Eventstream, and routed data to analytical storage for reporting and anomaly checks. Designed dashboard slices by sensor and time interval for easy trend tracking.</p>
             </section>
-            <section id="architecture" data-reveal>
+            <section id="architecture">
                 <h2>Power BI dashboard</h2>
                 <figure class="figure">
                     <img src="assets/fabric-temperature-dashboard.svg" alt="Power BI line chart dashboard showing Sensor 1, Sensor 2 and Sensor 3 temperature trends." loading="lazy">
                     <figcaption>Live temperature trend view for three streaming sensors in Power BI.</figcaption>
                 </figure>
             </section>
-            <section id="implementation" data-reveal>
+            <section id="implementation">
                 <h2>Implementation details</h2>
                 <p>Added event-time parsing and simple threshold logic for heat-spike detection. The dashboard was optimized for continuous refresh while keeping visuals lightweight for operational use.</p>
             </section>
@@ -114,6 +115,6 @@
         <nav aria-label="Elsewhere"><a href="https://github.com/heyrobin" target="_blank" rel="noopener noreferrer">GitHub</a><a href="https://www.linkedin.com/in/heyrobin/" target="_blank" rel="noopener noreferrer">LinkedIn</a><a href="https://www.kaggle.com/heyrobin" target="_blank" rel="noopener noreferrer">Kaggle</a><a href="mailto:heyrobinsingh@gmail.com">Email</a></nav>
     </div>
 </footer>
-<script src="scripts.js"></script>
+<script src="scripts.js" defer></script>
 </body>
 </html>

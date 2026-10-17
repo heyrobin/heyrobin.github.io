@@ -24,9 +24,10 @@
     </script>
 
     <link rel="icon" type="image/svg+xml" href="icons/favicon.svg">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500;1,600&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&family=JetBrains+Mono:wght@400;500;600&display=swap">
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,600;1,600&amp;display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,600;1,600&amp;display=swap" media="print" onload="this.media='all'">
+    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,600;1,600&amp;display=swap"></noscript>
     <link rel="stylesheet" href="site.css">
     <script>
         (function () {
@@ -109,10 +110,10 @@
 
     <section class="section" id="about" aria-labelledby="about-title">
         <div class="wrap about-grid">
-            <figure class="portrait" data-reveal>
-                <img src="icons/robin-singh.jpg" alt="Portrait of Robin Singh, Senior Data Engineer" width="528" height="704">
+            <figure class="portrait">
+                <img src="icons/robin-singh.jpg" alt="Portrait of Robin Singh, Senior Data Engineer" width="528" height="704" loading="lazy" decoding="async">
             </figure>
-            <div class="about-copy" data-reveal>
+            <div class="about-copy">
                 <h2 class="display-2" id="about-title">Reliable foundations for <em>analytics and AI.</em></h2>
                 <p class="lede">I work across data engineering and applied AI, designing Microsoft Fabric architectures, production-grade pipelines, and intelligent tools that translate complex data into actionable insight.</p>
                 <p class="text-links">
@@ -125,7 +126,7 @@
     </section>
 
     <section class="section section-tight" id="stack" aria-labelledby="stack-title">
-        <div class="wrap" data-reveal>
+        <div class="wrap">
             <h2 class="display-2" id="stack-title">Core <em>stack.</em></h2>
             <ul class="stack-list">
                 <li class="chip" style="--chip: #3776ab"><svg aria-hidden="true"><use href="icons/tech-icons.svg#python"></use></svg>Python</li>
@@ -146,9 +147,9 @@
 
     <section class="section" id="work" aria-labelledby="work-title">
         <div class="wrap">
-            <h2 class="display-2 section-title" id="work-title" data-reveal>Selected <em>case studies.</em></h2>
+            <h2 class="display-2 section-title" id="work-title">Selected <em>case studies.</em></h2>
             <div class="case-list">
-            <a class="case" data-reveal style="--case: #1479b8" href="microsoft-fabric-eventstream-temperature.html">
+            <a class="case" style="--case: #1479b8" href="microsoft-fabric-eventstream-temperature.html">
                 <div class="case-visual"><img src="assets/fabric-card.svg" alt="Fabric Eventstream temperature dashboard" loading="lazy"></div>
                 <div class="case-info">
                     <p class="case-kicker">Real-time streaming</p>
@@ -157,7 +158,7 @@
                     <p class="case-metric"><strong>&lt;5s</strong><span>end-to-end latency</span></p>
                 </div>
             </a>
-            <a class="case" data-reveal style="--case: #159957" href="azure-data-lake-architecture.html">
+            <a class="case" style="--case: #159957" href="azure-data-lake-architecture.html">
                 <div class="case-visual"><img src="assets/lakehouse-card.svg" alt="Azure lakehouse architecture diagram" loading="lazy"></div>
                 <div class="case-info">
                     <p class="case-kicker">Lakehouse architecture</p>
@@ -166,7 +167,7 @@
                     <p class="case-metric"><strong>&minus;42%</strong><span>pipeline failures</span></p>
                 </div>
             </a>
-            <a class="case" data-reveal style="--case: #e25a1c" href="spark-etl-pipeline.html">
+            <a class="case" style="--case: #e25a1c" href="spark-etl-pipeline.html">
                 <div class="case-visual"><img src="assets/spark-card.svg" alt="Spark ETL pipeline architecture diagram" loading="lazy"></div>
                 <div class="case-info">
                     <p class="case-kicker">High-volume batch</p>
@@ -175,7 +176,7 @@
                     <p class="case-metric"><strong>180M</strong><span>records processed daily</span></p>
                 </div>
             </a>
-            <a class="case" data-reveal style="--case: #6d28d9" href="llm-resume-analyzer.html">
+            <a class="case" style="--case: #6d28d9" href="llm-resume-analyzer.html">
                 <div class="case-visual"><img src="assets/llm-card.svg" alt="LLM resume analyzer workflow diagram" loading="lazy"></div>
                 <div class="case-info">
                     <p class="case-kicker">Applied AI</p>
@@ -185,13 +186,13 @@
                 </div>
             </a>
             </div>
-            <p class="more-link" data-reveal>Also: <a href="anime-story-ai-generator.html">Anime story AI generator</a></p>
+            <p class="more-link">Also: <a href="anime-story-ai-generator.html">Anime story AI generator</a></p>
         </div>
     </section>
 
     <section class="section" id="contact" aria-labelledby="contact-title">
         <div class="wrap">
-            <div class="contact-block" data-reveal>
+            <div class="contact-block">
                 <h2 id="contact-title">Let's build reliable <em>systems together.</em></h2>
                 <p>Have a data platform, pipeline or AI idea in mind? I'd love to hear about it.</p>
                 <div class="contact-actions">
@@ -209,6 +210,6 @@
         <nav aria-label="Elsewhere"><a href="https://github.com/heyrobin" target="_blank" rel="noopener noreferrer">GitHub</a><a href="https://www.linkedin.com/in/heyrobin/" target="_blank" rel="noopener noreferrer">LinkedIn</a><a href="https://www.kaggle.com/heyrobin" target="_blank" rel="noopener noreferrer">Kaggle</a><a href="mailto:heyrobinsingh@gmail.com">Email</a></nav>
     </div>
 </footer>
-<script src="scripts.js"></script>
+<script src="scripts.js" defer></script>
 </body>
 </html>

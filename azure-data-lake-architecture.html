@@ -24,9 +24,10 @@
     </script>
 
     <link rel="icon" type="image/svg+xml" href="icons/favicon.svg">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500;1,600&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&family=JetBrains+Mono:wght@400;500;600&display=swap">
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,600;1,600&amp;display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,600;1,600&amp;display=swap" media="print" onload="this.media='all'">
+    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,600;1,600&amp;display=swap"></noscript>
     <link rel="stylesheet" href="site.css">
     <script>
         (function () {
@@ -73,27 +74,27 @@
                 <div><dt>Outcome</dt><dd>Reliable, reusable analytics foundations</dd></div>
             </dl>
             <div class="metrics">
-                <div class="metric" data-reveal style="--d: 0"><strong>&minus;42%</strong><span>Pipeline failures</span></div>
-                <div class="metric" data-reveal style="--d: 1"><strong>&minus;31%</strong><span>Compute cost</span></div>
-                <div class="metric" data-reveal style="--d: 2"><strong>+2.4x</strong><span>Data onboarding speed</span></div>
+                <div class="metric"><strong>&minus;42%</strong><span>Pipeline failures</span></div>
+                <div class="metric"><strong>&minus;31%</strong><span>Compute cost</span></div>
+                <div class="metric"><strong>+2.4x</strong><span>Data onboarding speed</span></div>
             </div>
         </div>
     </header>
 
     <div class="wrap article">
         <div class="prose">
-            <section id="scope" data-reveal>
+            <section id="scope">
                 <h2>Project scope</h2>
                 <p>Integrated 9 source systems (CRM, ERP, billing, and web events) into ADLS through Azure Data Factory. Standardized 120+ raw tables into curated Silver models and 30 domain-focused Gold marts for BI consumption.</p>
             </section>
-            <section id="architecture" data-reveal>
+            <section id="architecture">
                 <h2>Architecture</h2>
                 <figure class="figure">
                     <img src="assets/azure-lakehouse-architecture.svg" alt="Azure lakehouse architecture with Bronze, Silver and Gold layers and governance controls." loading="lazy">
                     <figcaption>Medallion flow with quality checks, governance policies, and business marts.</figcaption>
                 </figure>
             </section>
-            <section id="implementation" data-reveal>
+            <section id="implementation">
                 <h2>Implementation details</h2>
                 <p>Added schema drift detection, data contracts for critical entities, and row-level audit columns across all curated layers. A partitioning and compaction strategy in Databricks reduced scan volume while keeping SLAs consistent for daily reporting.</p>
             </section>
@@ -114,6 +115,6 @@
         <nav aria-label="Elsewhere"><a href="https://github.com/heyrobin" target="_blank" rel="noopener noreferrer">GitHub</a><a href="https://www.linkedin.com/in/heyrobin/" target="_blank" rel="noopener noreferrer">LinkedIn</a><a href="https://www.kaggle.com/heyrobin" target="_blank" rel="noopener noreferrer">Kaggle</a><a href="mailto:heyrobinsingh@gmail.com">Email</a></nav>
     </div>
 </footer>
-<script src="scripts.js"></script>
+<script src="scripts.js" defer></script>
 </body>
 </html>

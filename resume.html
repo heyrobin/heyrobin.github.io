@@ -24,9 +24,10 @@
     </script>
 
     <link rel="icon" type="image/svg+xml" href="icons/favicon.svg">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500;1,600&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&family=JetBrains+Mono:wght@400;500;600&display=swap">
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,600;1,600&amp;display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,600;1,600&amp;display=swap" media="print" onload="this.media='all'">
+    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,600;1,600&amp;display=swap"></noscript>
     <link rel="stylesheet" href="site.css">
     <script>
         (function () {
@@ -78,7 +79,7 @@
     </header>
 
     <div class="wrap resume">
-        <aside class="resume-side" data-reveal>
+        <aside class="resume-side">
             <section>
                 <h2>Core skills</h2>
                 <h3>Languages</h3><ul><li>Python</li><li>SQL</li></ul><h3>Platforms</h3><ul><li>Microsoft Fabric</li><li>Azure Data Lake</li><li>Databricks</li><li>Azure Data Factory</li></ul><h3>Processing</h3><ul><li>Apache Spark</li><li>Delta Lake</li><li>ETL / ELT design</li><li>Data modeling</li></ul><h3>Quality & ops</h3><ul><li>Data quality automation</li><li>Monitoring & alerting</li></ul><h3>AI</h3><ul><li>LLM integrations</li><li>Prompt workflow design</li></ul>
@@ -89,11 +90,11 @@
             </section>
         </aside>
         <div class="resume-main">
-            <section data-reveal>
+            <section>
                 <h2>Professional summary</h2>
                 <p>Data Engineer focused on building scalable data platforms and AI-enabled products. Experienced in designing batch and near-real-time pipelines, improving data reliability, and shipping analytics systems that support product and business decisions.</p>
             </section>
-            <section data-reveal>
+            <section>
                 <h2>Selected highlights</h2>
                 <ul class="highlights">
                     <li>Designed a medallion-style data architecture for structured analytics layers (Bronze / Silver / Gold).</li>
@@ -101,7 +102,7 @@
                     <li>Developed AI applications including a story generator and an LLM-based resume analyzer.</li>
                 </ul>
             </section>
-            <section data-reveal>
+            <section>
                 <h2>Selected projects</h2>
                 <ul class="project-rows"><li><a href="microsoft-fabric-eventstream-temperature.html"><strong>Fabric Eventstream</strong><em>&lt;5s</em><span>End-to-end latency &middot; Real-time streaming</span></a></li><li><a href="azure-data-lake-architecture.html"><strong>Azure Data Lake</strong><em>&minus;42%</em><span>Pipeline failures &middot; Lakehouse architecture</span></a></li><li><a href="spark-etl-pipeline.html"><strong>Spark ETL Pipeline</strong><em>180M</em><span>Records processed daily &middot; High-volume batch</span></a></li><li><a href="llm-resume-analyzer.html"><strong>LLM Resume Analyzer</strong><em>&minus;52%</em><span>Screening time &middot; Applied AI</span></a></li><li><a href="anime-story-ai-generator.html"><strong>Anime Story AI Generator</strong><em>+46%</em><span>7-day retention &middot; Generative AI</span></a></li></ul>
             </section>
@@ -115,6 +116,6 @@
         <nav aria-label="Elsewhere"><a href="https://github.com/heyrobin" target="_blank" rel="noopener noreferrer">GitHub</a><a href="https://www.linkedin.com/in/heyrobin/" target="_blank" rel="noopener noreferrer">LinkedIn</a><a href="https://www.kaggle.com/heyrobin" target="_blank" rel="noopener noreferrer">Kaggle</a><a href="mailto:heyrobinsingh@gmail.com">Email</a></nav>
     </div>
 </footer>
-<script src="scripts.js"></script>
+<script src="scripts.js" defer></script>
 </body>
 </html>

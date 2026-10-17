@@ -21,9 +21,10 @@
     <meta name="twitter:image" content="https://heyrobin.github.io/assets/og-image.png">
 
     <link rel="icon" type="image/svg+xml" href="icons/favicon.svg">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500;1,600&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&family=JetBrains+Mono:wght@400;500;600&display=swap">
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,600;1,600&amp;display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,600;1,600&amp;display=swap" media="print" onload="this.media='all'">
+    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,600;1,600&amp;display=swap"></noscript>
     <link rel="stylesheet" href="site.css">
     <script>
         (function () {
@@ -67,7 +68,7 @@
     </header>
     <div class="wrap">
         <div class="mini-grid">
-        <a class="mini" data-reveal style="--case: #1479b8; --d: 0" href="microsoft-fabric-eventstream-temperature.html">
+        <a class="mini" style="--case: #1479b8" href="microsoft-fabric-eventstream-temperature.html">
             <div class="case-visual"><img src="assets/fabric-card.svg" alt="Fabric Eventstream temperature dashboard" loading="lazy"></div>
             <div class="mini-body">
                 <p class="case-kicker">Real-time streaming</p>
@@ -76,7 +77,7 @@
                 <p class="case-metric"><strong>&lt;5s</strong><span>end-to-end latency</span></p>
             </div>
         </a>
-        <a class="mini" data-reveal style="--case: #159957; --d: 1" href="azure-data-lake-architecture.html">
+        <a class="mini" style="--case: #159957" href="azure-data-lake-architecture.html">
             <div class="case-visual"><img src="assets/lakehouse-card.svg" alt="Azure lakehouse architecture diagram" loading="lazy"></div>
             <div class="mini-body">
                 <p class="case-kicker">Lakehouse architecture</p>
@@ -85,7 +86,7 @@
                 <p class="case-metric"><strong>&minus;42%</strong><span>pipeline failures</span></p>
             </div>
         </a>
-        <a class="mini" data-reveal style="--case: #e25a1c; --d: 2" href="spark-etl-pipeline.html">
+        <a class="mini" style="--case: #e25a1c" href="spark-etl-pipeline.html">
             <div class="case-visual"><img src="assets/spark-card.svg" alt="Spark ETL pipeline architecture diagram" loading="lazy"></div>
             <div class="mini-body">
                 <p class="case-kicker">High-volume batch</p>
@@ -104,6 +105,6 @@
         <nav aria-label="Elsewhere"><a href="https://github.com/heyrobin" target="_blank" rel="noopener noreferrer">GitHub</a><a href="https://www.linkedin.com/in/heyrobin/" target="_blank" rel="noopener noreferrer">LinkedIn</a><a href="https://www.kaggle.com/heyrobin" target="_blank" rel="noopener noreferrer">Kaggle</a><a href="mailto:heyrobinsingh@gmail.com">Email</a></nav>
     </div>
 </footer>
-<script src="scripts.js"></script>
+<script src="scripts.js" defer></script>
 </body>
 </html>

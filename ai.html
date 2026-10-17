@@ -21,9 +21,10 @@
     <meta name="twitter:image" content="https://heyrobin.github.io/assets/og-image.png">
 
     <link rel="icon" type="image/svg+xml" href="icons/favicon.svg">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500;1,600&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&family=JetBrains+Mono:wght@400;500;600&display=swap">
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,600;1,600&amp;display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,600;1,600&amp;display=swap" media="print" onload="this.media='all'">
+    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,600;1,600&amp;display=swap"></noscript>
     <link rel="stylesheet" href="site.css">
     <script>
         (function () {
@@ -67,7 +68,7 @@
     </header>
     <div class="wrap">
         <div class="mini-grid">
-        <a class="mini" data-reveal style="--case: #6d28d9; --d: 0" href="llm-resume-analyzer.html">
+        <a class="mini" style="--case: #6d28d9" href="llm-resume-analyzer.html">
             <div class="case-visual"><img src="assets/llm-card.svg" alt="LLM resume analyzer workflow diagram" loading="lazy"></div>
             <div class="mini-body">
                 <p class="case-kicker">Applied AI</p>
@@ -76,7 +77,7 @@
                 <p class="case-metric"><strong>&minus;52%</strong><span>screening time</span></p>
             </div>
         </a>
-        <a class="mini" data-reveal style="--case: #d6336c; --d: 1" href="anime-story-ai-generator.html">
+        <a class="mini" style="--case: #d6336c" href="anime-story-ai-generator.html">
             <div class="case-visual"><img src="assets/anime-ai-pipeline.svg" alt="AI story generator pipeline diagram" loading="lazy"></div>
             <div class="mini-body">
                 <p class="case-kicker">Generative AI</p>
@@ -95,6 +96,6 @@
         <nav aria-label="Elsewhere"><a href="https://github.com/heyrobin" target="_blank" rel="noopener noreferrer">GitHub</a><a href="https://www.linkedin.com/in/heyrobin/" target="_blank" rel="noopener noreferrer">LinkedIn</a><a href="https://www.kaggle.com/heyrobin" target="_blank" rel="noopener noreferrer">Kaggle</a><a href="mailto:heyrobinsingh@gmail.com">Email</a></nav>
     </div>
 </footer>
-<script src="scripts.js"></script>
+<script src="scripts.js" defer></script>
 </body>
 </html>
