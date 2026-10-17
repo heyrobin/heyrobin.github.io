@@ -257,62 +257,148 @@ body.dark .stack-section {
 }
 body.dark .stack-list span { color: #e7e4de; }
 
-/* ---------- Work ---------- */
-.work-section { margin-top: 96px; padding-top: 0; border-top: 0; }
-.work-heading { margin-bottom: 28px; }
-.work-heading h2 { max-width: 640px; font-size: clamp(2.6rem, 5vw, 4.4rem); }
-.project-grid { gap: 22px; }
-.project-card {
-    border-radius: 20px;
-    transition: transform .35s var(--ease-out), box-shadow .35s var(--ease-out), border-color .35s ease;
+/* ---------- Work: editorial case-study rows ---------- */
+.work-section { margin-top: 104px; padding-top: 0; border-top: 0; }
+.work-heading {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 340px);
+    align-items: end;
+    gap: 32px;
+    margin-bottom: 40px;
 }
-.project-card:hover,
-.project-card:focus-visible {
-    transform: translateY(-6px);
-    border-color: color-mix(in srgb, var(--project-color) 45%, var(--line));
-    box-shadow: 0 22px 44px color-mix(in srgb, var(--project-color) 18%, transparent);
-}
-.project-image,
-.project-card:first-child .project-image {
-    border-radius: 19px 19px 0 0;
-    background: color-mix(in srgb, var(--project-color) 12%, var(--paper));
-}
-.project-card-body { padding: 16px 18px 18px; }
-.project-number { font-size: .7rem; }
-.project-card h3,
-.project-card:first-child h3 { margin-top: 8px; font-size: 1.5rem; }
-.project-result { margin-top: 8px; font-size: .78rem; }
-.project-result strong { color: var(--project-color); font-size: 1.05rem; }
-body.dark .project-result strong { color: color-mix(in srgb, var(--project-color) 60%, #ffffff); }
-.project-arrow { width: 32px; height: 32px; font-size: .95rem; transition: transform .35s var(--ease-out), color .2s ease, border-color .2s ease, background-color .2s ease; }
-.project-card:hover .project-arrow,
-.project-card:focus-visible .project-arrow { transform: rotate(-45deg); }
+.work-heading h2 { max-width: none; font-size: clamp(2.8rem, 5.6vw, 4.8rem); }
+.work-lede { margin: 0 0 6px; color: var(--muted); font-size: .92rem; line-height: 1.55; }
 
-/* Featured first project spans the grid with a side-by-side layout. */
-@media (min-width: 681px) {
-    .project-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
-    .project-card:not(:first-child) h3 { font-size: 1.3rem; }
-    .project-card:first-child {
-        grid-column: 1 / -1;
-        display: grid;
-        grid-template-columns: minmax(0, 1.6fr) minmax(0, 1fr);
-    }
-    .project-card:first-child .project-image {
-        aspect-ratio: auto;
-        min-height: 320px;
-        border-radius: 19px 0 0 19px;
-    }
-    .project-card:first-child .project-card-body {
-        display: flex;
-        flex-direction: column;
-        justify-content: flex-end;
-        padding: 30px;
-    }
-    .project-card:first-child h3 { font-size: clamp(2rem, 3.4vw, 2.8rem); }
-    .project-card:first-child .project-result { font-size: .9rem; }
-    .project-card:first-child .project-result strong { font-size: 1.6rem; }
-    .project-card:first-child .project-card-top { margin-bottom: auto; }
+.case-list { display: grid; gap: 28px; }
+.case {
+    --case: var(--red);
+    position: relative;
+    display: grid;
+    grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr);
+    align-items: stretch;
+    overflow: hidden;
+    border: 1px solid var(--line);
+    border-radius: 26px;
+    background: var(--white);
+    color: var(--ink);
+    text-decoration: none;
+    transition: border-color .35s ease, box-shadow .45s var(--ease-out), transform .45s var(--ease-out);
 }
+body.dark .case { background: #1b1d22; }
+.case:nth-child(even) { grid-template-columns: minmax(0, 1fr) minmax(0, 1.15fr); }
+.case:nth-child(even) .case-visual { order: 2; }
+.case:hover,
+.case:focus-visible {
+    border-color: color-mix(in srgb, var(--case) 50%, var(--line));
+    box-shadow: 0 26px 60px color-mix(in srgb, var(--case) 16%, transparent);
+    transform: translateY(-4px);
+}
+.case:focus-visible { outline: 2px solid var(--case); outline-offset: 4px; }
+
+.case-visual {
+    position: relative;
+    display: grid;
+    place-items: center;
+    min-height: 360px;
+    padding: 34px;
+    background:
+        radial-gradient(color-mix(in srgb, var(--case) 22%, transparent) 1px, transparent 1px) 0 0 / 16px 16px,
+        color-mix(in srgb, var(--case) 11%, var(--paper));
+}
+.case-visual img {
+    width: 100%;
+    max-height: 300px;
+    object-fit: contain;
+    border-radius: 14px;
+    filter: drop-shadow(0 18px 30px rgba(17, 19, 24, .16));
+    transition: transform .6s var(--ease-out);
+}
+.case:hover .case-visual img { transform: scale(1.035) rotate(-.6deg); }
+
+.case-info {
+    display: flex;
+    flex-direction: column;
+    padding: 34px 36px 30px;
+}
+.case-kicker {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin: 0;
+    color: var(--case);
+    font-size: .74rem;
+    font-weight: 700;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+}
+body.dark .case-kicker { color: color-mix(in srgb, var(--case) 55%, #ffffff); }
+.case-num {
+    display: grid;
+    place-items: center;
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    background: var(--case);
+    color: #ffffff;
+    font-size: .72rem;
+    letter-spacing: 0;
+}
+.case h3 {
+    margin: 18px 0 0;
+    font: 600 clamp(2.1rem, 3.6vw, 3rem)/.95 "Cormorant Garamond", Georgia, serif;
+    letter-spacing: -.035em;
+}
+.case-summary { margin: 14px 0 0; color: var(--muted); font-size: .9rem; line-height: 1.6; }
+.case-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin: 18px 0 0;
+    padding: 0;
+    list-style: none;
+}
+.case-tags li {
+    padding: 5px 10px;
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    color: var(--ink);
+    font-size: .7rem;
+    font-weight: 600;
+    opacity: .8;
+}
+.case-foot {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 18px;
+    margin-top: auto;
+    padding-top: 26px;
+}
+.case-metric { display: flex; flex-direction: column; gap: 2px; margin: 0; }
+.case-metric strong {
+    color: var(--case);
+    font: 600 clamp(2.4rem, 4vw, 3.2rem)/1 "Cormorant Garamond", Georgia, serif;
+    letter-spacing: -.04em;
+}
+body.dark .case-metric strong { color: color-mix(in srgb, var(--case) 55%, #ffffff); }
+.case-metric span { color: var(--muted); font-size: .74rem; font-weight: 600; letter-spacing: .04em; text-transform: uppercase; }
+.case-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 16px;
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    font-size: .78rem;
+    font-weight: 600;
+    white-space: nowrap;
+    transition: background-color .25s ease, border-color .25s ease, color .25s ease;
+}
+.case-cta span { transition: transform .35s var(--ease-out); }
+.case:hover .case-cta,
+.case:focus-visible .case-cta { border-color: var(--case); background: var(--case); color: #ffffff; }
+.case:hover .case-cta span,
+.case:focus-visible .case-cta span { transform: translateX(4px); }
 
 /* ---------- Contact: red color block ---------- */
 .contact-section {
@@ -412,10 +498,15 @@ body.dark .metric-card { background: #1b1d22; }
     .intro-section { margin-top: 64px; gap: 26px; }
     .portrait-frame { width: 150px; height: 180px; box-shadow: 9px 9px 0 var(--red); }
     .stack-section { margin-top: 64px; padding: 32px 22px 34px; border-radius: 22px; gap: 22px; }
-    .work-section { margin-top: 64px; }
-    .project-grid { gap: 18px; }
-    .project-card h3,
-    .project-card:first-child h3 { font-size: 1.35rem; }
+    .work-section { margin-top: 72px; }
+    .work-heading { grid-template-columns: 1fr; gap: 14px; margin-bottom: 26px; }
+    .case-list { gap: 20px; }
+    .case,
+    .case:nth-child(even) { grid-template-columns: 1fr; border-radius: 22px; }
+    .case:nth-child(even) .case-visual { order: 0; }
+    .case-visual { min-height: 0; padding: 22px; }
+    .case-info { padding: 22px 20px 22px; }
+    .case-foot { flex-wrap: wrap; padding-top: 20px; }
     .contact-section { margin-top: 64px; padding: 52px 18px 46px; border-radius: 22px; }
     .story-header { padding: 30px 22px 24px; border-radius: 22px; }
     .project-overview { padding: 20px; }

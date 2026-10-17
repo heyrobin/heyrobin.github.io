@@ -94,25 +94,64 @@
 
     <section class="work-section" id="work" aria-labelledby="work-title">
         <div class="section-intro work-heading" data-reveal>
-            <p class="eyebrow">Featured work</p>
-            <h2 id="work-title">A small selection<br><em>of my work.</em></h2>
+            <div>
+                <p class="eyebrow">Featured work</p>
+                <h2 id="work-title">Selected<br><em>case studies.</em></h2>
+            </div>
+            <p class="work-lede">Four projects across streaming, lakehouse, batch and applied AI, each with the problem, the architecture and the measured result.</p>
         </div>
-        <div class="project-grid">
-            <a class="project-card project-fabric" data-reveal style="--d:0" href="microsoft-fabric-eventstream-temperature.html">
-                <div class="project-image"><img src="assets/fabric-card.svg" alt="Fabric Eventstream temperature dashboard"><span class="project-hover"><strong>Fabric Eventstream</strong><span>Near-real-time IoT monitoring<br>Open case study →</span></span></div>
-                <div class="project-card-body"><div class="project-card-top"><p class="project-number">01</p><span class="project-arrow" aria-hidden="true">→</span></div><h3>Fabric Eventstream</h3><p class="project-result"><strong>&lt;5s</strong> end-to-end latency</p></div>
+        <div class="case-list">
+            <a class="case" data-reveal style="--case: #1479b8" href="microsoft-fabric-eventstream-temperature.html">
+                <div class="case-visual"><img src="assets/fabric-card.svg" alt="Fabric Eventstream temperature dashboard" loading="lazy"></div>
+                <div class="case-info">
+                    <p class="case-kicker"><span class="case-num">01</span>Real-time streaming</p>
+                    <h3>Fabric Eventstream</h3>
+                    <p class="case-summary">A near-real-time IoT pipeline in Microsoft Fabric that streams sensor temperature telemetry into live Power BI monitoring for operations teams.</p>
+                    <ul class="case-tags" aria-label="Stack"><li>Microsoft Fabric</li><li>Eventstream</li><li>KQL</li><li>Power BI</li></ul>
+                    <div class="case-foot">
+                        <p class="case-metric"><strong>&lt;5s</strong><span>end-to-end latency</span></p>
+                        <span class="case-cta">Read case study <span aria-hidden="true">→</span></span>
+                    </div>
+                </div>
             </a>
-            <a class="project-card project-azure" data-reveal style="--d:0" href="azure-data-lake-architecture.html">
-                <div class="project-image"><img src="assets/lakehouse-card.svg" alt="Azure lakehouse architecture diagram"><span class="project-hover"><strong>Azure Data Lake</strong><span>Governed lakehouse architecture<br>Open case study →</span></span></div>
-                <div class="project-card-body"><div class="project-card-top"><p class="project-number">02</p><span class="project-arrow" aria-hidden="true">→</span></div><h3>Azure Data Lake Architecture</h3><p class="project-result"><strong>-42%</strong> pipeline failures</p></div>
+            <a class="case" data-reveal style="--case: #159957" href="azure-data-lake-architecture.html">
+                <div class="case-visual"><img src="assets/lakehouse-card.svg" alt="Azure lakehouse architecture diagram" loading="lazy"></div>
+                <div class="case-info">
+                    <p class="case-kicker"><span class="case-num">02</span>Lakehouse architecture</p>
+                    <h3>Azure Data Lake</h3>
+                    <p class="case-summary">Rebuilt a fragmented reporting stack into a governed lakehouse with clear medallion layers, fewer data incidents and fresher dashboards.</p>
+                    <ul class="case-tags" aria-label="Stack"><li>ADLS</li><li>Databricks</li><li>Data Factory</li><li>Power BI</li></ul>
+                    <div class="case-foot">
+                        <p class="case-metric"><strong>−42%</strong><span>pipeline failures</span></p>
+                        <span class="case-cta">Read case study <span aria-hidden="true">→</span></span>
+                    </div>
+                </div>
             </a>
-            <a class="project-card project-spark" data-reveal style="--d:1" href="spark-etl-pipeline.html">
-                <div class="project-image"><img src="assets/spark-card.svg" alt="Spark ETL pipeline architecture diagram"><span class="project-hover"><strong>Spark ETL Pipeline</strong><span>High-volume distributed processing<br>Open case study →</span></span></div>
-                <div class="project-card-body"><div class="project-card-top"><p class="project-number">03</p><span class="project-arrow" aria-hidden="true">→</span></div><h3>Spark ETL Pipeline</h3><p class="project-result"><strong>180M</strong> daily records processed</p></div>
+            <a class="case" data-reveal style="--case: #e25a1c" href="spark-etl-pipeline.html">
+                <div class="case-visual"><img src="assets/spark-card.svg" alt="Spark ETL pipeline architecture diagram" loading="lazy"></div>
+                <div class="case-info">
+                    <p class="case-kicker"><span class="case-num">03</span>High-volume batch</p>
+                    <h3>Spark ETL Pipeline</h3>
+                    <p class="case-summary">Re-engineered slow, brittle transaction jobs into deterministic, recoverable Spark pipelines with stronger observability under peak load.</p>
+                    <ul class="case-tags" aria-label="Stack"><li>Apache Spark</li><li>Delta Lake</li><li>Orchestration</li><li>Monitoring</li></ul>
+                    <div class="case-foot">
+                        <p class="case-metric"><strong>180M</strong><span>records processed daily</span></p>
+                        <span class="case-cta">Read case study <span aria-hidden="true">→</span></span>
+                    </div>
+                </div>
             </a>
-            <a class="project-card project-llm" data-reveal style="--d:2" href="llm-resume-analyzer.html">
-                <div class="project-image"><img src="assets/llm-card.svg" alt="LLM resume analyzer workflow diagram"><span class="project-hover"><strong>LLM Resume Analyzer</strong><span>Explainable AI for candidate screening<br>Open case study →</span></span></div>
-                <div class="project-card-body"><div class="project-card-top"><p class="project-number">04</p><span class="project-arrow" aria-hidden="true">→</span></div><h3>LLM Resume Analyzer</h3><p class="project-result"><strong>-52%</strong> screening time</p></div>
+            <a class="case" data-reveal style="--case: #6d28d9" href="llm-resume-analyzer.html">
+                <div class="case-visual"><img src="assets/llm-card.svg" alt="LLM resume analyzer workflow diagram" loading="lazy"></div>
+                <div class="case-info">
+                    <p class="case-kicker"><span class="case-num">04</span>Applied AI</p>
+                    <h3>LLM Resume Analyzer</h3>
+                    <p class="case-summary">Scores candidate fit against role requirements and explains the score in plain language, for faster recruiter triage and clearer feedback.</p>
+                    <ul class="case-tags" aria-label="Stack"><li>LLMs</li><li>NLP</li><li>Semantic matching</li><li>Prompt evaluation</li></ul>
+                    <div class="case-foot">
+                        <p class="case-metric"><strong>−52%</strong><span>screening time</span></p>
+                        <span class="case-cta">Read case study <span aria-hidden="true">→</span></span>
+                    </div>
+                </div>
             </a>
         </div>
     </section>
