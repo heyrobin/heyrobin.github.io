@@ -72,7 +72,6 @@
                 <div><dt>Platform</dt><dd>LLM APIs with session memory</dd></div>
                 <div><dt>Outcome</dt><dd>Coherent multi-episode narratives</dd></div>
             </dl>
-            <ul class="tags" aria-label="Stack"><li>LLM APIs</li><li>Prompt templates</li><li>Session memory</li></ul>
             <div class="metrics">
                 <div class="metric" data-reveal style="--d: 0"><strong>+46%</strong><span>7-day retention</span></div>
                 <div class="metric" data-reveal style="--d: 1"><strong>&minus;34%</strong><span>Manual regenerations</span></div>
@@ -82,28 +81,20 @@
     </header>
 
     <div class="wrap article">
-        <nav class="toc" aria-label="On this page">
-            <p>On this page</p>
-            <ol>
-                <li><a href="#scope">Project scope</a></li>
-                <li><a href="#architecture">Architecture</a></li>
-                <li><a href="#implementation">Execution notes</a></li>
-            </ol>
-        </nav>
         <div class="prose">
             <section id="scope" data-reveal>
-                <h2><span>01</span>Project scope</h2>
+                <h2>Project scope</h2>
                 <p>Designed a multi-step generation flow: world setup, episode outline, dialogue pass, and continuity check. Added session memory so previous events and character traits persist across episodes.</p>
             </section>
             <section id="architecture" data-reveal>
-                <h2><span>02</span>Architecture</h2>
+                <h2>Architecture</h2>
                 <figure class="figure">
                     <img src="assets/anime-ai-pipeline.svg" alt="AI story generator pipeline from user prompt to prompt builder, LLM output and memory store." loading="lazy">
                     <figcaption>Prompt orchestration pipeline with a memory loop for long-form narrative consistency.</figcaption>
                 </figure>
             </section>
             <section id="implementation" data-reveal>
-                <h2><span>03</span>Execution notes</h2>
+                <h2>Execution notes</h2>
                 <p>Introduced structured prompt templates, style guardrails, and memory scoring to control narrative drift. Output quality checks flagged contradictions before delivery, improving trust in multi-episode generation.</p>
             </section>
         </div>
@@ -123,7 +114,6 @@
         <nav aria-label="Elsewhere"><a href="https://github.com/heyrobin" target="_blank" rel="noopener noreferrer">GitHub</a><a href="https://www.linkedin.com/in/heyrobin/" target="_blank" rel="noopener noreferrer">LinkedIn</a><a href="https://www.kaggle.com/heyrobin" target="_blank" rel="noopener noreferrer">Kaggle</a><a href="mailto:heyrobinsingh@gmail.com">Email</a></nav>
     </div>
 </footer>
-<div class="toast" role="status" aria-live="polite" data-toast></div>
 <script src="scripts.js"></script>
 </body>
 </html>

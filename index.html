@@ -61,23 +61,22 @@
 
 <main id="main">
     <section class="hero" aria-labelledby="hero-title">
-        <div class="wrap">
-            <div class="hero-grid">
-                <div class="hero-intro">
-                    <h1 class="display-1" id="hero-title"><span class="hero-name">Robin Singh</span> Senior Data Engineer <em>building reliable systems.</em></h1>
-                    <p class="lede">I build lakehouses, streaming pipelines and AI-powered tools that turn complex data into clear, dependable decisions.</p>
-                    <div class="hero-actions">
-                        <a class="btn btn-primary" href="#work">See my work <span class="arrow" aria-hidden="true">&rarr;</span></a>
-                        <a class="btn btn-ghost" href="resume.html">View resume</a>
-                    </div>
+        <div class="wrap hero-grid">
+            <div class="hero-intro">
+                <h1 class="display-1" id="hero-title"><span class="hero-name">Robin Singh</span> Senior Data Engineer <em>building reliable systems.</em></h1>
+                <p class="lede">I build lakehouses, streaming pipelines and AI-powered tools that turn complex data into clear, dependable decisions.</p>
+                <div class="hero-actions">
+                    <a class="btn btn-primary" href="#work">See my work <span class="arrow" aria-hidden="true">&rarr;</span></a>
+                    <a class="btn btn-ghost" href="resume.html">View resume</a>
                 </div>
-                <div class="console" aria-hidden="false">
-                    <div class="console-bar">
-                        <span class="console-dots" aria-hidden="true"><i></i><i></i><i></i></span>
-                        <span>lakehouse.pipeline</span>
-                        <span class="console-health"><span class="pulse" aria-hidden="true"></span>healthy</span>
-                    </div>
-                    <svg viewBox="0 0 440 400" role="img" aria-labelledby="pl-title">
+            </div>
+            <div class="console">
+                <div class="console-bar">
+                    <span class="console-dots" aria-hidden="true"><i></i><i></i><i></i></span>
+                    <span>lakehouse.pipeline</span>
+                    <span class="console-health"><span class="pulse" aria-hidden="true"></span>healthy</span>
+                </div>
+                <svg viewBox="0 0 440 400" role="img" aria-labelledby="pl-title">
                         <title id="pl-title">Diagram of a lakehouse pipeline: CRM, ERP and event sources flow through ingestion into bronze, silver and gold layers, then into Power BI and AI apps.</title>
                         <g class="pl-links">
                             <path class="pl-link" d="M80 58 C80 80 220 74 220 96"/>
@@ -104,14 +103,6 @@
                         <g class="pl-node pl-out"><rect x="60" y="336" width="140" height="32" rx="9"/><text x="130" y="352">Power BI</text></g>
                         <g class="pl-node pl-out"><rect x="240" y="336" width="140" height="32" rx="9"/><text x="310" y="352">AI apps</text></g>
                     </svg>
-                </div>
-            </div>
-
-            <div class="stats">
-                <a class="stat" href="spark-etl-pipeline.html"><span class="stat-value"><span data-count="180">180</span>M</span><span class="stat-label">records processed daily</span></a>
-                <a class="stat" href="microsoft-fabric-eventstream-temperature.html"><span class="stat-value">&lt;<span data-count="5">5</span>s</span><span class="stat-label">end-to-end streaming latency</span></a>
-                <a class="stat" href="azure-data-lake-architecture.html"><span class="stat-value">&minus;<span data-count="42">42</span>%</span><span class="stat-label">pipeline failures</span></a>
-                <a class="stat" href="llm-resume-analyzer.html"><span class="stat-value">&minus;<span data-count="52">52</span>%</span><span class="stat-label">resume screening time</span></a>
             </div>
         </div>
     </section>
@@ -122,10 +113,8 @@
                 <img src="icons/robin-singh.jpg" alt="Portrait of Robin Singh, Senior Data Engineer" width="528" height="704">
             </figure>
             <div class="about-copy" data-reveal>
-                <p class="eyebrow">About</p>
                 <h2 class="display-2" id="about-title">Reliable foundations for <em>analytics and AI.</em></h2>
                 <p class="lede">I work across data engineering and applied AI, designing Microsoft Fabric architectures, production-grade pipelines, and intelligent tools that translate complex data into actionable insight.</p>
-                <p class="lede">My bias is toward systems that are boring in production: idempotent, observable and easy to recover, so the people relying on the data never have to think about it.</p>
                 <p class="text-links">
                     <a href="resume.html">Resume <span aria-hidden="true">&rarr;</span></a>
                     <a href="https://github.com/heyrobin" target="_blank" rel="noopener noreferrer">GitHub <span aria-hidden="true">&nearr;</span></a>
@@ -135,128 +124,80 @@
         </div>
     </section>
 
-    <section class="section" id="stack" aria-labelledby="stack-title">
-        <div class="wrap">
-            <div class="stack-block">
-                <div class="section-head" data-reveal>
-                    <div>
-                        <p class="eyebrow">Core stack</p>
-                        <h2 class="display-2" id="stack-title">Tools I trust <em>in production.</em></h2>
-                    </div>
-                    <p class="lede">Chosen for reliability first: every one of these runs in the case studies below.</p>
-                </div>
-                <div class="stack-groups">
-                <div class="stack-group" data-reveal>
-                    <h3>Languages</h3>
-                    <ul>
-                        <li class="chip" style="--chip: #3776ab"><svg aria-hidden="true"><use href="icons/tech-icons.svg#python"></use></svg>Python</li>
-                        <li class="chip" style="--chip: #1479b8"><svg aria-hidden="true"><use href="icons/tech-icons.svg#sql"></use></svg>SQL</li>
-                        <li class="chip" style="--chip: #8b93a1"><svg aria-hidden="true"><use href="icons/tech-icons.svg#modeling"></use></svg>Data modeling</li>
-                    </ul>
-                </div>
-                <div class="stack-group" data-reveal>
-                    <h3>Platforms</h3>
-                    <ul>
-                        <li class="chip" style="--chip: #159957"><svg aria-hidden="true"><use href="icons/tech-icons.svg#fabric"></use></svg>Microsoft Fabric</li>
-                        <li class="chip" style="--chip: #0078d4"><svg aria-hidden="true"><use href="icons/tech-icons.svg#azure"></use></svg>Azure</li>
-                        <li class="chip" style="--chip: #e01e5a"><svg aria-hidden="true"><use href="icons/tech-icons.svg#databricks"></use></svg>Databricks</li>
-                    </ul>
-                </div>
-                <div class="stack-group" data-reveal>
-                    <h3>Processing</h3>
-                    <ul>
-                        <li class="chip" style="--chip: #e25a1c"><svg aria-hidden="true"><use href="icons/tech-icons.svg#spark"></use></svg>Apache Spark</li>
-                        <li class="chip" style="--chip: #3b82f6"><svg aria-hidden="true"><use href="icons/tech-icons.svg#delta"></use></svg>Delta Lake</li>
-                        <li class="chip" style="--chip: #0f766e"><svg aria-hidden="true"><use href="icons/tech-icons.svg#eventstream"></use></svg>Eventstream</li>
-                        <li class="chip" style="--chip: #0078d4"><svg aria-hidden="true"><use href="icons/tech-icons.svg#adf"></use></svg>Azure Data Factory</li>
-                    </ul>
-                </div>
-                <div class="stack-group" data-reveal>
-                    <h3>Analytics & AI</h3>
-                    <ul>
-                        <li class="chip" style="--chip: #c69214"><svg aria-hidden="true"><use href="icons/tech-icons.svg#powerbi"></use></svg>Power BI</li>
-                        <li class="chip" style="--chip: #8b5cf6"><svg aria-hidden="true"><use href="icons/tech-icons.svg#llm"></use></svg>LLM applications</li>
-                    </ul>
-                </div>
-                </div>
-            </div>
+    <section class="section section-tight" id="stack" aria-labelledby="stack-title">
+        <div class="wrap" data-reveal>
+            <h2 class="display-2" id="stack-title">Core <em>stack.</em></h2>
+            <ul class="stack-list">
+                <li class="chip" style="--chip: #3776ab"><svg aria-hidden="true"><use href="icons/tech-icons.svg#python"></use></svg>Python</li>
+                <li class="chip" style="--chip: #1479b8"><svg aria-hidden="true"><use href="icons/tech-icons.svg#sql"></use></svg>SQL</li>
+                <li class="chip" style="--chip: #8b93a1"><svg aria-hidden="true"><use href="icons/tech-icons.svg#modeling"></use></svg>Data modeling</li>
+                <li class="chip" style="--chip: #159957"><svg aria-hidden="true"><use href="icons/tech-icons.svg#fabric"></use></svg>Microsoft Fabric</li>
+                <li class="chip" style="--chip: #0078d4"><svg aria-hidden="true"><use href="icons/tech-icons.svg#azure"></use></svg>Azure</li>
+                <li class="chip" style="--chip: #e01e5a"><svg aria-hidden="true"><use href="icons/tech-icons.svg#databricks"></use></svg>Databricks</li>
+                <li class="chip" style="--chip: #e25a1c"><svg aria-hidden="true"><use href="icons/tech-icons.svg#spark"></use></svg>Apache Spark</li>
+                <li class="chip" style="--chip: #3b82f6"><svg aria-hidden="true"><use href="icons/tech-icons.svg#delta"></use></svg>Delta Lake</li>
+                <li class="chip" style="--chip: #0f766e"><svg aria-hidden="true"><use href="icons/tech-icons.svg#eventstream"></use></svg>Eventstream</li>
+                <li class="chip" style="--chip: #0078d4"><svg aria-hidden="true"><use href="icons/tech-icons.svg#adf"></use></svg>Azure Data Factory</li>
+                <li class="chip" style="--chip: #c69214"><svg aria-hidden="true"><use href="icons/tech-icons.svg#powerbi"></use></svg>Power BI</li>
+                <li class="chip" style="--chip: #8b5cf6"><svg aria-hidden="true"><use href="icons/tech-icons.svg#llm"></use></svg>LLM applications</li>
+            </ul>
         </div>
     </section>
 
     <section class="section" id="work" aria-labelledby="work-title">
         <div class="wrap">
-            <div class="section-head" data-reveal>
-                <div>
-                    <p class="eyebrow">Featured work</p>
-                    <h2 class="display-2" id="work-title">Selected <em>case studies.</em></h2>
-                </div>
-                <p class="lede">Four projects across streaming, lakehouse, batch and applied AI, each with the problem, the architecture and the measured result.</p>
-            </div>
+            <h2 class="display-2 section-title" id="work-title" data-reveal>Selected <em>case studies.</em></h2>
             <div class="case-list">
             <a class="case" data-reveal style="--case: #1479b8" href="microsoft-fabric-eventstream-temperature.html">
                 <div class="case-visual"><img src="assets/fabric-card.svg" alt="Fabric Eventstream temperature dashboard" loading="lazy"></div>
                 <div class="case-info">
-                    <p class="case-kicker"><span class="case-num">01</span>Real-time streaming</p>
-                    <h3>Fabric Eventstream</h3>
+                    <p class="case-kicker">Real-time streaming</p>
+                    <h3>Fabric Eventstream <span class="case-arrow" aria-hidden="true">&rarr;</span></h3>
                     <p class="case-summary">A near-real-time IoT pipeline in Microsoft Fabric that streams sensor temperature telemetry into live Power BI monitoring for operations teams.</p>
-                    <div class="case-foot">
-                        <p class="case-metric"><strong>&lt;5s</strong><span>end-to-end latency</span></p>
-                        <span class="case-cta">Read case study <span aria-hidden="true">&rarr;</span></span>
-                    </div>
+                    <p class="case-metric"><strong>&lt;5s</strong><span>end-to-end latency</span></p>
                 </div>
             </a>
             <a class="case" data-reveal style="--case: #159957" href="azure-data-lake-architecture.html">
                 <div class="case-visual"><img src="assets/lakehouse-card.svg" alt="Azure lakehouse architecture diagram" loading="lazy"></div>
                 <div class="case-info">
-                    <p class="case-kicker"><span class="case-num">02</span>Lakehouse architecture</p>
-                    <h3>Azure Data Lake</h3>
+                    <p class="case-kicker">Lakehouse architecture</p>
+                    <h3>Azure Data Lake <span class="case-arrow" aria-hidden="true">&rarr;</span></h3>
                     <p class="case-summary">Rebuilt a fragmented reporting stack into a governed lakehouse with clear medallion layers, fewer data incidents and fresher dashboards.</p>
-                    <div class="case-foot">
-                        <p class="case-metric"><strong>&minus;42%</strong><span>pipeline failures</span></p>
-                        <span class="case-cta">Read case study <span aria-hidden="true">&rarr;</span></span>
-                    </div>
+                    <p class="case-metric"><strong>&minus;42%</strong><span>pipeline failures</span></p>
                 </div>
             </a>
             <a class="case" data-reveal style="--case: #e25a1c" href="spark-etl-pipeline.html">
                 <div class="case-visual"><img src="assets/spark-card.svg" alt="Spark ETL pipeline architecture diagram" loading="lazy"></div>
                 <div class="case-info">
-                    <p class="case-kicker"><span class="case-num">03</span>High-volume batch</p>
-                    <h3>Spark ETL Pipeline</h3>
+                    <p class="case-kicker">High-volume batch</p>
+                    <h3>Spark ETL Pipeline <span class="case-arrow" aria-hidden="true">&rarr;</span></h3>
                     <p class="case-summary">Re-engineered slow, brittle transaction jobs into deterministic, recoverable Spark pipelines with stronger observability under peak load.</p>
-                    <div class="case-foot">
-                        <p class="case-metric"><strong>180M</strong><span>records processed daily</span></p>
-                        <span class="case-cta">Read case study <span aria-hidden="true">&rarr;</span></span>
-                    </div>
+                    <p class="case-metric"><strong>180M</strong><span>records processed daily</span></p>
                 </div>
             </a>
             <a class="case" data-reveal style="--case: #6d28d9" href="llm-resume-analyzer.html">
                 <div class="case-visual"><img src="assets/llm-card.svg" alt="LLM resume analyzer workflow diagram" loading="lazy"></div>
                 <div class="case-info">
-                    <p class="case-kicker"><span class="case-num">04</span>Applied AI</p>
-                    <h3>LLM Resume Analyzer</h3>
+                    <p class="case-kicker">Applied AI</p>
+                    <h3>LLM Resume Analyzer <span class="case-arrow" aria-hidden="true">&rarr;</span></h3>
                     <p class="case-summary">Scores candidate fit against role requirements and explains the score in plain language, for faster recruiter triage and clearer feedback.</p>
-                    <div class="case-foot">
-                        <p class="case-metric"><strong>&minus;52%</strong><span>screening time</span></p>
-                        <span class="case-cta">Read case study <span aria-hidden="true">&rarr;</span></span>
-                    </div>
+                    <p class="case-metric"><strong>&minus;52%</strong><span>screening time</span></p>
                 </div>
             </a>
             </div>
-            <p class="more-link" data-reveal>Also: <a href="anime-story-ai-generator.html">Anime story AI generator</a> &middot; <a href="big-data.html">Data engineering notes</a> &middot; <a href="ai.html">Applied AI</a></p>
+            <p class="more-link" data-reveal>Also: <a href="anime-story-ai-generator.html">Anime story AI generator</a></p>
         </div>
     </section>
 
     <section class="section" id="contact" aria-labelledby="contact-title">
         <div class="wrap">
             <div class="contact-block" data-reveal>
-                <p class="eyebrow">Let's connect</p>
                 <h2 id="contact-title">Let's build reliable <em>systems together.</em></h2>
                 <p>Have a data platform, pipeline or AI idea in mind? I'd love to hear about it.</p>
                 <div class="contact-actions">
                     <a class="btn btn-light" href="mailto:heyrobinsingh@gmail.com">Email me <span class="arrow" aria-hidden="true">&rarr;</span></a>
                     <a class="btn btn-outline-light" href="https://www.linkedin.com/in/heyrobin/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
                 </div>
-                <img class="peace" src="icons/peace.svg" alt="" width="64" height="64">
             </div>
         </div>
     </section>
@@ -268,7 +209,6 @@
         <nav aria-label="Elsewhere"><a href="https://github.com/heyrobin" target="_blank" rel="noopener noreferrer">GitHub</a><a href="https://www.linkedin.com/in/heyrobin/" target="_blank" rel="noopener noreferrer">LinkedIn</a><a href="https://www.kaggle.com/heyrobin" target="_blank" rel="noopener noreferrer">Kaggle</a><a href="mailto:heyrobinsingh@gmail.com">Email</a></nav>
     </div>
 </footer>
-<div class="toast" role="status" aria-live="polite" data-toast></div>
 <script src="scripts.js"></script>
 </body>
 </html>

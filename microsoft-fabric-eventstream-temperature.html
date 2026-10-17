@@ -72,7 +72,6 @@
                 <div><dt>Platform</dt><dd>Microsoft Fabric and Power BI</dd></div>
                 <div><dt>Outcome</dt><dd>Live telemetry with under-five-second latency</dd></div>
             </dl>
-            <ul class="tags" aria-label="Stack"><li>Microsoft Fabric</li><li>Eventstream</li><li>KQL Database</li><li>Power BI</li></ul>
             <div class="metrics">
                 <div class="metric" data-reveal style="--d: 0"><strong>&lt;5s</strong><span>End-to-end latency</span></div>
                 <div class="metric" data-reveal style="--d: 1"><strong>99.2%</strong><span>Stream uptime</span></div>
@@ -82,28 +81,20 @@
     </header>
 
     <div class="wrap article">
-        <nav class="toc" aria-label="On this page">
-            <p>On this page</p>
-            <ol>
-                <li><a href="#scope">Project scope</a></li>
-                <li><a href="#architecture">Power BI dashboard</a></li>
-                <li><a href="#implementation">Implementation details</a></li>
-            </ol>
-        </nav>
         <div class="prose">
             <section id="scope" data-reveal>
-                <h2><span>01</span>Project scope</h2>
+                <h2>Project scope</h2>
                 <p>Simulated 3 sensors with continuous temperature payloads, pushed events into Fabric Eventstream, and routed data to analytical storage for reporting and anomaly checks. Designed dashboard slices by sensor and time interval for easy trend tracking.</p>
             </section>
             <section id="architecture" data-reveal>
-                <h2><span>02</span>Power BI dashboard</h2>
+                <h2>Power BI dashboard</h2>
                 <figure class="figure">
                     <img src="assets/fabric-temperature-dashboard.svg" alt="Power BI line chart dashboard showing Sensor 1, Sensor 2 and Sensor 3 temperature trends." loading="lazy">
                     <figcaption>Live temperature trend view for three streaming sensors in Power BI.</figcaption>
                 </figure>
             </section>
             <section id="implementation" data-reveal>
-                <h2><span>03</span>Implementation details</h2>
+                <h2>Implementation details</h2>
                 <p>Added event-time parsing and simple threshold logic for heat-spike detection. The dashboard was optimized for continuous refresh while keeping visuals lightweight for operational use.</p>
             </section>
         </div>
@@ -123,7 +114,6 @@
         <nav aria-label="Elsewhere"><a href="https://github.com/heyrobin" target="_blank" rel="noopener noreferrer">GitHub</a><a href="https://www.linkedin.com/in/heyrobin/" target="_blank" rel="noopener noreferrer">LinkedIn</a><a href="https://www.kaggle.com/heyrobin" target="_blank" rel="noopener noreferrer">Kaggle</a><a href="mailto:heyrobinsingh@gmail.com">Email</a></nav>
     </div>
 </footer>
-<div class="toast" role="status" aria-live="polite" data-toast></div>
 <script src="scripts.js"></script>
 </body>
 </html>

@@ -72,7 +72,6 @@
                 <div><dt>Platform</dt><dd>Semantic matching, rules and LLMs</dd></div>
                 <div><dt>Outcome</dt><dd>Faster screening with clearer recommendations</dd></div>
             </dl>
-            <ul class="tags" aria-label="Stack"><li>LLMs</li><li>NLP</li><li>Semantic matching</li><li>Prompt evaluation</li></ul>
             <div class="metrics">
                 <div class="metric" data-reveal style="--d: 0"><strong>&minus;52%</strong><span>Screening time</span></div>
                 <div class="metric" data-reveal style="--d: 1"><strong>+28%</strong><span>Shortlist precision</span></div>
@@ -82,28 +81,20 @@
     </header>
 
     <div class="wrap article">
-        <nav class="toc" aria-label="On this page">
-            <p>On this page</p>
-            <ol>
-                <li><a href="#scope">Project scope</a></li>
-                <li><a href="#architecture">Architecture</a></li>
-                <li><a href="#implementation">Implementation details</a></li>
-            </ol>
-        </nav>
         <div class="prose">
             <section id="scope" data-reveal>
-                <h2><span>01</span>Project scope</h2>
+                <h2>Project scope</h2>
                 <p>Built a hybrid pipeline combining deterministic parsing, vector similarity, and LLM-generated commentary. The system evaluates must-have skills, seniority evidence, project relevance, and keyword quality in one report.</p>
             </section>
             <section id="architecture" data-reveal>
-                <h2><span>02</span>Architecture</h2>
+                <h2>Architecture</h2>
                 <figure class="figure">
                     <img src="assets/llm-resume-workflow.svg" alt="LLM resume analyzer workflow from resume and job description parsers to vector match, rule engine and feedback output." loading="lazy">
                     <figcaption>Hybrid scoring stack: parser + rules + embeddings + LLM explanation layer.</figcaption>
                 </figure>
             </section>
             <section id="implementation" data-reveal>
-                <h2><span>03</span>Implementation details</h2>
+                <h2>Implementation details</h2>
                 <p>Added confidence scoring and deterministic penalties for missing critical requirements to reduce hallucinated recommendations. Prompt templates were tuned for concise, role-specific feedback that remains readable by non-technical users.</p>
             </section>
         </div>
@@ -123,7 +114,6 @@
         <nav aria-label="Elsewhere"><a href="https://github.com/heyrobin" target="_blank" rel="noopener noreferrer">GitHub</a><a href="https://www.linkedin.com/in/heyrobin/" target="_blank" rel="noopener noreferrer">LinkedIn</a><a href="https://www.kaggle.com/heyrobin" target="_blank" rel="noopener noreferrer">Kaggle</a><a href="mailto:heyrobinsingh@gmail.com">Email</a></nav>
     </div>
 </footer>
-<div class="toast" role="status" aria-live="polite" data-toast></div>
 <script src="scripts.js"></script>
 </body>
 </html>

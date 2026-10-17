@@ -72,7 +72,6 @@
                 <div><dt>Platform</dt><dd>Apache Spark and Delta Lake</dd></div>
                 <div><dt>Outcome</dt><dd>Faster, recoverable, observable ETL jobs</dd></div>
             </dl>
-            <ul class="tags" aria-label="Stack"><li>Apache Spark</li><li>Delta Lake</li><li>Orchestration</li><li>Monitoring</li></ul>
             <div class="metrics">
                 <div class="metric" data-reveal style="--d: 0"><strong>&minus;38%</strong><span>Job runtime</span></div>
                 <div class="metric" data-reveal style="--d: 1"><strong>&minus;27%</strong><span>Compute spend</span></div>
@@ -82,28 +81,20 @@
     </header>
 
     <div class="wrap article">
-        <nav class="toc" aria-label="On this page">
-            <p>On this page</p>
-            <ol>
-                <li><a href="#scope">Project scope</a></li>
-                <li><a href="#architecture">Architecture</a></li>
-                <li><a href="#implementation">Implementation details</a></li>
-            </ol>
-        </nav>
         <div class="prose">
             <section id="scope" data-reveal>
-                <h2><span>01</span>Project scope</h2>
+                <h2>Project scope</h2>
                 <p>Processed ~180 million daily records from event and operational sources into Delta tables used by revenue, retention, and operations dashboards. Added end-to-end lineage and run-level quality signals for each stage.</p>
             </section>
             <section id="architecture" data-reveal>
-                <h2><span>02</span>Architecture</h2>
+                <h2>Architecture</h2>
                 <figure class="figure">
                     <img src="assets/spark-etl-flow.svg" alt="Spark ETL pipeline showing ingest, validate, transform and load with monitoring and alerts." loading="lazy">
                     <figcaption>End-to-end ETL path with quality gates, retries, and monitoring hooks.</figcaption>
                 </figure>
             </section>
             <section id="implementation" data-reveal>
-                <h2><span>03</span>Implementation details</h2>
+                <h2>Implementation details</h2>
                 <p>Implemented incremental watermarking, optimized the partition strategy for skewed keys, and made all writes idempotent. Added threshold-based alerting and SLA dashboards so incidents are detected early and resolved with clear failure context.</p>
             </section>
         </div>
@@ -123,7 +114,6 @@
         <nav aria-label="Elsewhere"><a href="https://github.com/heyrobin" target="_blank" rel="noopener noreferrer">GitHub</a><a href="https://www.linkedin.com/in/heyrobin/" target="_blank" rel="noopener noreferrer">LinkedIn</a><a href="https://www.kaggle.com/heyrobin" target="_blank" rel="noopener noreferrer">Kaggle</a><a href="mailto:heyrobinsingh@gmail.com">Email</a></nav>
     </div>
 </footer>
-<div class="toast" role="status" aria-live="polite" data-toast></div>
 <script src="scripts.js"></script>
 </body>
 </html>

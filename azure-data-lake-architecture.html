@@ -72,7 +72,6 @@
                 <div><dt>Platform</dt><dd>ADLS, Databricks and Azure Data Factory</dd></div>
                 <div><dt>Outcome</dt><dd>Reliable, reusable analytics foundations</dd></div>
             </dl>
-            <ul class="tags" aria-label="Stack"><li>ADLS</li><li>Databricks</li><li>Azure Data Factory</li><li>Power BI</li></ul>
             <div class="metrics">
                 <div class="metric" data-reveal style="--d: 0"><strong>&minus;42%</strong><span>Pipeline failures</span></div>
                 <div class="metric" data-reveal style="--d: 1"><strong>&minus;31%</strong><span>Compute cost</span></div>
@@ -82,28 +81,20 @@
     </header>
 
     <div class="wrap article">
-        <nav class="toc" aria-label="On this page">
-            <p>On this page</p>
-            <ol>
-                <li><a href="#scope">Project scope</a></li>
-                <li><a href="#architecture">Architecture</a></li>
-                <li><a href="#implementation">Implementation details</a></li>
-            </ol>
-        </nav>
         <div class="prose">
             <section id="scope" data-reveal>
-                <h2><span>01</span>Project scope</h2>
+                <h2>Project scope</h2>
                 <p>Integrated 9 source systems (CRM, ERP, billing, and web events) into ADLS through Azure Data Factory. Standardized 120+ raw tables into curated Silver models and 30 domain-focused Gold marts for BI consumption.</p>
             </section>
             <section id="architecture" data-reveal>
-                <h2><span>02</span>Architecture</h2>
+                <h2>Architecture</h2>
                 <figure class="figure">
                     <img src="assets/azure-lakehouse-architecture.svg" alt="Azure lakehouse architecture with Bronze, Silver and Gold layers and governance controls." loading="lazy">
                     <figcaption>Medallion flow with quality checks, governance policies, and business marts.</figcaption>
                 </figure>
             </section>
             <section id="implementation" data-reveal>
-                <h2><span>03</span>Implementation details</h2>
+                <h2>Implementation details</h2>
                 <p>Added schema drift detection, data contracts for critical entities, and row-level audit columns across all curated layers. A partitioning and compaction strategy in Databricks reduced scan volume while keeping SLAs consistent for daily reporting.</p>
             </section>
         </div>
@@ -123,7 +114,6 @@
         <nav aria-label="Elsewhere"><a href="https://github.com/heyrobin" target="_blank" rel="noopener noreferrer">GitHub</a><a href="https://www.linkedin.com/in/heyrobin/" target="_blank" rel="noopener noreferrer">LinkedIn</a><a href="https://www.kaggle.com/heyrobin" target="_blank" rel="noopener noreferrer">Kaggle</a><a href="mailto:heyrobinsingh@gmail.com">Email</a></nav>
     </div>
 </footer>
-<div class="toast" role="status" aria-live="polite" data-toast></div>
 <script src="scripts.js"></script>
 </body>
 </html>
