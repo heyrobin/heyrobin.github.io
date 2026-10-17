@@ -48,7 +48,6 @@
         <nav class="nav" id="site-nav" aria-label="Primary">
             <a href="index.html#work">Work</a>
             <a href="index.html#about">About</a>
-            <a href="index.html#process">Process</a>
             <a href="index.html#stack">Stack</a>
             <a href="resume.html">Resume</a>
         </nav>
@@ -65,7 +64,6 @@
         <div class="wrap">
             <div class="hero-grid">
                 <div class="hero-intro">
-                    <p class="status-chip"><span class="pulse" aria-hidden="true"></span>Data engineering &middot; Applied AI</p>
                     <h1 class="display-1" id="hero-title"><span class="hero-name">Robin Singh</span> Senior Data Engineer <em>building reliable systems.</em></h1>
                     <p class="lede">I build lakehouses, streaming pipelines and AI-powered tools that turn complex data into clear, dependable decisions.</p>
                     <div class="hero-actions">
@@ -106,64 +104,34 @@
                         <g class="pl-node pl-out"><rect x="60" y="336" width="140" height="32" rx="9"/><text x="130" y="352">Power BI</text></g>
                         <g class="pl-node pl-out"><rect x="240" y="336" width="140" height="32" rx="9"/><text x="310" y="352">AI apps</text></g>
                     </svg>
-                    <div class="console-log" aria-hidden="true">
-                        <span>schema contract validated</span>
-                        <span>bronze &rarr; silver merge, idempotent</span>
-                        <span>gold marts refreshed for BI</span>
-                    </div>
                 </div>
             </div>
 
             <div class="stats">
-                <a class="stat" href="spark-etl-pipeline.html"><span class="stat-value"><span data-count="180">180</span>M</span><span class="stat-label">records processed daily</span><span class="stat-src">Spark ETL &rarr;</span></a>
-                <a class="stat" href="microsoft-fabric-eventstream-temperature.html"><span class="stat-value">&lt;<span data-count="5">5</span>s</span><span class="stat-label">end-to-end streaming latency</span><span class="stat-src">Fabric Eventstream &rarr;</span></a>
-                <a class="stat" href="azure-data-lake-architecture.html"><span class="stat-value">&minus;<span data-count="42">42</span>%</span><span class="stat-label">pipeline failures</span><span class="stat-src">Azure lakehouse &rarr;</span></a>
-                <a class="stat" href="llm-resume-analyzer.html"><span class="stat-value">&minus;<span data-count="52">52</span>%</span><span class="stat-label">resume screening time</span><span class="stat-src">LLM analyzer &rarr;</span></a>
+                <a class="stat" href="spark-etl-pipeline.html"><span class="stat-value"><span data-count="180">180</span>M</span><span class="stat-label">records processed daily</span></a>
+                <a class="stat" href="microsoft-fabric-eventstream-temperature.html"><span class="stat-value">&lt;<span data-count="5">5</span>s</span><span class="stat-label">end-to-end streaming latency</span></a>
+                <a class="stat" href="azure-data-lake-architecture.html"><span class="stat-value">&minus;<span data-count="42">42</span>%</span><span class="stat-label">pipeline failures</span></a>
+                <a class="stat" href="llm-resume-analyzer.html"><span class="stat-value">&minus;<span data-count="52">52</span>%</span><span class="stat-label">resume screening time</span></a>
             </div>
         </div>
-        <div class="ribbon" aria-hidden="true"><div class="ribbon-track"><span>Lakehouses</span><span>Streaming</span><span>Apache Spark</span><span>Microsoft Fabric</span><span>Delta Lake</span><span>LLM apps</span><span>Data modeling</span><span>Lakehouses</span><span>Streaming</span><span>Apache Spark</span><span>Microsoft Fabric</span><span>Delta Lake</span><span>LLM apps</span><span>Data modeling</span></div></div>
     </section>
 
     <section class="section" id="about" aria-labelledby="about-title">
         <div class="wrap about-grid">
             <figure class="portrait" data-reveal>
                 <img src="icons/robin-singh.jpg" alt="Portrait of Robin Singh, Senior Data Engineer" width="528" height="704">
-                <figcaption><strong>Robin Singh</strong>Senior Data Engineer</figcaption>
             </figure>
             <div class="about-copy" data-reveal>
                 <p class="eyebrow">About</p>
                 <h2 class="display-2" id="about-title">Reliable foundations for <em>analytics and AI.</em></h2>
                 <p class="lede">I work across data engineering and applied AI, designing Microsoft Fabric architectures, production-grade pipelines, and intelligent tools that translate complex data into actionable insight.</p>
                 <p class="lede">My bias is toward systems that are boring in production: idempotent, observable and easy to recover, so the people relying on the data never have to think about it.</p>
-                <dl class="facts">
-                    <div><dt>Focus</dt><dd>Data platforms &amp; applied AI</dd></div>
-                    <div><dt>Platforms</dt><dd>Fabric, Azure, Databricks</dd></div>
-                    <div><dt>Builds</dt><dd>Lakehouses, streaming, LLM tools</dd></div>
-                </dl>
-                <div class="link-row">
-                    <a class="btn btn-ghost btn-sm" href="resume.html">Resume <span class="arrow" aria-hidden="true">&rarr;</span></a>
-                    <a class="btn btn-ghost btn-sm" href="https://github.com/heyrobin" target="_blank" rel="noopener noreferrer">GitHub <span class="arrow" aria-hidden="true">&nearr;</span></a>
-                    <a class="btn btn-ghost btn-sm" href="https://www.linkedin.com/in/heyrobin/" target="_blank" rel="noopener noreferrer">LinkedIn <span class="arrow" aria-hidden="true">&nearr;</span></a>
-                </div>
+                <p class="text-links">
+                    <a href="resume.html">Resume <span aria-hidden="true">&rarr;</span></a>
+                    <a href="https://github.com/heyrobin" target="_blank" rel="noopener noreferrer">GitHub <span aria-hidden="true">&nearr;</span></a>
+                    <a href="https://www.linkedin.com/in/heyrobin/" target="_blank" rel="noopener noreferrer">LinkedIn <span aria-hidden="true">&nearr;</span></a>
+                </p>
             </div>
-        </div>
-    </section>
-
-    <section class="section process" id="process" aria-labelledby="process-title">
-        <div class="wrap">
-            <div class="section-head" data-reveal>
-                <div>
-                    <p class="eyebrow">How I deliver</p>
-                    <h2 class="display-2" id="process-title">From messy sources to <em>trusted data.</em></h2>
-                </div>
-                <p class="lede">The same four steps sit behind every project below, whether it is a streaming pipeline or an LLM tool.</p>
-            </div>
-            <ol class="steps">
-                <li class="step" data-reveal style="--d: 0"><span class="step-num">01</span><h3>Map</h3><p>Inventory sources, owners and SLAs, then agree data contracts for the entities that matter most.</p></li>
-                <li class="step" data-reveal style="--d: 1"><span class="step-num">02</span><h3>Design</h3><p>Layer the platform into bronze, silver and gold so every table has a clear purpose and owner.</p></li>
-                <li class="step" data-reveal style="--d: 2"><span class="step-num">03</span><h3>Build</h3><p>Incremental, idempotent pipelines with watermarking, retries and schema-drift checks.</p></li>
-                <li class="step" data-reveal style="--d: 3"><span class="step-num">04</span><h3>Operate</h3><p>Lineage, quality signals and SLA alerts, so issues surface before stakeholders notice.</p></li>
-            </ol>
         </div>
     </section>
 
@@ -231,7 +199,6 @@
                     <p class="case-kicker"><span class="case-num">01</span>Real-time streaming</p>
                     <h3>Fabric Eventstream</h3>
                     <p class="case-summary">A near-real-time IoT pipeline in Microsoft Fabric that streams sensor temperature telemetry into live Power BI monitoring for operations teams.</p>
-                    <ul class="tags" aria-label="Stack"><li>Microsoft Fabric</li><li>Eventstream</li><li>KQL Database</li><li>Power BI</li></ul>
                     <div class="case-foot">
                         <p class="case-metric"><strong>&lt;5s</strong><span>end-to-end latency</span></p>
                         <span class="case-cta">Read case study <span aria-hidden="true">&rarr;</span></span>
@@ -244,7 +211,6 @@
                     <p class="case-kicker"><span class="case-num">02</span>Lakehouse architecture</p>
                     <h3>Azure Data Lake</h3>
                     <p class="case-summary">Rebuilt a fragmented reporting stack into a governed lakehouse with clear medallion layers, fewer data incidents and fresher dashboards.</p>
-                    <ul class="tags" aria-label="Stack"><li>ADLS</li><li>Databricks</li><li>Azure Data Factory</li><li>Power BI</li></ul>
                     <div class="case-foot">
                         <p class="case-metric"><strong>&minus;42%</strong><span>pipeline failures</span></p>
                         <span class="case-cta">Read case study <span aria-hidden="true">&rarr;</span></span>
@@ -257,7 +223,6 @@
                     <p class="case-kicker"><span class="case-num">03</span>High-volume batch</p>
                     <h3>Spark ETL Pipeline</h3>
                     <p class="case-summary">Re-engineered slow, brittle transaction jobs into deterministic, recoverable Spark pipelines with stronger observability under peak load.</p>
-                    <ul class="tags" aria-label="Stack"><li>Apache Spark</li><li>Delta Lake</li><li>Orchestration</li><li>Monitoring</li></ul>
                     <div class="case-foot">
                         <p class="case-metric"><strong>180M</strong><span>records processed daily</span></p>
                         <span class="case-cta">Read case study <span aria-hidden="true">&rarr;</span></span>
@@ -270,7 +235,6 @@
                     <p class="case-kicker"><span class="case-num">04</span>Applied AI</p>
                     <h3>LLM Resume Analyzer</h3>
                     <p class="case-summary">Scores candidate fit against role requirements and explains the score in plain language, for faster recruiter triage and clearer feedback.</p>
-                    <ul class="tags" aria-label="Stack"><li>LLMs</li><li>NLP</li><li>Semantic matching</li><li>Prompt evaluation</li></ul>
                     <div class="case-foot">
                         <p class="case-metric"><strong>&minus;52%</strong><span>screening time</span></p>
                         <span class="case-cta">Read case study <span aria-hidden="true">&rarr;</span></span>
@@ -278,14 +242,7 @@
                 </div>
             </a>
             </div>
-            <div class="more-work" data-reveal>
-                <p><strong>More projects:</strong> an episodic anime story generator, plus write-ups by topic.</p>
-                <div class="link-row">
-                    <a class="btn btn-ghost btn-sm" href="anime-story-ai-generator.html">Anime Story AI <span class="arrow" aria-hidden="true">&rarr;</span></a>
-                    <a class="btn btn-ghost btn-sm" href="big-data.html">Data engineering</a>
-                    <a class="btn btn-ghost btn-sm" href="ai.html">Applied AI</a>
-                </div>
-            </div>
+            <p class="more-link" data-reveal>Also: <a href="anime-story-ai-generator.html">Anime story AI generator</a> &middot; <a href="big-data.html">Data engineering notes</a> &middot; <a href="ai.html">Applied AI</a></p>
         </div>
     </section>
 
@@ -298,7 +255,6 @@
                 <div class="contact-actions">
                     <a class="btn btn-light" href="mailto:heyrobinsingh@gmail.com">Email me <span class="arrow" aria-hidden="true">&rarr;</span></a>
                     <a class="btn btn-outline-light" href="https://www.linkedin.com/in/heyrobin/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
-                    <button class="btn btn-outline-light" type="button" data-copy="heyrobinsingh@gmail.com">Copy email</button>
                 </div>
                 <img class="peace" src="icons/peace.svg" alt="" width="64" height="64">
             </div>
@@ -307,43 +263,9 @@
 </main>
 
 <footer class="site-footer">
-    <div class="wrap">
-        <div class="footer-grid">
-            <div class="footer-brand">
-                <img src="icons/name.png" alt="Robin Singh" width="92" height="31">
-                <p>Senior Data Engineer building reliable lakehouses, streaming pipelines and practical AI tools.</p>
-            </div>
-            <div class="footer-col">
-                <h2>Site</h2>
-                <ul>
-                    <li><a href="index.html#work">Work</a></li>
-                    <li><a href="index.html#about">About</a></li>
-                    <li><a href="index.html#stack">Stack</a></li>
-                    <li><a href="resume.html">Resume</a></li>
-                </ul>
-            </div>
-            <div class="footer-col">
-                <h2>Topics</h2>
-                <ul>
-                    <li><a href="big-data.html">Data engineering</a></li>
-                    <li><a href="ai.html">Applied AI</a></li>
-                </ul>
-            </div>
-            <div class="footer-col">
-                <h2>Elsewhere</h2>
-                <ul>
-                    <li><a href="https://github.com/heyrobin" target="_blank" rel="noopener noreferrer">GitHub</a></li>
-                    <li><a href="https://www.linkedin.com/in/heyrobin/" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
-                    <li><a href="https://www.kaggle.com/heyrobin" target="_blank" rel="noopener noreferrer">Kaggle</a></li>
-                    <li><a href="mailto:heyrobinsingh@gmail.com">Email</a></li>
-                </ul>
-            </div>
-        </div>
-        <div class="footer-bottom">
-            <span>&copy; <span data-year>2026</span> Robin Singh</span>
-            <span>Hand-built with HTML, CSS and a little JavaScript</span>
-            <a href="#main">Back to top &uarr;</a>
-        </div>
+    <div class="wrap footer-row">
+        <span>&copy; <span data-year>2026</span> Robin Singh</span>
+        <nav aria-label="Elsewhere"><a href="https://github.com/heyrobin" target="_blank" rel="noopener noreferrer">GitHub</a><a href="https://www.linkedin.com/in/heyrobin/" target="_blank" rel="noopener noreferrer">LinkedIn</a><a href="https://www.kaggle.com/heyrobin" target="_blank" rel="noopener noreferrer">Kaggle</a><a href="mailto:heyrobinsingh@gmail.com">Email</a></nav>
     </div>
 </footer>
 <div class="toast" role="status" aria-live="polite" data-toast></div>
