@@ -277,6 +277,13 @@ main > .section:last-child { padding-bottom: 0; }
 }
 @keyframes pulse { from { opacity: .9; transform: scale(.4); } to { opacity: 0; transform: scale(1.7); } }
 .hero h1 { margin-top: 24px; }
+.hero-name {
+    display: block;
+    margin-bottom: 16px;
+    color: var(--ink-2);
+    font: 600 clamp(1.05rem, 1.5vw, 1.3rem)/1.2 var(--font-body);
+    letter-spacing: 0;
+}
 .hero .lede { max-width: 50ch; margin-top: 24px; }
 .hero-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 32px; }
 
