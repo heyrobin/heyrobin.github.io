@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 760">
+  <rect width="1200" height="760" rx="28" fill="#ebe5ff"/>
+  <circle cx="1010" cy="125" r="170" fill="#d4c5ff"/>
+  <g stroke="#6d28d9" stroke-width="8" stroke-linecap="round" fill="none"><path d="M230 310h230M230 500h230M690 405h270M460 310l230 95M460 500l230-95"/></g>
+  <g fill="#6d28d9"><circle cx="230" cy="310" r="35"/><circle cx="230" cy="500" r="35"/><circle cx="460" cy="310" r="35"/><circle cx="460" cy="500" r="35"/><circle cx="690" cy="405" r="48"/><circle cx="960" cy="405" r="35"/></g>
+  <g fill="#fff" font-family="Arial, sans-serif" font-weight="700" text-anchor="middle"><text x="230" y="318" font-size="18">CV</text><text x="230" y="508" font-size="18">JD</text><text x="690" y="413" font-size="18">AI</text><text x="960" y="413" font-size="16">FIT</text></g>
+  <text x="80" y="105" fill="#32136b" font-family="Arial, sans-serif" font-size="30" letter-spacing="5">LLM / RESUME ANALYZER</text>
+  <text x="80" y="675" fill="#5b3c91" font-family="Arial, sans-serif" font-size="22">SEMANTIC MATCHING / EXPLAINABLE OUTPUT</text>
+</svg>

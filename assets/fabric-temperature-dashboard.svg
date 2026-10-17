@@ -1,0 +1,22 @@
+﻿<svg xmlns="http://www.w3.org/2000/svg" width="1264" height="404" viewBox="0 0 1264 404">
+  <rect width="1264" height="404" fill="#dcdcdc"/>
+  <text x="8" y="28" font-family="Segoe UI, Arial, sans-serif" font-size="31" fill="#222">Sensor1 - Temperature</text>
+  <text x="8" y="160" font-family="Segoe UI, Arial, sans-serif" font-size="31" fill="#222">Sensor2 - Temperature</text>
+  <text x="8" y="281" font-family="Segoe UI, Arial, sans-serif" font-size="31" fill="#222">Sensor3 - Temperature</text>
+
+  <line x1="60" y1="78" x2="1244" y2="78" stroke="#bcbcbc" stroke-dasharray="2 6"/>
+  <line x1="60" y1="108" x2="1244" y2="108" stroke="#bcbcbc" stroke-dasharray="2 6"/>
+  <line x1="60" y1="138" x2="1244" y2="138" stroke="#bcbcbc" stroke-dasharray="2 6"/>
+
+  <line x1="60" y1="208" x2="1244" y2="208" stroke="#bcbcbc" stroke-dasharray="2 6"/>
+  <line x1="60" y1="238" x2="1244" y2="238" stroke="#bcbcbc" stroke-dasharray="2 6"/>
+  <line x1="60" y1="268" x2="1244" y2="268" stroke="#bcbcbc" stroke-dasharray="2 6"/>
+
+  <line x1="60" y1="330" x2="1244" y2="330" stroke="#bcbcbc" stroke-dasharray="2 6"/>
+  <line x1="60" y1="360" x2="1244" y2="360" stroke="#bcbcbc" stroke-dasharray="2 6"/>
+  <line x1="60" y1="390" x2="1244" y2="390" stroke="#bcbcbc" stroke-dasharray="2 6"/>
+
+  <polyline fill="none" stroke="#1f85e5" stroke-width="3" points="60,96 95,112 130,98 165,86 200,91 235,83 270,109 305,88 340,89 375,98 410,90 445,86 480,117 515,89 550,89 585,89 620,110 655,116 690,93 725,103 760,80 795,82 830,112 865,110 900,81 935,104 970,91 1005,79 1040,112 1075,92 1110,120 1145,111 1180,98 1215,119 1244,108"/>
+  <polyline fill="none" stroke="#2133a7" stroke-width="3" points="60,226 95,252 130,246 165,248 200,250 235,252 270,240 305,248 340,216 375,230 410,215 445,224 480,216 515,237 550,242 585,216 620,228 655,240 690,233 725,248 760,243 795,218 830,236 865,214 900,226 935,212 970,220 1005,228 1040,242 1075,240 1110,230 1145,220 1180,210 1215,206 1244,242"/>
+  <polyline fill="none" stroke="#e1682d" stroke-width="3" points="60,343 95,366 130,360 165,352 200,350 235,332 270,346 305,335 340,350 375,348 410,371 445,327 480,366 515,341 550,338 585,371 620,336 655,344 690,352 725,339 760,335 795,362 830,352 865,336 900,334 935,332 970,330 1005,362 1040,356 1075,338 1110,365 1145,346 1180,356 1215,358 1244,352"/>
+</svg>

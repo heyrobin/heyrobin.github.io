@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 760">
+  <rect width="1200" height="760" rx="28" fill="#e9f1ec"/>
+  <path d="M0 585C180 500 340 650 520 540s310-75 680 45v175H0Z" fill="#c6dfd2"/>
+  <g stroke="#12372c" stroke-width="7" stroke-linejoin="round">
+    <path d="M220 205h760v110H220z" fill="#fff"/><path d="M220 340h760v110H220z" fill="#d6efe0"/><path d="M220 475h760v110H220z" fill="#159957"/>
+    <path d="M600 315v25M600 450v25" fill="none"/>
+  </g>
+  <g fill="#12372c" font-family="Arial, sans-serif" font-weight="700"><text x="90" y="105" font-size="30" letter-spacing="5">AZURE / LAKEHOUSE</text><text x="530" y="275" font-size="30">BRONZE</text><text x="530" y="410" font-size="30">SILVER</text><text x="530" y="545" font-size="30" fill="#fff">GOLD</text></g>
+  <circle cx="1010" cy="110" r="30" fill="#f23838"/>
+</svg>

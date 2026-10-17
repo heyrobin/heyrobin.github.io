@@ -4,35 +4,45 @@
     <meta charset="UTF-8">
     <title>LLM Resume Analyzer | Robin Singh</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/svg+xml" href="icons/favicon.svg">
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 <header class="masthead">
     <a class="brand-block home-link" href="index.html" aria-label="Go to homepage">
-        <p class="eyebrow">Portfolio</p>
-        <h1>Robin Singh</h1>
+        <img class="name-mark" src="icons/name.svg" alt="Robin Singh">
     </a>
-    <nav class="section-nav">
-        <a href="big-data.html">Big Data</a>
-        <a href="ai.html">AI</a>
+    <nav class="section-nav" aria-label="Primary">
+        <a href="index.html#work">Work</a>
+        <a href="index.html#stack">Stack</a>
+        <a href="index.html#contact">Contact</a>
     </nav>
     <div class="top-bar">
-        <button class="menu-toggle" id="menuToggle" type="button" aria-label="Toggle menu">&#9776;</button>
-        <button class="dark-toggle" id="darkToggle" type="button" aria-label="Toggle dark mode">&#127769;</button>
+        <button class="theme-toggle" id="darkToggle" type="button" aria-label="Switch to dark mode"><img class="theme-icon" src="icons/switch.svg" alt=""></button>
+        <a class="resume-link" href="resume.html">Resume</a>
     </div>
 </header>
 
 <div class="container single-column">
     <main class="content story-page">
-        <a class="back-link" href="ai.html">&larr; Back to AI</a>
+        <a class="back-link" href="index.html#work">&larr; Back to selected work</a>
         <header class="story-header">
             <p class="card-tag">AI</p>
             <h2>LLM Resume Analyzer</h2>
             <p class="story-meta">Role: AI Engineer | Stack: NLP, Semantic Matching, Prompt Evaluation</p>
         </header>
+        <section class="project-overview" aria-labelledby="overview-title">
+            <h3 id="overview-title">Project overview</h3>
+            <div class="overview-grid">
+                <p><strong>Focus</strong>Explainable candidate evaluation</p>
+                <p><strong>Role</strong>AI workflow design and implementation</p>
+                <p><strong>Platform</strong>Semantic matching, rules, and LLMs</p>
+                <p><strong>Outcome</strong>Faster screening with clearer recommendations</p>
+            </div>
+        </section>
         <section class="story-content">
             <p>Developed a resume intelligence tool that scores candidate fit against role requirements and explains the score in plain language. The objective was faster triage for recruiters and clearer improvement signals for applicants.</p>
-            <h3>Scope</h3>
+            <h3>Project scope</h3>
             <p>Built a hybrid pipeline combining deterministic parsing, vector similarity, and LLM-generated commentary. The system evaluates must-have skills, seniority evidence, project relevance, and keyword quality in one report.</p>
             <h3>Architecture Snapshot</h3>
             <figure class="case-figure">
@@ -54,7 +64,7 @@
                     <span class="metric-label">Recruiter Satisfaction</span>
                 </div>
             </div>
-            <h3>Execution Notes</h3>
+            <h3>Implementation details</h3>
             <p>Added confidence scoring and deterministic penalties for missing critical requirements to reduce hallucinated recommendations. Prompt templates were tuned for concise, role-specific feedback that remains readable by non-technical users.</p>
         </section>
     </main>

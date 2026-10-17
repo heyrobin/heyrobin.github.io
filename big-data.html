@@ -1,35 +1,42 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Big Data | Robin Singh</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/svg+xml" href="icons/favicon.svg">
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 <header class="masthead">
     <a class="brand-block home-link" href="index.html" aria-label="Go to homepage">
-        <p class="eyebrow">Portfolio</p>
-        <h1>Robin Singh</h1>
+        <img class="name-mark" src="icons/name.svg" alt="Robin Singh">
     </a>
-    <nav class="section-nav">
-        <a href="big-data.html">Big Data</a>
-        <a href="ai.html">AI</a>
+    <nav class="section-nav" aria-label="Primary">
+        <a href="index.html#work">Work</a>
+        <a href="index.html#stack">Stack</a>
+        <a href="index.html#contact">Contact</a>
     </nav>
     <div class="top-bar">
-        <button class="menu-toggle" id="menuToggle" type="button" aria-label="Toggle menu">&#9776;</button>
-        <button class="dark-toggle" id="darkToggle" type="button" aria-label="Toggle dark mode">&#127769;</button>
+        <button class="theme-toggle" id="darkToggle" type="button" aria-label="Switch to dark mode"><img class="theme-icon" src="icons/switch.svg" alt=""></button>
+        <a class="resume-link" href="resume.html">Resume</a>
     </div>
 </header>
 
 <div class="container single-column">
     <main class="content">
         <section class="topic-intro">
-            <p class="kicker">Big Data Desk</p>
-            <h2>Long-form breakdowns of architectures, pipelines, and distributed systems.</h2>
+            <p class="kicker">Data Engineering</p>
+            <h2>Architecture and implementation notes for scalable data platforms.</h2>
         </section>
 
         <div class="project-list">
+            <article class="project-card bigdata">
+                <p class="card-tag">Big Data</p>
+                <a href="microsoft-fabric-eventstream-temperature.html">Microsoft Fabric Eventstream Temperature Streaming</a>
+                <p class="card-desc">Built a Fabric Eventstream pipeline for IoT sensor telemetry and live Power BI monitoring.</p>
+            </article>
+
             <article class="project-card bigdata">
                 <p class="card-tag">Big Data</p>
                 <a href="azure-data-lake-architecture.html">Azure Data Lake Architecture</a>

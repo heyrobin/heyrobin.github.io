@@ -3,16 +3,19 @@ document.addEventListener("DOMContentLoaded", function () {
     const toolButtons = document.querySelectorAll(".tool-filter");
     const cards = document.querySelectorAll(".project-card");
     const darkToggle = document.getElementById("darkToggle");
-    const menuToggle = document.getElementById("menuToggle");
-    const sidebar = document.querySelector(".sidebar");
-    const isMobile = () => window.matchMedia("(max-width: 920px)").matches;
-    const transitionDurationMs = 320;
+    const themeIcon = darkToggle ? darkToggle.querySelector(".theme-icon") : null;
+    const contactTrigger = document.getElementById("contactTrigger");
+    const contactDialog = document.getElementById("contactDialog");
+    const contactDialogClose = document.getElementById("contactDialogClose");
+    const transitionDurationMs = 300;
 
     const animatePageIn = () => {
+
         document.body.classList.remove("page-exit");
-        requestAnimationFrame(() => {
-            document.body.classList.add("page-ready");
-        });
+        const reveal = () => document.body.classList.add("page-ready");
+        requestAnimationFrame(reveal);
+        // rAF can be skipped in background tabs; never leave the page invisible.
+        window.setTimeout(reveal, 60);
     };
 
     const isInternalNavigableLink = (link, event) => {
@@ -57,6 +60,20 @@ document.addEventListener("DOMContentLoaded", function () {
             localStorage.setItem("theme", value);
         } catch (e) {
             // Ignore storage errors (private mode / blocked storage).
+        }
+    };
+
+    const updateThemeControl = () => {
+        if (!darkToggle) {
+            return;
+        }
+
+        const isDark = document.body.classList.contains("dark");
+        darkToggle.setAttribute("aria-label", isDark ? "Switch to light mode" : "Switch to dark mode");
+        if (themeIcon) {
+            themeIcon.src = isDark ? "icons/switch-darkmode.svg" : "icons/switch.svg";
+        } else {
+            darkToggle.textContent = isDark ? "Light" : "Dark";
         }
     };
 
@@ -114,49 +131,39 @@ document.addEventListener("DOMContentLoaded", function () {
             document.body.classList.toggle("dark");
 
             if (document.body.classList.contains("dark")) {
-                darkToggle.textContent = "\u2600\uFE0F";
                 saveTheme("dark");
             } else {
-                darkToggle.textContent = "\uD83C\uDF19";
                 saveTheme("light");
             }
+            updateThemeControl();
         });
     }
 
     // LOAD SAVED THEME
     if (getSavedTheme() === "dark") {
         document.body.classList.add("dark");
-        if (darkToggle) {
-            darkToggle.textContent = "\u2600\uFE0F";
-        }
+    }
+    updateThemeControl();
+
+    // CONTACT OPTIONS
+    if (contactTrigger && contactDialog) {
+        contactTrigger.addEventListener("click", function () {
+            contactDialog.showModal();
+        });
+        contactDialogClose?.addEventListener("click", function () {
+            contactDialog.close();
+        });
+        contactDialog.addEventListener("click", function (event) {
+            if (event.target === contactDialog) {
+                contactDialog.close();
+            }
+        });
     }
 
-    // MOBILE MENU
-    if (menuToggle && sidebar) {
-        menuToggle.addEventListener("click", function () {
-            sidebar.classList.toggle("active");
-        });
-
-        document.addEventListener("click", function (event) {
-            if (!isMobile() || !sidebar.classList.contains("active")) {
-                return;
-            }
-            if (!sidebar.contains(event.target) && event.target !== menuToggle) {
-                sidebar.classList.remove("active");
-            }
-        });
-
-        document.addEventListener("keydown", function (event) {
-            if (event.key === "Escape") {
-                sidebar.classList.remove("active");
-            }
-        });
-
-        window.addEventListener("resize", function () {
-            if (!isMobile()) {
-                sidebar.classList.remove("active");
-            }
-        });
+    // FOOTER YEAR
+    const yearEl = document.getElementById("year");
+    if (yearEl) {
+        yearEl.textContent = new Date().getFullYear();
     }
 
     // PAGE TRANSITIONS

@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 760">
+  <rect width="1200" height="760" rx="28" fill="#102a43"/>
+  <circle cx="1040" cy="120" r="160" fill="#164e63"/>
+  <path d="M90 550C210 470 260 510 360 420S535 310 630 390s185 78 285-55 160-84 215-48" fill="none" stroke="#62d9d4" stroke-width="12" stroke-linecap="round"/>
+  <path d="M90 620h1010" stroke="#58758d" stroke-width="3"/>
+  <g fill="#62d9d4"><circle cx="180" cy="492" r="11"/><circle cx="360" cy="420" r="11"/><circle cx="630" cy="390" r="11"/><circle cx="915" cy="335" r="11"/></g>
+  <g fill="#f7f6f2" font-family="Arial, sans-serif"><text x="90" y="112" font-size="30" letter-spacing="5">FABRIC / EVENTSTREAM</text><text x="90" y="675" font-size="22" fill="#9fb6c8">LIVE TELEMETRY  |  POWER BI</text></g>
+  <rect x="90" y="160" width="230" height="78" rx="39" fill="#f23838"/><text x="145" y="209" fill="#fff" font-family="Arial, sans-serif" font-size="25" font-weight="700">REAL-TIME</text>
+</svg>

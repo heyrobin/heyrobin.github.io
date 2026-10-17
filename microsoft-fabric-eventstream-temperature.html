@@ -1,0 +1,79 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Microsoft Fabric Eventstream Temperature Streaming | Robin Singh</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/svg+xml" href="icons/favicon.svg">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<header class="masthead">
+    <a class="brand-block home-link" href="index.html" aria-label="Go to homepage">
+        <img class="name-mark" src="icons/name.svg" alt="Robin Singh">
+    </a>
+    <nav class="section-nav" aria-label="Primary">
+        <a href="index.html#work">Work</a>
+        <a href="index.html#stack">Stack</a>
+        <a href="index.html#contact">Contact</a>
+    </nav>
+    <div class="top-bar">
+        <button class="theme-toggle" id="darkToggle" type="button" aria-label="Switch to dark mode"><img class="theme-icon" src="icons/switch.svg" alt=""></button>
+        <a class="resume-link" href="resume.html">Resume</a>
+    </div>
+</header>
+
+<div class="container single-column">
+    <main class="content story-page">
+        <a class="back-link" href="index.html#work">&larr; Back to selected work</a>
+        <header class="story-header">
+            <p class="card-tag">Big Data</p>
+            <h2>Microsoft Fabric Eventstream Temperature Streaming</h2>
+            <p class="story-meta">Role: Data Engineer | Stack: Microsoft Fabric, Eventstream, KQL Database, Power BI</p>
+        </header>
+        <section class="project-overview" aria-labelledby="overview-title">
+            <h3 id="overview-title">Project overview</h3>
+            <div class="overview-grid">
+                <p><strong>Focus</strong>Near-real-time operational monitoring</p>
+                <p><strong>Role</strong>Pipeline design and implementation</p>
+                <p><strong>Platform</strong>Microsoft Fabric and Power BI</p>
+                <p><strong>Outcome</strong>Live telemetry with under-five-second latency</p>
+            </div>
+        </section>
+        <section class="story-content">
+            <p>Built a near-real-time IoT data pipeline in Microsoft Fabric to ingest sensor temperature telemetry, process it in stream, and expose live Power BI monitoring for operations teams.</p>
+
+            <h3>Project scope</h3>
+            <p>Simulated 3 sensors with continuous temperature payloads, pushed events into Fabric Eventstream, and routed data to analytical storage for reporting and anomaly checks. Designed dashboard slices by sensor and time interval for easy trend tracking.</p>
+
+            <h3>Power BI Dashboard</h3>
+            <figure class="case-figure">
+                <img src="assets/fabric-temperature-dashboard.svg" alt="Power BI line chart dashboard showing Sensor 1, Sensor 2 and Sensor 3 temperature trends.">
+                <figcaption>Live temperature trend view for three streaming sensors in Power BI.</figcaption>
+            </figure>
+
+            <h3>Impact Metrics</h3>
+            <div class="metrics-grid">
+                <div class="metric-card">
+                    <span class="metric-value">&lt;5s</span>
+                    <span class="metric-label">End-to-End Latency</span>
+                </div>
+                <div class="metric-card">
+                    <span class="metric-value">99.2%</span>
+                    <span class="metric-label">Stream Uptime</span>
+                </div>
+                <div class="metric-card">
+                    <span class="metric-value">3x</span>
+                    <span class="metric-label">Faster Incident Visibility</span>
+                </div>
+            </div>
+
+            <h3>Implementation details</h3>
+            <p>Added event-time parsing and simple threshold logic for heat-spike detection. Dashboard was optimized for continuous refresh while keeping visuals lightweight for operational use.</p>
+        </section>
+    </main>
+</div>
+
+<script src="scripts.js"></script>
+</body>
+</html>
