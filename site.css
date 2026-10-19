@@ -195,9 +195,14 @@ button { font: inherit; color: inherit; }
 .site-header.is-scrolled::before,
 .site-header.menu-open::before { opacity: 1; border-bottom-color: var(--line); }
 .header-inner { display: flex; align-items: center; gap: 24px; }
-.brand { display: block; flex: 0 0 auto; }
-.brand img { width: 86px; height: auto; }
-:root[data-theme="dark"] .brand img { filter: brightness(1.45) saturate(1.1); }
+.brand {
+    flex: 0 0 auto;
+    color: var(--ink);
+    font: 600 1.5rem/1 var(--font-display);
+    letter-spacing: -.01em;
+    text-decoration: none;
+}
+.brand:hover { color: var(--red-text); }
 .nav { display: flex; gap: 4px; margin-left: auto; }
 .nav a {
     padding: 8px 14px;
