@@ -1,0 +1,725 @@
+<meta charset="utf-8">
+<title>Quiet Room · Audio Tools</title>
+<link rel="canonical" href="https://heyrobin.github.io/quiet-room/">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="Free in-browser audio tools: AI noise reduction, trim, volume, speed and pitch, fades, and format conversion. Files never leave your device.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700&family=Figtree:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: a studio console column. Clip bar + "Before" scope on top, tool tabs in the middle, "After" scope + transport below. */
+:root {
+  --bg: #eef1f0;
+  --panel: #ffffff;
+  --ink: #17201e;
+  --muted: #5d6b68;
+  --line: #d3dbd9;
+  --raw: #b0726a;        /* before waveform */
+  --clean: #0f7a68;      /* after waveform + accent */
+  --clean-ink: #ffffff;
+  --scope: #f6f8f7;
+  --sel: rgba(15, 122, 104, 0.14);
+  --font-display: "Bricolage Grotesque", "Segoe UI", system-ui, sans-serif;
+  --font-body: "Figtree", "Segoe UI", system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, Consolas, monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0f1413; --panel: #171e1c; --ink: #e4ebe9; --muted: #92a19d; --line: #2a3431;
+    --raw: #c98a80; --clean: #3cc4a8; --clean-ink: #06201b; --scope: #111816; --sel: rgba(60, 196, 168, 0.16); color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0f1413; --panel: #171e1c; --ink: #e4ebe9; --muted: #92a19d; --line: #2a3431;
+  --raw: #c98a80; --clean: #3cc4a8; --clean-ink: #06201b; --scope: #111816; --sel: rgba(60, 196, 168, 0.16); color-scheme: dark;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0; background: var(--bg); color: var(--ink); font: 15px/1.55 var(--font-body);
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+  padding-block: 32px 48px;
+}
+[hidden] { display: none !important; }
+.wrap { max-width: 800px; margin: 0 auto; display: grid; gap: 18px; }
+header { display: grid; gap: 4px; }
+h1 { font: 700 clamp(28px, 6vw, 40px)/1.05 var(--font-display); margin: 0; letter-spacing: -0.01em; text-wrap: balance; }
+h1 span { color: var(--clean); }
+.sub { margin: 0; color: var(--muted); max-width: 62ch; }
+.label a.home { color: inherit; text-decoration: underline; text-underline-offset: 3px; }
+.label a.home:hover { color: var(--clean); }
+.label { font: 500 11px/1.2 var(--font-mono); letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); }
+
+.drop {
+  border: 1.5px dashed var(--line); border-radius: 12px; background: var(--panel);
+  padding: 16px 18px; display: flex; gap: 12px; align-items: center; flex-wrap: wrap; cursor: pointer;
+  transition: border-color .15s;
+}
+.drop:hover, .drop.over { border-color: var(--clean); }
+.drop:focus-within { outline: 2px solid var(--clean); outline-offset: 2px; }
+.drop input { position: absolute; width: 1px; height: 1px; opacity: 0; }
+.drop .file { flex: 1 1 220px; min-width: 0; display: grid; gap: 2px; }
+.drop .name { font-weight: 600; overflow-wrap: anywhere; }
+.drop .meta { font: 12px var(--font-mono); color: var(--muted); font-variant-numeric: tabular-nums; }
+.drop .btns { display: flex; gap: 8px; flex-wrap: wrap; }
+
+button, select {
+  font: 600 14px/1 var(--font-body); border-radius: 8px; padding: 10px 14px; cursor: pointer;
+  border: 1px solid var(--line); background: var(--panel); color: var(--ink);
+}
+select { font-weight: 500; padding: 8px 10px; }
+button:focus-visible, select:focus-visible, input:focus-visible { outline: 2px solid var(--clean); outline-offset: 2px; }
+button.primary { background: var(--clean); color: var(--clean-ink); border-color: var(--clean); }
+button:disabled { opacity: .45; cursor: not-allowed; }
+
+.console { background: var(--panel); border: 1px solid var(--line); border-radius: 12px; padding: 18px; display: grid; gap: 16px; min-width: 0; }
+.track { display: grid; gap: 6px; }
+.track-head { display: flex; justify-content: space-between; align-items: baseline; gap: 8px; flex-wrap: wrap; }
+.track-head .info { font: 12px var(--font-mono); color: var(--muted); font-variant-numeric: tabular-nums; }
+.scope { position: relative; background: var(--scope); border: 1px solid var(--line); border-radius: 8px; height: 88px; overflow: hidden; cursor: pointer; touch-action: none; }
+.scope canvas { display: block; width: 100%; height: 100%; }
+.playhead { position: absolute; top: 0; bottom: 0; width: 2px; background: var(--ink); opacity: .7; left: 0; pointer-events: none; }
+.scope.trimming { cursor: crosshair; }
+
+[role="tablist"] { display: flex; flex-wrap: wrap; gap: 4px; border-bottom: 1px solid var(--line); padding-bottom: 8px; }
+[role="tab"] { border: 1px solid transparent; background: none; color: var(--muted); padding: 9px 12px; font-weight: 600; }
+[role="tab"]:hover { color: var(--ink); }
+[role="tab"][aria-selected="true"] { background: var(--scope); border-color: var(--line); color: var(--ink); box-shadow: inset 0 -2px 0 var(--clean); }
+.panel { display: grid; gap: 14px; }
+.panel p.what { margin: 0; color: var(--muted); font-size: 14px; max-width: 65ch; }
+.row { display: flex; flex-wrap: wrap; gap: 12px 24px; align-items: end; }
+.field { display: grid; gap: 6px; flex: 1 1 200px; min-width: 0; }
+.field-head { display: flex; justify-content: space-between; gap: 8px; }
+.field output { font: 500 13px var(--font-mono); font-variant-numeric: tabular-nums; }
+.field input[type=number] { font: 14px var(--font-mono); padding: 8px 10px; border: 1px solid var(--line); border-radius: 8px; background: var(--panel); color: var(--ink); width: 100%; }
+input[type=range] { width: 100%; accent-color: var(--clean); }
+.seg { display: inline-flex; border: 1px solid var(--line); border-radius: 8px; overflow: hidden; }
+.seg label { padding: 8px 12px; font-size: 14px; font-weight: 500; cursor: pointer; color: var(--muted); }
+.seg input { position: absolute; opacity: 0; width: 1px; height: 1px; }
+.seg input:checked + span { color: var(--ink); }
+.seg label:has(input:checked) { background: var(--scope); color: var(--ink); box-shadow: inset 0 -2px 0 var(--clean); }
+.seg label:has(input:focus-visible) { outline: 2px solid var(--clean); outline-offset: -2px; }
+.check { display: flex; gap: 8px; align-items: center; font-size: 14px; }
+.check input { accent-color: var(--clean); width: 16px; height: 16px; }
+
+.progress { height: 6px; background: var(--scope); border: 1px solid var(--line); border-radius: 99px; overflow: hidden; }
+.progress div { height: 100%; width: 0; background: var(--clean); transition: width .1s; }
+
+.transport { display: flex; flex-wrap: wrap; gap: 10px 14px; align-items: center; justify-content: space-between; }
+.transport .play { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; }
+.transport button[aria-pressed="true"] { border-color: var(--ink); }
+.time { font: 13px var(--font-mono); color: var(--muted); font-variant-numeric: tabular-nums; }
+.status { font-size: 13px; color: var(--muted); min-height: 1.4em; margin: 0; }
+.status.err { color: var(--raw); font-weight: 600; }
+.status.pending { color: var(--ink); }
+.note { font-size: 13px; color: var(--muted); margin: 0; max-width: 70ch; }
+@media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
+</style>
+
+<div class="wrap">
+  <header>
+    <span class="label"><a class="home" href="../">Robin Singh</a> · Audio tools · runs on your device</span>
+    <h1>Quiet <span>Room</span></h1>
+    <p class="sub">Clean up voice recordings and videos in your browser. Remove background noise with a neural network, then trim, level, retime and fade. Your files never leave this device.</p>
+  </header>
+
+  <label class="drop" id="drop">
+    <input type="file" id="file" accept="audio/*,video/*,.mp3,.wav,.m4a,.ogg,.flac,.mp4,.webm,.mov">
+    <div class="file">
+      <span class="name" id="fname">Built-in example: voice over fan noise</span>
+      <span class="meta" id="fmeta">Choose or drop an audio or video file · mp3, wav, m4a, ogg, flac, mp4, webm</span>
+    </div>
+    <div class="btns">
+      <button type="button" id="undo" disabled>Undo</button>
+      <button type="button" class="primary" id="save">Download WAV</button>
+    </div>
+  </label>
+
+  <section class="console" aria-label="Editor">
+    <div class="track">
+      <div class="track-head"><span class="label">Before · current clip</span><span class="info" id="infoRaw"></span></div>
+      <div class="scope" id="scopeRaw"><canvas id="cvRaw"></canvas><div class="playhead" id="phRaw"></div></div>
+    </div>
+
+    <div role="tablist" aria-label="Tools" id="tabs">
+      <button role="tab" id="tab-noise" aria-controls="p-noise" data-tool="noise">Noise reducer</button>
+      <button role="tab" id="tab-trim" aria-controls="p-trim" data-tool="trim">Trim</button>
+      <button role="tab" id="tab-volume" aria-controls="p-volume" data-tool="volume">Volume</button>
+      <button role="tab" id="tab-speed" aria-controls="p-speed" data-tool="speed">Speed &amp; pitch</button>
+      <button role="tab" id="tab-fade" aria-controls="p-fade" data-tool="fade">Fade</button>
+      <button role="tab" id="tab-format" aria-controls="p-format" data-tool="format">Format</button>
+    </div>
+
+    <div class="panel" role="tabpanel" id="p-noise" aria-labelledby="tab-noise">
+      <p class="what">RNNoise, a recurrent neural network trained on speech, removes fans, hum, traffic and room noise. It's made for voices; it also removes music and tones.</p>
+      <div class="row">
+        <button type="button" class="primary" id="nRun">Remove noise</button>
+        <div class="field">
+          <div class="field-head"><label class="label" for="nMix">Strength</label><output id="nMixOut">100%</output></div>
+          <input type="range" id="nMix" min="0" max="100" value="100">
+        </div>
+      </div>
+      <div class="progress" id="progress" hidden><div></div></div>
+    </div>
+
+    <div class="panel" role="tabpanel" id="p-trim" aria-labelledby="tab-trim" hidden>
+      <p class="what">Drag across the Before waveform to select a region, or type exact times.</p>
+      <div class="row">
+        <div class="field"><label class="label" for="tStart">Start (s)</label><input type="number" id="tStart" min="0" step="0.01" value="0"></div>
+        <div class="field"><label class="label" for="tEnd">End (s)</label><input type="number" id="tEnd" min="0" step="0.01" value="0"></div>
+        <div class="seg" role="radiogroup" aria-label="Trim mode">
+          <label><input type="radio" name="tMode" value="keep" checked><span>Keep selection</span></label>
+          <label><input type="radio" name="tMode" value="cut"><span>Cut selection</span></label>
+        </div>
+      </div>
+    </div>
+
+    <div class="panel" role="tabpanel" id="p-volume" aria-labelledby="tab-volume" hidden>
+      <p class="what">Normalize sets the loudest peak to a target level. Gain turns everything up or down by a fixed amount.</p>
+      <div class="seg" role="radiogroup" aria-label="Volume mode">
+        <label><input type="radio" name="vMode" value="norm" checked><span>Normalize</span></label>
+        <label><input type="radio" name="vMode" value="gain"><span>Gain</span></label>
+      </div>
+      <div class="row">
+        <div class="field" id="vNormF">
+          <div class="field-head"><label class="label" for="vTarget">Target peak</label><output id="vTargetOut">-1.0 dBFS</output></div>
+          <input type="range" id="vTarget" min="-12" max="0" step="0.5" value="-1">
+        </div>
+        <div class="field" id="vGainF" hidden>
+          <div class="field-head"><label class="label" for="vGain">Gain</label><output id="vGainOut">+6.0 dB</output></div>
+          <input type="range" id="vGain" min="-24" max="24" step="0.5" value="6">
+        </div>
+        <label class="check"><input type="checkbox" id="vLimit" checked> Prevent clipping</label>
+      </div>
+    </div>
+
+    <div class="panel" role="tabpanel" id="p-speed" aria-labelledby="tab-speed" hidden>
+      <p class="what">Change tempo and pitch independently. Speed keeps the voice's pitch; Pitch keeps the timing.</p>
+      <div class="row">
+        <div class="field">
+          <div class="field-head"><label class="label" for="sSpeed">Speed</label><output id="sSpeedOut">1.25×</output></div>
+          <input type="range" id="sSpeed" min="0.5" max="2" step="0.05" value="1.25">
+        </div>
+        <div class="field">
+          <div class="field-head"><label class="label" for="sPitch">Pitch</label><output id="sPitchOut">0 st</output></div>
+          <input type="range" id="sPitch" min="-12" max="12" step="1" value="0">
+        </div>
+      </div>
+    </div>
+
+    <div class="panel" role="tabpanel" id="p-fade" aria-labelledby="tab-fade" hidden>
+      <p class="what">Ramp the start up from silence and the end down to silence.</p>
+      <div class="row">
+        <div class="field">
+          <div class="field-head"><label class="label" for="fIn">Fade in</label><output id="fInOut">0.5 s</output></div>
+          <input type="range" id="fIn" min="0" max="10" step="0.1" value="0.5">
+        </div>
+        <div class="field">
+          <div class="field-head"><label class="label" for="fOut">Fade out</label><output id="fOutOut">1.0 s</output></div>
+          <input type="range" id="fOut" min="0" max="10" step="0.1" value="1">
+        </div>
+        <div class="seg" role="radiogroup" aria-label="Fade curve">
+          <label><input type="radio" name="fCurve" value="smooth" checked><span>Smooth</span></label>
+          <label><input type="radio" name="fCurve" value="linear"><span>Linear</span></label>
+        </div>
+      </div>
+    </div>
+
+    <div class="panel" role="tabpanel" id="p-format" aria-labelledby="tab-format" hidden>
+      <p class="what">Choose channels and the sample rate for the downloaded WAV. Load a video file to pull out its soundtrack.</p>
+      <div class="row">
+        <div class="field">
+          <label class="label" for="chMode">Channels</label>
+          <select id="chMode"><option value="keep">Keep as is</option><option value="mono">Mono (mix down)</option><option value="stereo">Stereo</option></select>
+        </div>
+        <div class="field">
+          <label class="label" for="outSR">Download sample rate</label>
+          <select id="outSR"><option value="48000">48 kHz</option><option value="44100">44.1 kHz (CD)</option><option value="22050">22.05 kHz</option><option value="16000">16 kHz (speech)</option></select>
+        </div>
+      </div>
+    </div>
+
+    <div class="track">
+      <div class="track-head"><span class="label">After · preview</span><span class="info" id="infoFx"></span></div>
+      <div class="scope" id="scopeFx"><canvas id="cvFx"></canvas><div class="playhead" id="phFx"></div></div>
+    </div>
+
+    <div class="transport">
+      <div class="play">
+        <button type="button" id="playRaw" aria-pressed="false">▶ Before</button>
+        <button type="button" id="playFx" aria-pressed="false" disabled>▶ After</button>
+        <span class="time" id="time">0:00 / 0:00</span>
+      </div>
+      <button type="button" class="primary" id="apply" disabled>Apply to clip</button>
+    </div>
+    <p class="status" id="status" role="status"></p>
+  </section>
+
+  <p class="note">Apply keeps a change and makes it the new Before, so you can chain tools: remove noise, trim, normalize, then download. Undo steps back. Downloads are 16-bit WAV.</p>
+</div>
+
+<script type="module">
+const SR = 48000, FRAME = 480;
+const $ = (id) => document.getElementById(id);
+const TOOLS = ["noise", "trim", "volume", "speed", "fade", "format"];
+
+const S = {
+  name: "example", ch: null, ver: 0, history: [],
+  tool: "noise", fx: null, fxToken: 0, flash: "",
+  noise: { ver: -1, wet: null, busy: false },
+  sel: [0, 0],
+  ctx: null, src: null, playing: null, startAt: 0, offset: 0,
+};
+
+const fmt = (s) => `${Math.floor(s / 60)}:${(s % 60).toFixed(1).padStart(4, "0")}`;
+const dur = (chs) => chs ? chs[0].length / SR : 0;
+const size = (b) => b < 1048576 ? `${Math.max(1, Math.round(b / 1024))} KB` : `${(b / 1048576).toFixed(1)} MB`;
+const db = (v) => v > 1e-6 ? (20 * Math.log10(v)).toFixed(1) : "-inf";
+const radio = (name) => document.querySelector(`input[name=${name}]:checked`).value;
+const yieldUI = () => new Promise((r) => setTimeout(r));
+function setStatus(msg, kind = "") { const s = $("status"); s.textContent = msg; s.className = "status " + kind; }
+
+function peak(chs) { let p = 0; for (const c of chs) for (let i = 0; i < c.length; i++) { const a = Math.abs(c[i]); if (a > p) p = a; } return p; }
+// 10th-percentile RMS of 20 ms windows ≈ level of the gaps between words
+function noiseFloor(chs) {
+  const d = chs[0], win = 960, vals = [];
+  for (let i = 0; i + win <= d.length; i += win) { let s = 0; for (let j = i; j < i + win; j++) s += d[j] * d[j]; vals.push(Math.sqrt(s / win)); }
+  if (!vals.length) return "-inf";
+  vals.sort((a, b) => a - b);
+  return db(vals[Math.floor(vals.length * 0.1)]);
+}
+function describe(chs) { return `${fmt(dur(chs))} · ${chs.length === 2 ? "stereo" : "mono"} · peak ${db(peak(chs))} dBFS · noise floor ${noiseFloor(chs)} dBFS`; }
+
+// ---------- DSP ----------
+let rnnoisePromise = null;
+const loadModel = () => rnnoisePromise ??= import("https://cdn.jsdelivr.net/npm/@shiguredo/rnnoise-wasm@2025.1.5/dist/rnnoise.js").then((m) => m.Rnnoise.load());
+
+async function denoise(chs, onProgress) {
+  const rn = await loadModel();
+  const total = chs.length * Math.ceil(chs[0].length / FRAME);
+  const frame = new Float32Array(FRAME), out = [];
+  let done = 0;
+  for (const input of chs) {
+    const st = rn.createDenoiseState(), res = new Float32Array(input.length);
+    try {
+      for (let i = 0; i < input.length; i += FRAME) {
+        const n = Math.min(FRAME, input.length - i);
+        frame.fill(0);
+        for (let j = 0; j < n; j++) frame[j] = input[i + j] * 32768;
+        st.processFrame(frame);
+        for (let j = 0; j < n; j++) res[i + j] = frame[j] / 32768;
+        if (++done % 400 === 0) { onProgress(done / total); await yieldUI(); }
+      }
+    } finally { st.destroy(); }
+    out.push(res);
+  }
+  onProgress(1);
+  return out;
+}
+
+function resample(c, ratio) {
+  const n = Math.max(1, Math.floor(c.length / ratio)), out = new Float32Array(n);
+  for (let i = 0; i < n; i++) {
+    const x = i * ratio, i0 = Math.floor(x), f = x - i0;
+    out[i] = c[i0] * (1 - f) + (i0 + 1 < c.length ? c[i0 + 1] : c[i0]) * f;
+  }
+  return out;
+}
+
+// WSOLA time-stretch: output length = input length × alpha, pitch unchanged.
+async function wsola(chs, alpha) {
+  if (Math.abs(alpha - 1) < 1e-3) return chs.map((c) => c.slice());
+  const N = chs[0].length, L = 2048, Hs = 1024, tol = 256, Ha = Hs / alpha;
+  const outLen = Math.max(1, Math.round(N * alpha));
+  const win = new Float32Array(L);
+  for (let i = 0; i < L; i++) win[i] = 0.5 - 0.5 * Math.cos((2 * Math.PI * i) / L);
+  const mid = chs.length === 1 ? chs[0] : chs[0].map((v, i) => (v + chs[1][i]) / 2);
+  const out = chs.map(() => new Float32Array(outLen + L)), wsum = new Float32Array(outLen + L);
+  let prev = 0;
+  for (let k = 0; k * Hs < outLen; k++) {
+    let pos = Math.min(Math.round(k * Ha), Math.max(0, N - L));
+    if (k > 0) {
+      const target = prev + Hs;
+      let best = pos, bestC = -Infinity;
+      for (let d = -tol; d <= tol; d += 2) {
+        const p = pos + d;
+        if (p < 0 || p + L > N) continue;
+        let c = 0;
+        for (let j = 0; j < L - Hs; j += 4) { const t = target + j; if (t >= N) break; c += mid[p + j] * mid[t]; }
+        if (c > bestC) { bestC = c; best = p; }
+      }
+      pos = best;
+    }
+    const o = k * Hs;
+    for (let c = 0; c < chs.length; c++) {
+      const x = chs[c], y = out[c];
+      for (let j = 0; j < L; j++) { const idx = pos + j; if (idx < N) y[o + j] += x[idx] * win[j]; }
+    }
+    for (let j = 0; j < L; j++) wsum[o + j] += win[j];
+    prev = pos;
+    if (k % 300 === 299) await yieldUI();
+  }
+  return out.map((y) => { const r = new Float32Array(outLen); for (let i = 0; i < outLen; i++) r[i] = wsum[i] > 1e-3 ? y[i] / wsum[i] : y[i]; return r; });
+}
+
+// soft limiter: linear below 0.9, smoothly saturates toward 1.0
+const limit = (v) => { const a = Math.abs(v); return a <= 0.9 ? v : Math.sign(v) * (0.9 + 0.1 * Math.tanh((a - 0.9) / 0.1)); };
+
+// ---------- tools: each returns new channel arrays (never mutates input) or null ----------
+const tools = {
+  noise(chs) {
+    if (S.noise.ver !== S.ver || !S.noise.wet) return null;
+    const k = $("nMix").value / 100;
+    return chs.map((r, c) => { const w = S.noise.wet[c], m = new Float32Array(r.length); for (let i = 0; i < r.length; i++) m[i] = w[i] * k + r[i] * (1 - k); return m; });
+  },
+  trim(chs) {
+    const n = chs[0].length, a = Math.round(Math.max(0, Math.min(S.sel[0], S.sel[1])) * SR), b = Math.round(Math.min(dur(chs), Math.max(S.sel[0], S.sel[1])) * SR);
+    if (b - a < SR * 0.01 || (radio("tMode") === "keep" && a === 0 && b >= n)) return null;
+    return radio("tMode") === "keep"
+      ? chs.map((c) => c.slice(a, b))
+      : (n - (b - a) < 1 ? null : chs.map((c) => { const r = new Float32Array(n - (b - a)); r.set(c.subarray(0, a)); r.set(c.subarray(b), a); return r; }));
+  },
+  volume(chs) {
+    const lim = $("vLimit").checked;
+    let g;
+    if (radio("vMode") === "norm") { const p = peak(chs); if (p < 1e-6) return null; g = 10 ** ($("vTarget").value / 20) / p; }
+    else g = 10 ** ($("vGain").value / 20);
+    return chs.map((c) => { const r = new Float32Array(c.length); for (let i = 0; i < c.length; i++) { const v = c[i] * g; r[i] = lim ? limit(v) : Math.max(-1, Math.min(1, v)); } return r; });
+  },
+  async speed(chs) {
+    const sp = +$("sSpeed").value, ratio = 2 ** ($("sPitch").value / 12);
+    const pitched = ratio === 1 ? chs : chs.map((c) => resample(c, ratio));
+    return wsola(pitched, ratio / sp);
+  },
+  fade(chs) {
+    const n = chs[0].length, smooth = radio("fCurve") === "smooth";
+    const fi = Math.min(Math.round($("fIn").value * SR), n >> 1), fo = Math.min(Math.round($("fOut").value * SR), n >> 1);
+    const shape = (t) => smooth ? Math.sin((t * Math.PI) / 2) ** 2 : t;
+    return chs.map((c) => {
+      const r = c.slice();
+      for (let i = 0; i < fi; i++) r[i] *= shape(i / fi);
+      for (let i = 0; i < fo; i++) r[n - 1 - i] *= shape(i / fo);
+      return r;
+    });
+  },
+  format(chs) {
+    const m = $("chMode").value;
+    if (m === "mono" && chs.length === 2) return [chs[0].map((v, i) => (v + chs[1][i]) / 2)];
+    if (m === "stereo" && chs.length === 1) return [chs[0].slice(), chs[0].slice()];
+    return chs.map((c) => c.slice());
+  },
+};
+
+const hints = {
+  noise: () => S.noise.busy ? "" : (S.noise.ver === S.ver ? "" : "Press Remove noise to run the AI model on this clip."),
+  trim: () => "Drag on the Before waveform to choose a region.",
+  volume: () => "This clip is silent.",
+  speed: () => "", fade: () => "", format: () => "",
+};
+
+// ---------- preview pipeline ----------
+let previewTimer;
+function schedulePreview(delay = 120) { clearTimeout(previewTimer); previewTimer = setTimeout(runPreview, delay); }
+async function runPreview() {
+  const token = ++S.fxToken, tool = S.tool;
+  if (S.playing === "fx") stopPlay(false);
+  let res = null;
+  try { res = await tools[tool](S.ch); } catch (e) { console.error(e); }
+  if (token !== S.fxToken) return;
+  S.fx = res;
+  draw("cvFx", res, "--clean");
+  $("infoFx").textContent = res ? describe(res) : "";
+  $("playFx").disabled = !res;
+  $("apply").disabled = !res;
+  if (res) setStatus(S.flash || (tool === "format" ? `Downloads save at ${$("outSR").selectedOptions[0].text}. Apply to change channels.` : "Preview ready. Apply to keep this change."), S.flash ? "" : "pending");
+  else setStatus(S.flash || hints[tool]());
+  S.flash = "";
+}
+
+function setClip(chs, { push = true } = {}) {
+  stopPlay(false); S.offset = 0;
+  if (push && S.ch) { S.history.push(S.ch); if (S.history.length > 10) S.history.shift(); }
+  S.ch = chs; S.ver++;
+  $("undo").disabled = !S.history.length;
+  S.sel = [0, dur(chs)]; syncSelInputs();
+  $("infoRaw").textContent = describe(chs);
+  draw("cvRaw", chs, "--raw");
+  schedulePreview(0);
+}
+
+// ---------- drawing ----------
+function draw(id, chs, colorVar) {
+  const cv = $(id), dpr = window.devicePixelRatio || 1, w = cv.clientWidth, h = cv.clientHeight;
+  cv.width = w * dpr; cv.height = h * dpr;
+  const g = cv.getContext("2d"); g.scale(dpr, dpr); g.clearRect(0, 0, w, h);
+  const css = getComputedStyle(document.documentElement);
+  if (id === "cvRaw" && S.tool === "trim" && chs) {
+    const d = dur(chs), a = Math.min(...S.sel) / d * w, b = Math.max(...S.sel) / d * w;
+    g.fillStyle = css.getPropertyValue("--sel"); g.fillRect(a, 0, b - a, h);
+    g.fillStyle = css.getPropertyValue("--clean"); g.fillRect(a, 0, 1.5, h); g.fillRect(b - 1.5, 0, 1.5, h);
+  }
+  g.strokeStyle = css.getPropertyValue("--line"); g.beginPath(); g.moveTo(0, h / 2); g.lineTo(w, h / 2); g.stroke();
+  if (!chs) return;
+  const d = chs[0], step = d.length / w;
+  g.fillStyle = css.getPropertyValue(colorVar);
+  for (let x = 0; x < w; x++) {
+    let mn = 1, mx = -1;
+    const a = Math.floor(x * step), b = Math.min(d.length, Math.floor((x + 1) * step));
+    for (let i = a; i < b; i++) { const v = d[i]; if (v < mn) mn = v; if (v > mx) mx = v; }
+    if (mx < mn) continue;
+    const y1 = h / 2 - mx * h * 0.46, y2 = h / 2 - mn * h * 0.46;
+    g.fillRect(x, y1, 1, Math.max(1, y2 - y1));
+  }
+}
+const redraw = () => { draw("cvRaw", S.ch, "--raw"); draw("cvFx", S.fx, "--clean"); };
+
+// ---------- playback ----------
+const playChs = (which) => which === "raw" ? S.ch : S.fx;
+function curTime() { const d = dur(playChs(S.playing)); return S.src ? Math.min(d, S.offset + S.ctx.currentTime - S.startAt) : S.offset; }
+function stopPlay(keep = true) {
+  if (S.src) { if (keep) S.offset = curTime(); S.src.onended = null; S.src.stop(); S.src = null; }
+  S.playing = null;
+  $("playRaw").textContent = "▶ Before"; $("playFx").textContent = "▶ After";
+  $("playRaw").setAttribute("aria-pressed", "false"); $("playFx").setAttribute("aria-pressed", "false");
+}
+function play(which, from) {
+  const chs = playChs(which);
+  if (!chs) return;
+  if (S.playing === which && from === undefined) { stopPlay(); return; }
+  stopPlay();
+  S.ctx ??= new AudioContext({ sampleRate: SR });
+  const d = dur(chs);
+  S.offset = from ?? S.offset;
+  if (S.offset >= d - 0.05) S.offset = 0;
+  const b = S.ctx.createBuffer(chs.length, chs[0].length, SR);
+  chs.forEach((c, i) => b.copyToChannel(c, i));
+  const s = S.ctx.createBufferSource(); s.buffer = b; s.connect(S.ctx.destination);
+  s.onended = () => { S.offset = 0; stopPlay(false); };
+  s.start(0, S.offset); S.startAt = S.ctx.currentTime; S.src = s; S.playing = which;
+  const btn = which === "raw" ? $("playRaw") : $("playFx");
+  btn.textContent = "❚❚ " + (which === "raw" ? "Before" : "After"); btn.setAttribute("aria-pressed", "true");
+}
+function tick() {
+  const t = curTime(), which = S.playing ?? "raw", d = dur(playChs(which)) || dur(S.ch);
+  $("phRaw").style.left = which === "raw" ? `calc(${(t / d * 100).toFixed(3)}% - 1px)` : "-4px";
+  $("phFx").style.left = which === "fx" ? `calc(${(t / d * 100).toFixed(3)}% - 1px)` : "-4px";
+  $("time").textContent = `${fmt(t)} / ${fmt(d)}`;
+  requestAnimationFrame(tick);
+}
+$("playRaw").addEventListener("click", () => play("raw"));
+$("playFx").addEventListener("click", () => play("fx"));
+$("scopeFx").addEventListener("click", (e) => { if (!S.fx) return; const r = e.currentTarget.getBoundingClientRect(); play("fx", (e.clientX - r.left) / r.width * dur(S.fx)); });
+
+// Before scope: click seeks; in Trim, drag selects
+let drag = null;
+const scopeRaw = $("scopeRaw");
+const tAt = (e) => { const r = scopeRaw.getBoundingClientRect(); return Math.max(0, Math.min(1, (e.clientX - r.left) / r.width)) * dur(S.ch); };
+scopeRaw.addEventListener("pointerdown", (e) => { drag = { x: e.clientX, t: tAt(e), moved: false }; scopeRaw.setPointerCapture(e.pointerId); });
+scopeRaw.addEventListener("pointermove", (e) => {
+  if (!drag || S.tool !== "trim") return;
+  if (Math.abs(e.clientX - drag.x) > 4) drag.moved = true;
+  if (drag.moved) { S.sel = [drag.t, tAt(e)]; syncSelInputs(); draw("cvRaw", S.ch, "--raw"); }
+});
+scopeRaw.addEventListener("pointerup", (e) => {
+  if (!drag) return;
+  if (drag.moved) schedulePreview(0); else play("raw", tAt(e));
+  drag = null;
+});
+function syncSelInputs() { $("tStart").value = Math.min(...S.sel).toFixed(2); $("tEnd").value = Math.max(...S.sel).toFixed(2); }
+for (const id of ["tStart", "tEnd"]) $(id).addEventListener("input", () => {
+  const d = dur(S.ch); S.sel = [Math.max(0, Math.min(d, +$("tStart").value || 0)), Math.max(0, Math.min(d, +$("tEnd").value || 0))];
+  draw("cvRaw", S.ch, "--raw"); schedulePreview();
+});
+
+// ---------- tabs ----------
+function selectTool(tool, focus = false) {
+  if (!TOOLS.includes(tool)) tool = "noise";
+  S.tool = tool;
+  for (const t of TOOLS) {
+    const tab = $("tab-" + t), on = t === tool;
+    tab.setAttribute("aria-selected", on); tab.tabIndex = on ? 0 : -1;
+    $("p-" + t).hidden = !on;
+  }
+  if (focus) $("tab-" + tool).focus();
+  scopeRaw.classList.toggle("trimming", tool === "trim");
+  try { history.replaceState(null, "", "#" + tool); } catch {}
+  draw("cvRaw", S.ch, "--raw");
+  S.fx = null; draw("cvFx", null, "--clean"); $("infoFx").textContent = ""; $("playFx").disabled = true; $("apply").disabled = true;
+  if (S.ch) schedulePreview(0);
+}
+$("tabs").addEventListener("click", (e) => { const t = e.target.closest("[role=tab]"); if (t) selectTool(t.dataset.tool); });
+$("tabs").addEventListener("keydown", (e) => {
+  const i = TOOLS.indexOf(S.tool);
+  const next = { ArrowRight: i + 1, ArrowLeft: i - 1, Home: 0, End: TOOLS.length - 1 }[e.key];
+  if (next === undefined) return;
+  e.preventDefault(); selectTool(TOOLS[(next + TOOLS.length) % TOOLS.length], true);
+});
+
+// ---------- tool controls ----------
+const bindOut = (id, f) => { const upd = () => { $(id + "Out").textContent = f(+$(id).value); }; $(id).addEventListener("input", () => { upd(); schedulePreview(); }); upd(); };
+bindOut("nMix", (v) => `${v}%`);
+bindOut("vTarget", (v) => `${v.toFixed(1)} dBFS`);
+bindOut("vGain", (v) => `${v > 0 ? "+" : ""}${v.toFixed(1)} dB`);
+bindOut("sSpeed", (v) => `${v.toFixed(2)}×`);
+bindOut("sPitch", (v) => `${v > 0 ? "+" : ""}${v} st`);
+bindOut("fIn", (v) => `${v.toFixed(1)} s`);
+bindOut("fOut", (v) => `${v.toFixed(1)} s`);
+for (const el of document.querySelectorAll("input[type=radio], #vLimit, #chMode, #outSR")) el.addEventListener("change", () => {
+  $("vNormF").hidden = radio("vMode") !== "norm"; $("vGainF").hidden = radio("vMode") !== "gain";
+  schedulePreview(0);
+});
+
+$("nRun").addEventListener("click", async () => {
+  if (S.noise.busy || !S.ch) return;
+  S.noise.busy = true; $("nRun").disabled = true;
+  const ver = S.ver, bar = $("progress");
+  bar.hidden = false; bar.firstElementChild.style.width = "0%";
+  setStatus(rnnoisePromise ? "Removing noise…" : "Loading the AI model (about 5 MB, first time only)…");
+  try {
+    const t0 = performance.now();
+    const wet = await denoise(S.ch, (p) => { bar.firstElementChild.style.width = (p * 100).toFixed(1) + "%"; setStatus(`Removing noise… ${Math.round(p * 100)}%`); });
+    if (ver === S.ver) { S.noise.ver = ver; S.noise.wet = wet; }
+    S.noise.busy = false;
+    if (S.tool === "noise") await runPreview();
+    if (ver === S.ver && S.tool === "noise") setStatus(`Noise removed in ${((performance.now() - t0) / 1000).toFixed(1)} s. Compare Before and After, then Apply.`, "pending");
+  } catch (e) {
+    console.error(e);
+    setStatus("The AI model couldn't load. Check your internet connection and reload the page.", "err");
+  } finally { S.noise.busy = false; $("nRun").disabled = false; bar.hidden = true; }
+});
+
+$("apply").addEventListener("click", () => {
+  if (!S.fx) return;
+  const label = $("tab-" + S.tool).textContent;
+  S.flash = `${label} applied. Keep editing or download.`;
+  setClip(S.fx);
+  setStatus(S.flash);
+});
+$("undo").addEventListener("click", () => {
+  const prev = S.history.pop();
+  if (!prev) return;
+  S.flash = "Undid the last change.";
+  setClip(prev, { push: false });
+  setStatus(S.flash);
+});
+
+// ---------- file loading ----------
+async function decodeFile(file) {
+  const buf = await file.arrayBuffer(), tmp = new AudioContext();
+  let decoded;
+  try { decoded = await tmp.decodeAudioData(buf); } finally { tmp.close(); }
+  const ch = Math.min(decoded.numberOfChannels, 2);
+  const off = new OfflineAudioContext(ch, Math.max(1, Math.ceil(decoded.duration * SR)), SR);
+  const s = off.createBufferSource(); s.buffer = decoded; s.connect(off.destination); s.start();
+  const out = await off.startRendering();
+  return Array.from({ length: ch }, (_, i) => out.getChannelData(i).slice());
+}
+async function pick(file) {
+  if (!file) return;
+  stopPlay(false);
+  $("fname").textContent = file.name;
+  $("fmeta").textContent = `${size(file.size)} · reading…`;
+  try {
+    const chs = await decodeFile(file);
+    S.name = file.name.replace(/\.[^.]+$/, "") || "audio";
+    S.history = [];
+    $("fmeta").textContent = `${size(file.size)} · ${fmt(dur(chs))} · ${chs.length === 2 ? "stereo" : "mono"}`;
+    setClip(chs, { push: false });
+    $("undo").disabled = true;
+    setStatus(S.tool === "noise" ? "Loaded. Press Remove noise, or pick another tool." : "Loaded.");
+  } catch (e) {
+    console.error(e);
+    $("fmeta").textContent = "Couldn't read this file";
+    setStatus("This browser couldn't decode that file. Try an mp3, wav or mp4, or convert it first.", "err");
+  }
+}
+$("file").addEventListener("change", () => pick($("file").files[0]));
+const drop = $("drop");
+drop.addEventListener("dragover", (e) => { e.preventDefault(); drop.classList.add("over"); });
+drop.addEventListener("dragleave", () => drop.classList.remove("over"));
+drop.addEventListener("drop", (e) => { e.preventDefault(); drop.classList.remove("over"); pick(e.dataTransfer.files[0]); });
+for (const id of ["undo", "save"]) $(id).addEventListener("click", (e) => e.preventDefault(), true);
+
+// ---------- export ----------
+function encodeWav(chs, sr) {
+  const n = chs[0].length, c = chs.length, buf = new ArrayBuffer(44 + n * c * 2), v = new DataView(buf);
+  const w = (o, s) => [...s].forEach((ch, i) => v.setUint8(o + i, ch.charCodeAt(0)));
+  w(0, "RIFF"); v.setUint32(4, 36 + n * c * 2, true); w(8, "WAVE"); w(12, "fmt ");
+  v.setUint32(16, 16, true); v.setUint16(20, 1, true); v.setUint16(22, c, true); v.setUint32(24, sr, true);
+  v.setUint32(28, sr * c * 2, true); v.setUint16(32, c * 2, true); v.setUint16(34, 16, true);
+  w(36, "data"); v.setUint32(40, n * c * 2, true);
+  let o = 44;
+  for (let i = 0; i < n; i++) for (let k = 0; k < c; k++) {
+    const s = Math.max(-1, Math.min(1, chs[k][i])); v.setInt16(o, s < 0 ? s * 0x8000 : s * 0x7fff, true); o += 2;
+  }
+  return new Uint8Array(buf);
+}
+async function toRate(chs, sr) {
+  if (sr === SR) return chs;
+  const len = Math.max(1, Math.round(chs[0].length * sr / SR));
+  const off = new OfflineAudioContext(chs.length, len, sr), b = off.createBuffer(chs.length, chs[0].length, SR);
+  chs.forEach((c, i) => b.copyToChannel(c, i));
+  const s = off.createBufferSource(); s.buffer = b; s.connect(off.destination); s.start();
+  const r = await off.startRendering();
+  return Array.from({ length: chs.length }, (_, i) => r.getChannelData(i));
+}
+const CRC = (() => { const t = new Uint32Array(256); for (let n = 0; n < 256; n++) { let c = n; for (let k = 0; k < 8; k++) c = c & 1 ? 0xedb88320 ^ (c >>> 1) : c >>> 1; t[n] = c >>> 0; } return t; })();
+function crc32(d) { let c = 0xffffffff; for (let i = 0; i < d.length; i++) c = CRC[(c ^ d[i]) & 0xff] ^ (c >>> 8); return (c ^ 0xffffffff) >>> 0; }
+// single-file "stored" zip, used only inside Claude, whose download prompt doesn't accept .wav
+function zipOne(name, data) {
+  const nm = new TextEncoder().encode(name), crc = crc32(data);
+  const lh = new DataView(new ArrayBuffer(30)), cd = new DataView(new ArrayBuffer(46)), end = new DataView(new ArrayBuffer(22));
+  lh.setUint32(0, 0x04034b50, true); lh.setUint16(4, 20, true); lh.setUint32(14, crc, true);
+  lh.setUint32(18, data.length, true); lh.setUint32(22, data.length, true); lh.setUint16(26, nm.length, true);
+  cd.setUint32(0, 0x02014b50, true); cd.setUint16(4, 20, true); cd.setUint16(6, 20, true); cd.setUint32(16, crc, true);
+  cd.setUint32(20, data.length, true); cd.setUint32(24, data.length, true); cd.setUint16(28, nm.length, true);
+  end.setUint32(0, 0x06054b50, true); end.setUint16(8, 1, true); end.setUint16(10, 1, true);
+  end.setUint32(12, 46 + nm.length, true); end.setUint32(16, 30 + nm.length + data.length, true);
+  return new Blob([lh, nm, data, cd, nm, end], { type: "application/zip" });
+}
+let downloads = null;
+if (window.claude?.use) window.claude.use("downloads").then((d) => { downloads = d; if (d) $("save").textContent = "Download (.zip)"; });
+
+$("save").addEventListener("click", async () => {
+  if (!S.ch) return;
+  const sr = +$("outSR").value, wavName = `${S.name}-edited.wav`;
+  setStatus("Preparing download…");
+  const wav = encodeWav(await toRate(S.ch, sr), sr);
+  if (downloads) {
+    try { await downloads.save({ filename: `${S.name}-edited.zip`, data: zipOne(wavName, wav) }); setStatus(`Saved ${S.name}-edited.zip (contains ${wavName}).`); }
+    catch (e) { setStatus(e?.code === "declined" ? "" : "The download couldn't start here. Try opening this page in a browser tab.", e?.code === "declined" ? "" : "err"); }
+    return;
+  }
+  const a = document.createElement("a");
+  a.href = URL.createObjectURL(new Blob([wav], { type: "audio/wav" })); a.download = wavName;
+  document.body.append(a); a.click(); a.remove(); setTimeout(() => URL.revokeObjectURL(a.href), 4000);
+  setStatus(`Saved ${wavName}${S.fx && !$("apply").disabled ? ". The preview wasn't applied, so it isn't included." : "."}`);
+});
+
+let rz; addEventListener("resize", () => { clearTimeout(rz); rz = setTimeout(redraw, 100); });
+matchMedia("(prefers-color-scheme: dark)").addEventListener("change", redraw);
+
+// ---------- built-in example: vowel-like bursts over fan noise ----------
+function makeExample() {
+  const n = SR * 6, d = new Float32Array(n);
+  let seed = 7, lp = 0;
+  const rnd = () => ((seed = (seed * 16807) % 2147483647) / 2147483647) * 2 - 1;
+  const words = [[0.5, 1.3, 140], [1.6, 2.5, 165], [3.0, 3.6, 120], [3.8, 5.0, 150]];
+  for (let i = 0; i < n; i++) {
+    const t = i / SR;
+    lp += 0.08 * (rnd() - lp);
+    let v = lp * 0.9 + rnd() * 0.035 + Math.sin(2 * Math.PI * 60 * t) * 0.02;
+    for (const [a, b, f0] of words) if (t > a && t < b) {
+      const env = Math.sin(Math.PI * (t - a) / (b - a)) ** 0.6, f = f0 * (1 + 0.08 * Math.sin(6 * t));
+      let s = 0; for (let h = 1; h <= 12; h++) s += Math.sin(2 * Math.PI * f * h * t) / h * (h === 3 || h === 5 ? 1.8 : 1);
+      v += s * 0.17 * env;
+    }
+    d[i] = v;
+  }
+  return [d];
+}
+
+requestAnimationFrame(tick);
+selectTool(location.hash.slice(1));
+setClip(makeExample(), { push: false });
+if (S.tool === "noise") $("nRun").click();
+</script>
