@@ -402,6 +402,8 @@ main > .section:last-child { padding-bottom: 0; }
 }
 .proj:hover .proj-title,
 .proj:focus-visible .proj-title { text-decoration: underline; text-underline-offset: 3px; }
+.proj-desc { color: var(--muted); font-size: .9rem; line-height: 1.45; max-width: 52ch; }
+.apps-list { max-width: 720px; }
 .proj-thumb { display: block; overflow: hidden; aspect-ratio: 1; background: var(--paper-2); }
 .proj-thumb img { width: 100%; height: 100%; object-fit: cover; }
 
