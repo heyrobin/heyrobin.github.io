@@ -50,6 +50,7 @@
             <a href="index.html#work">Work</a>
             <a href="index.html#about">About</a>
             <a href="index.html#stack">Stack</a>
+            <a href="index.html#testimonials">Testimonials</a>
             <a href="resume.html">Resume</a>
         </nav>
         <div class="header-actions">
@@ -149,52 +150,84 @@
     <section class="section" id="work" aria-labelledby="work-title">
         <div class="wrap">
             <h2 class="display-2 section-title" id="work-title">Selected <em>case studies.</em></h2>
-            <div class="work-layout">
-                <ul class="proj-list">
+            <ul class="proj-tiles">
                 <li>
-                    <a class="proj" style="--case: #1479b8" href="microsoft-fabric-eventstream-temperature.html">
-                        <span class="proj-text">
-                            <span class="proj-kicker">Real-time streaming</span>
-                            <span class="proj-title">Fabric Eventstream</span>
+                    <a class="proj-tile" style="--case: #1479b8" href="microsoft-fabric-eventstream-temperature.html">
+                        <span class="proj-tile-img"><img src="assets/fabric-card.svg" alt="" loading="lazy" decoding="async"></span>
+                        <span class="proj-tile-info">
+                            <span class="proj-tile-title">Fabric Eventstream</span>
+                            <span class="proj-tile-kicker">Real-time streaming</span>
+                            <span class="proj-tile-desc">A near-real-time IoT pipeline in Microsoft Fabric that streams sensor telemetry into live Power BI monitoring for operations teams.</span>
+                            <span class="proj-tile-stats"><span><strong>&lt;5s</strong> latency</span><span><strong>99.2%</strong> uptime</span><span><strong>3x</strong> faster alerts</span></span>
                         </span>
-                        <span class="proj-thumb"><img src="assets/fabric-card.svg" alt="" loading="lazy" decoding="async"></span>
                     </a>
                 </li>
                 <li>
-                    <a class="proj" style="--case: #159957" href="azure-data-lake-architecture.html">
-                        <span class="proj-text">
-                            <span class="proj-kicker">Lakehouse architecture</span>
-                            <span class="proj-title">Azure Data Lake</span>
+                    <a class="proj-tile" style="--case: #159957" href="azure-data-lake-architecture.html">
+                        <span class="proj-tile-img"><img src="assets/lakehouse-card.svg" alt="" loading="lazy" decoding="async"></span>
+                        <span class="proj-tile-info">
+                            <span class="proj-tile-title">Azure Data Lake</span>
+                            <span class="proj-tile-kicker">Lakehouse architecture</span>
+                            <span class="proj-tile-desc">Rebuilt a fragmented reporting stack into a governed lakehouse with clear medallion layers, fewer incidents and fresher dashboards.</span>
+                            <span class="proj-tile-stats"><span><strong>&minus;42%</strong> failures</span><span><strong>&minus;31%</strong> compute</span><span><strong>2.4x</strong> onboarding</span></span>
                         </span>
-                        <span class="proj-thumb"><img src="assets/lakehouse-card.svg" alt="" loading="lazy" decoding="async"></span>
                     </a>
                 </li>
                 <li>
-                    <a class="proj" style="--case: #e25a1c" href="spark-etl-pipeline.html">
-                        <span class="proj-text">
-                            <span class="proj-kicker">High-volume batch</span>
-                            <span class="proj-title">Spark ETL Pipeline</span>
+                    <a class="proj-tile" style="--case: #e25a1c" href="spark-etl-pipeline.html">
+                        <span class="proj-tile-img"><img src="assets/spark-card.svg" alt="" loading="lazy" decoding="async"></span>
+                        <span class="proj-tile-info">
+                            <span class="proj-tile-title">Spark ETL Pipeline</span>
+                            <span class="proj-tile-kicker">High-volume batch</span>
+                            <span class="proj-tile-desc">Re-engineered slow, brittle transaction jobs into deterministic, recoverable Spark pipelines with stronger observability under peak load.</span>
+                            <span class="proj-tile-stats"><span><strong>&minus;38%</strong> runtime</span><span><strong>&minus;27%</strong> spend</span><span><strong>99.3%</strong> success</span></span>
                         </span>
-                        <span class="proj-thumb"><img src="assets/spark-card.svg" alt="" loading="lazy" decoding="async"></span>
                     </a>
                 </li>
                 <li>
-                    <a class="proj" style="--case: #6d28d9" href="llm-resume-analyzer.html">
-                        <span class="proj-text">
-                            <span class="proj-kicker">Applied AI</span>
-                            <span class="proj-title">LLM Resume Analyzer</span>
+                    <a class="proj-tile" style="--case: #6d28d9" href="llm-resume-analyzer.html">
+                        <span class="proj-tile-img"><img src="assets/llm-card.svg" alt="" loading="lazy" decoding="async"></span>
+                        <span class="proj-tile-info">
+                            <span class="proj-tile-title">LLM Resume Analyzer</span>
+                            <span class="proj-tile-kicker">Applied AI</span>
+                            <span class="proj-tile-desc">Scores candidate fit against role requirements and explains the score in plain language, for faster recruiter triage and clearer feedback.</span>
+                            <span class="proj-tile-stats"><span><strong>&minus;52%</strong> screening time</span><span><strong>+28%</strong> precision</span><span><strong>4.6/5</strong> rating</span></span>
                         </span>
-                        <span class="proj-thumb"><img src="assets/llm-card.svg" alt="" loading="lazy" decoding="async"></span>
                     </a>
                 </li>
-                </ul>
-                <aside class="ig-box" aria-labelledby="ig-title" data-instagram data-feed="instagram.json" data-handle="robin.sql">
-                    <h2 class="ig-title" id="ig-title">Latest on Instagram</h2>
-                    <ol class="ig-list" data-ig-list hidden></ol>
-                    <p class="ig-empty" data-ig-empty>Short explainers on SQL, data engineering and system design, posted as <strong>@robin.sql</strong>.</p>
-                    <a class="ig-follow" href="https://www.instagram.com/robin.sql/" target="_blank" rel="noopener noreferrer">Follow @robin.sql <span aria-hidden="true">&nearr;</span></a>
-                </aside>
-            </div>
+            </ul>
+            <aside class="ig-box ig-strip" aria-labelledby="ig-title" data-instagram data-feed="instagram.json" data-handle="robin.sql">
+                <h2 class="ig-title" id="ig-title">Latest on Instagram</h2>
+                <ol class="ig-list" data-ig-list hidden></ol>
+                <p class="ig-empty" data-ig-empty>Short explainers on SQL, data engineering and system design, posted as <strong>@robin.sql</strong>.</p>
+                <a class="ig-follow" href="https://www.instagram.com/robin.sql/" target="_blank" rel="noopener noreferrer">Follow @robin.sql <span aria-hidden="true">&nearr;</span></a>
+            </aside>
+        </div>
+    </section>
+
+    <section class="section section-alt" id="testimonials" aria-labelledby="testimonials-title">
+        <div class="wrap">
+            <h2 class="display-2" id="testimonials-title">Kind <em>words.</em></h2>
+            <p class="lede testi-intro">Recommendations from people I've built data platforms with, taken from <a href="https://www.linkedin.com/in/heyrobin/details/recommendations/" target="_blank" rel="noopener noreferrer">LinkedIn</a>.</p>
+        </div>
+        <div class="testi-marquee" data-marquee>
+            <ul class="testi-track" data-marquee-track>
+                <!-- TESTIMONIALS: one <li> per LinkedIn recommendation -->
+                <li class="testi-card">
+                    <blockquote>&ldquo;I've worked with Robin on several data projects and he's been a reliable teammate throughout. His knowledge of Microsoft Fabric and cloud architecture is genuinely strong, he understands the why behind decisions, on Power BI side, he has a good eye for optimization and delivers clean, well-performing reports. Solid engineer, easy to work with. Highly recommend.&rdquo;</blockquote>
+                    <div class="testi-author">
+                        <span class="testi-avatar" style="--avatar: #ffdab3" aria-hidden="true">A</span>
+                        <span><a href="https://www.linkedin.com/in/anand-kumar-60b9a8196/" target="_blank" rel="noopener noreferrer"><strong>Anand Kumar</strong></a><span>Data Architect, Data Engineering Lead</span><em>Worked with Robin on the same team</em></span>
+                    </div>
+                </li>
+                <li class="testi-card">
+                    <blockquote>&ldquo;I had the pleasure of working closely with Robin for 1.5+ years and highly recommend him. He is an exceptional data analyst proficient in SQL and Python, turning complex data into actionable insights. Robin excels in teamwork, consistently contributing valuable ideas. His strong time management, problem-solving, and decision-making skills make him an asset to any project. A positive and collaborative team member, I confidently recommend Robin for roles in data analytics.&rdquo;</blockquote>
+                    <div class="testi-author">
+                        <span class="testi-avatar" style="--avatar: #a8d5ba" aria-hidden="true">A</span>
+                        <span><a href="https://www.linkedin.com/in/atul-kumar5880/" target="_blank" rel="noopener noreferrer"><strong>Atul Kumar</strong></a><span>Sr. Software Engineer, Hexaware</span><em>Worked with Robin on the same team</em></span>
+                    </div>
+                </li>
+            </ul>
         </div>
     </section>
 
