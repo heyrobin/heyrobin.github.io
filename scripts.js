@@ -102,6 +102,31 @@ document.addEventListener("DOMContentLoaded", function () {
             });
     }
 
+    // TESTIMONIALS MARQUEE
+    // Repeats the cards until one set is wider than the screen, then doubles that set so the
+    // row loops seamlessly at -50%; hover or focus pauses it.
+    // With reduced motion the row stays still and scrolls sideways instead.
+    const marquee = document.querySelector("[data-marquee]");
+    const reduceMotion = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (marquee && !reduceMotion) {
+        const track = marquee.querySelector("[data-marquee-track]");
+        const cards = Array.from(track.children);
+        const addCopy = (card) => {
+            const clone = card.cloneNode(true);
+            clone.setAttribute("aria-hidden", "true");
+            clone.querySelectorAll("a").forEach((link) => link.setAttribute("tabindex", "-1"));
+            track.appendChild(clone);
+        };
+        let guard = 0;
+        while (track.scrollWidth < marquee.clientWidth + 40 && guard++ < 10) {
+            cards.forEach(addCopy);
+        }
+        Array.from(track.children).forEach(addCopy);
+        // Keep the speed steady (about 40px per second) however many cards there are.
+        marquee.style.setProperty("--marquee-duration", Math.max(20, track.scrollWidth / 2 / 40) + "s");
+        marquee.classList.add("is-running");
+    }
+
     // PRINT
     document.querySelectorAll("[data-print]").forEach((button) => button.addEventListener("click", () => window.print()));
 
