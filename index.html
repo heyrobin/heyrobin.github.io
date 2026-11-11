@@ -61,7 +61,8 @@ a:focus-visible{outline:1px solid var(--ink);outline-offset:4px}
   opacity:0;transform:translateY(50px) scale(.5);
   transition:opacity .3s ease-out,transform .6s cubic-bezier(.25,1.6,.5,1)}
 .obj.in{opacity:1;transform:none}
-.obj img{display:block;width:100%;height:auto}
+.obj img{display:block;width:100%;height:auto;transform:rotate(var(--r,0deg));transition:transform .35s cubic-bezier(.25,1.6,.5,1)}
+.obj:hover img{transform:rotate(calc(var(--r,0deg) * -1.6)) scale(1.12)}
 a.obj{cursor:pointer}
 
 .slider{position:fixed;z-index:40;left:0;right:0;bottom:calc(80px + env(safe-area-inset-bottom,0px));
@@ -220,6 +221,7 @@ a.obj{cursor:pointer}
   ];
   const bio=document.getElementById('bio');
   const mq=matchMedia('(max-width:1023px)');
+  const TILT=[-8,6,-5,9,-7,4,-10,7,-4,8,-6,10,-9,5];let tiltI=0;
   const parts=[];let total=0;
   S.forEach(s=>{
     if(typeof s==='string'){
@@ -229,7 +231,7 @@ a.obj{cursor:pointer}
       const el=document.createElement('span');el.className='brand';el.setAttribute('aria-hidden','true');bio.appendChild(el);
       parts.push({kind:'b',el,text:s.b,start:total});total+=s.b.length;
     }else{
-      const el=document.createElement(s.href?'a':'span');el.className='obj';
+      const el=document.createElement(s.href?'a':'span');el.className='obj';el.style.setProperty('--r',TILT[tiltI++%TILT.length]+'deg');
       if(s.href){el.href=s.href;el.target='_blank';el.rel='noopener';el.setAttribute('aria-label',s.alt)}else{el.setAttribute('aria-hidden','true')}
       const img=new Image();img.src=I[s.o];img.alt='';img.decoding='async';el.appendChild(img);
       el.hidden=true;bio.appendChild(el);
