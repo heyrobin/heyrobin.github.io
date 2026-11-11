@@ -61,8 +61,12 @@ a:focus-visible{outline:1px solid var(--ink);outline-offset:4px}
   opacity:0;transform:translateY(50px) scale(.5);
   transition:opacity .3s ease-out,transform .6s cubic-bezier(.25,1.6,.5,1)}
 .obj.in{opacity:1;transform:none}
-.obj img{display:block;width:100%;height:auto;transform:rotate(var(--r,0deg));transition:transform .35s cubic-bezier(.25,1.6,.5,1)}
-.obj:hover img{transform:rotate(calc(var(--r,0deg) * -1.6)) scale(1.12)}
+.obj img{display:block;width:100%;height:auto;transform:rotate(var(--r,0deg));transition:transform .5s cubic-bezier(.34,1.9,.5,1)}
+/* hover focus, as on the reference: the hovered icon springs to 1.25x, every word and other icon fades to 30% */
+.obj.hot img{transform:rotate(var(--r,0deg)) scale(1.25)}
+.bio>span:not(.obj){transition:opacity .3s ease}
+.bio.focus>span:not(.obj),.bio.focus>.obj.in:not(.hot){opacity:.3}
+@media (prefers-reduced-motion:reduce){.obj img{transition:none}.obj.hot img{transform:rotate(var(--r,0deg))}}
 a.obj{cursor:pointer}
 
 .slider{position:fixed;z-index:40;left:0;right:0;bottom:calc(80px + env(safe-area-inset-bottom,0px));
@@ -235,6 +239,8 @@ a.obj{cursor:pointer}
       if(s.href){el.href=s.href;el.target='_blank';el.rel='noopener';el.setAttribute('aria-label',s.alt)}else{el.setAttribute('aria-hidden','true')}
       const img=new Image();img.src=I[s.o];img.alt='';img.decoding='async';el.appendChild(img);
       el.hidden=true;bio.appendChild(el);
+      el.addEventListener('pointerenter',e=>{if(e.pointerType!=='mouse')return;el.classList.add('hot');bio.classList.add('focus')});
+      el.addEventListener('pointerleave',()=>{el.classList.remove('hot');bio.classList.remove('focus')});
       parts.push({kind:'o',el,s,start:total,shown:false});
     }
   });
