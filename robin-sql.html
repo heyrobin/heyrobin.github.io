@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>@robin.sql | Data Stories Roadmap</title>
+<meta name="description" content="Behind the SQL with Robin: every data story from @robin.sql on one map, from NULL in 1965 to the lakehouse in 2020.">
+<meta name="author" content="Robin Singh">
+<meta name="theme-color" content="#0a0a0a">
+<link rel="canonical" href="https://heyrobin.github.io/robin-sql.html">
+<meta property="og:type" content="website">
+<meta property="og:title" content="@robin.sql | Data Stories Roadmap">
+<meta property="og:description" content="Every Behind the SQL story on one map, from NULL in 1965 to the lakehouse in 2020.">
+<meta property="og:url" content="https://heyrobin.github.io/robin-sql.html">
+<meta property="og:image" content="https://heyrobin.github.io/assets/og-image.png">
+<link rel="icon" type="image/svg+xml" href="icons/favicon.svg">
+<style>
+/* Same look as the restyled home: black screen, uppercase Arial, one orange accent. */
+:root{
+  --bg:#0a0a0a;
+  --ink:#ededed;
+  --mute:#7a7a7a;
+  --rule:#262626;
+  --card:#141414;
+  --brand:#ff5b1f;
+  --sans:Arial,Helvetica,sans-serif;
+  --gut:max(40px,env(safe-area-inset-left,0px));
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+html,body{background:var(--bg);margin:0}
+body{color:var(--ink);font-family:var(--sans);-webkit-font-smoothing:antialiased;overflow-x:hidden;text-transform:uppercase;letter-spacing:-.02em}
+a{color:inherit;text-decoration:none}
+a:focus-visible,button:focus-visible{outline:1px solid var(--ink);outline-offset:4px}
+img{display:block;max-width:100%}
+
+.nav{position:fixed;z-index:50;top:0;left:0;right:0;display:flex;justify-content:space-between;align-items:center;gap:20px;
+  padding:calc(20px + env(safe-area-inset-top,0px)) max(40px,env(safe-area-inset-right,0px)) 14px var(--gut);
+  font-size:14px;background:linear-gradient(var(--bg) 60%,transparent)}
+.nav .links{display:flex;gap:20px;flex-wrap:wrap;justify-content:flex-end}
+.nav a{opacity:.5;transition:opacity .3s}
+.nav a:hover,.nav a.back{opacity:1}
+.nav a.back:hover{color:var(--brand)}
+
+/* ---------- profile ---------- */
+.profile{min-height:92vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:120px var(--gut) 60px}
+.avatar{position:relative;width:168px;height:168px;border-radius:50%;padding:5px;
+  background:conic-gradient(from 210deg,var(--brand),#ffb21f,#ff2f6d,var(--brand))}
+.avatar img{width:100%;height:100%;border-radius:50%;object-fit:cover;border:5px solid var(--bg);background:#fbf3e9}
+.handle{margin:28px 0 6px;font-size:clamp(44px,8vw,112px);line-height:.9;font-weight:800;letter-spacing:-.05em;color:var(--brand)}
+.handle sup{font-size:.22em;color:var(--ink);font-weight:400;vertical-align:2.6em;margin-left:4px}
+.show{margin:0;font-size:clamp(14px,1.4vw,18px);color:var(--mute)}
+.blurb{max-width:640px;margin:22px auto 0;font-size:clamp(15px,1.5vw,20px);line-height:1.45;text-transform:none;letter-spacing:-.01em}
+.stats{display:flex;gap:clamp(24px,5vw,64px);justify-content:center;margin:34px 0 0;padding:0;list-style:none}
+.stats strong{display:block;font-size:clamp(28px,3.4vw,44px);font-weight:800;letter-spacing:-.04em}
+.stats span{font-size:12px;color:var(--mute)}
+.follow{display:inline-flex;align-items:center;gap:10px;margin-top:36px;padding:14px 24px;border-radius:999px;background:var(--brand);color:#0a0a0a;font-weight:700;font-size:14px;transition:transform .25s cubic-bezier(.25,1.6,.5,1)}
+.follow:hover{transform:scale(1.05)}
+.cue{margin-top:48px;font-size:11px;color:var(--mute);letter-spacing:.06em}
+
+/* ---------- roadmap ---------- */
+.roadmap{padding:40px var(--gut) 120px;max-width:1440px;margin:0 auto}
+.rm-head{text-align:center;margin-bottom:56px}
+.rm-head h2{margin:0;font-size:clamp(32px,5vw,72px);line-height:.95;font-weight:800;letter-spacing:-.05em}
+.rm-head h2 em{font-style:normal;color:var(--brand)}
+.rm-head p{margin:14px 0 0;font-size:13px;color:var(--mute)}
+
+.root{display:flex;justify-content:center}
+.root-node{display:inline-flex;align-items:center;gap:12px;padding:10px 20px 10px 10px;border:1px solid var(--brand);border-radius:999px;background:var(--bg);font-weight:700;font-size:15px;position:relative;z-index:1}
+.root-node img{width:36px;height:36px;border-radius:50%;background:#fbf3e9}
+
+/* the trunk drops from the root, then a bus feeds each branch */
+.tree{position:relative;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:28px;margin-top:48px;padding-top:40px}
+.tree::before{content:"";position:absolute;left:50%;top:-48px;height:48px;width:2px;background:var(--rule);transform:translateX(-1px)}
+.tree::after{content:"";position:absolute;top:0;left:12.5%;right:12.5%;height:2px;background:var(--rule)}
+.branch{position:relative;--c:var(--brand)}
+.branch::before{content:"";position:absolute;top:-40px;left:50%;width:2px;height:40px;background:var(--rule);transform:translateX(-1px)}
+.b-head{position:relative;z-index:1;margin:0 auto 26px;width:max-content;max-width:100%;padding:8px 16px;border-radius:999px;background:var(--c);color:#0a0a0a;font-size:13px;font-weight:700;text-align:center}
+.b-head small{display:block;font-size:10px;font-weight:400;opacity:.75}
+.stories{list-style:none;margin:0;padding:0 0 0 30px;position:relative}
+.stories::before{content:"";position:absolute;left:9px;top:0;bottom:24px;width:2px;background:var(--c);transform-origin:top;transform:scaleY(var(--grow,1));transition:transform 1.2s cubic-bezier(.3,.7,.2,1)}
+.story{position:relative;margin-bottom:18px}
+.story::before{content:"";position:absolute;left:-26px;top:22px;width:12px;height:12px;border-radius:50%;background:var(--bg);border:2px solid var(--c)}
+.story::after{content:"";position:absolute;left:-14px;top:28px;width:14px;height:2px;background:var(--c)}
+.s-btn{all:unset;box-sizing:border-box;cursor:pointer;display:grid;grid-template-columns:62px 1fr;gap:14px;align-items:center;width:100%;padding:8px;border:1px solid var(--rule);border-radius:12px;background:var(--card);transition:border-color .25s,transform .35s cubic-bezier(.25,1.6,.5,1)}
+.s-btn:hover{border-color:var(--c);transform:translateX(4px)}
+.s-btn:focus-visible{outline:1px solid var(--ink);outline-offset:3px}
+.s-btn img{width:62px;aspect-ratio:9/16;object-fit:cover;border-radius:6px;background:#1d2b4a}
+.s-meta{min-width:0}
+.s-top{display:flex;gap:8px;align-items:baseline;font-size:11px;color:var(--mute)}
+.s-top b{color:var(--c);font-weight:700}
+.s-title{display:block;margin-top:4px;font-size:16px;font-weight:800;letter-spacing:-.03em;line-height:1.05}
+.s-tag{display:block;margin-top:6px;font-size:12px;line-height:1.3;color:var(--mute);text-transform:none;letter-spacing:0}
+.story.next .s-btn{background:transparent;border-style:dashed;cursor:default;grid-template-columns:1fr;padding:16px}
+.story.next .s-btn:hover{transform:none;border-color:var(--rule)}
+.story.next::before{border-style:dashed}
+
+/* reveal */
+.js .story{opacity:0;transform:translateY(16px);transition:opacity .5s ease-out,transform .6s cubic-bezier(.25,1.4,.5,1);transition-delay:calc(var(--i,0) * 70ms)}
+.js .story.in{opacity:1;transform:none}
+.js .stories{--grow:0}
+.js .stories.in{--grow:1}
+
+/* ---------- viewer ---------- */
+dialog.viewer{border:0;padding:0;background:transparent;color:var(--ink);max-width:min(92vw,420px);width:100%}
+dialog.viewer::backdrop{background:rgba(0,0,0,.85);backdrop-filter:blur(4px)}
+.v-card{display:flex;flex-direction:column;gap:14px;align-items:stretch}
+.v-card img{width:100%;max-height:72vh;object-fit:contain;border-radius:14px}
+.v-row{display:flex;gap:10px;justify-content:space-between;align-items:center}
+.v-row h3{margin:0;font-size:16px;letter-spacing:-.03em}
+.v-row p{margin:2px 0 0;font-size:12px;color:var(--mute);text-transform:none;letter-spacing:0}
+.v-actions{display:flex;gap:10px}
+.v-actions a,.v-actions button{all:unset;cursor:pointer;padding:10px 16px;border-radius:999px;font-size:13px;font-weight:700}
+.v-actions a{background:var(--brand);color:#0a0a0a}
+.v-actions button{border:1px solid var(--rule)}
+
+.foot{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;padding:28px var(--gut) calc(28px + env(safe-area-inset-bottom,0px));border-top:1px solid var(--rule);font-size:12px;color:var(--mute)}
+.foot a:hover{color:var(--ink)}
+
+@media (max-width:1100px){
+  .tree{grid-template-columns:repeat(2,minmax(0,1fr));row-gap:56px}
+  .tree::after,.branch::before{display:none}
+}
+@media (max-width:640px){
+  :root{--gut:max(16px,env(safe-area-inset-left,0px))}
+  .nav{font-size:12px;padding-right:16px}
+  .nav .links{gap:12px}
+  .nav .links a:nth-child(n+3){display:none}
+  .avatar{width:128px;height:128px}
+  .tree{grid-template-columns:1fr;row-gap:48px}
+  .tree::before{display:none}
+  .stats span{font-size:10px}
+}
+@media (prefers-reduced-motion:reduce){
+  .js .story,.js .stories::before,.s-btn,.follow{transition:none}
+  .js .story{opacity:1;transform:none}
+  .js .stories{--grow:1}
+}
+</style>
+<script>document.documentElement.classList.add('js')</script>
+</head>
+<body>
+
+<nav class="nav" aria-label="Links">
+  <a class="back" href="index.html" data-back>&larr; Back</a>
+  <span class="links">
+    <a href="https://www.instagram.com/robin.sql/" target="_blank" rel="noopener">Instagram</a>
+    <a href="https://www.linkedin.com/in/heyrobin/" target="_blank" rel="noopener">LinkedIn</a>
+    <a href="https://github.com/heyrobin" target="_blank" rel="noopener">GitHub</a>
+    <a href="resume.html">Resume</a>
+  </span>
+</nav>
+
+<main>
+  <section class="profile" aria-labelledby="handle">
+    <a class="avatar" href="https://www.instagram.com/robin.sql/" target="_blank" rel="noopener" aria-label="@robin.sql on Instagram">
+      <img src="assets/robin-sql/avatar.webp" alt="" width="160" height="160">
+    </a>
+    <h1 class="handle" id="handle">@robin.sql<sup>&reg;</sup></h1>
+    <p class="show">Behind the SQL with Robin</p>
+    <p class="blurb">The stories behind the tools data engineers use every day. Who built them, why, and what broke before they existed. Short reels on Instagram.</p>
+    <ul class="stats">
+      <li><strong data-count-stories>17</strong><span>Data stories</span></li>
+      <li><strong data-count-branches>4</strong><span>Branches</span></li>
+      <li><strong>1965&ndash;2020</strong><span>Years covered</span></li>
+    </ul>
+    <a class="follow" href="https://www.instagram.com/robin.sql/" target="_blank" rel="noopener">Follow on Instagram <span aria-hidden="true">&nearr;</span></a>
+    <span class="cue" aria-hidden="true">Scroll for the map &darr;</span>
+  </section>
+
+  <section class="roadmap" aria-labelledby="rm-title">
+    <div class="rm-head">
+      <h2 id="rm-title">Data stories <em>roadmap</em></h2>
+      <p>Every post, grouped by where it sits in data history. Tap a story to see it.</p>
+    </div>
+    <div class="root"><span class="root-node"><img src="assets/robin-sql/avatar.webp" alt="">Behind the SQL</span></div>
+    <div class="tree" id="tree"></div>
+    <noscript><p style="text-align:center;margin-top:40px">Turn on JavaScript to see the map, or browse the posts on <a href="https://www.instagram.com/robin.sql/">Instagram</a>.</p></noscript>
+  </section>
+</main>
+
+<dialog class="viewer" id="viewer" aria-labelledby="v-title">
+  <div class="v-card">
+    <img id="v-img" alt="">
+    <div class="v-row">
+      <div><h3 id="v-title"></h3><p id="v-tag"></p></div>
+    </div>
+    <div class="v-actions">
+      <a id="v-link" href="https://www.instagram.com/robin.sql/" target="_blank" rel="noopener">Watch on Instagram &nearr;</a>
+      <button type="button" id="v-close">Close</button>
+    </div>
+  </div>
+</dialog>
+
+<footer class="foot">
+  <span>&copy; <span data-year>2026</span> Robin Singh</span>
+  <a href="index.html">heyrobin.github.io</a>
+</footer>
+
+<script>
+(function(){
+  // THE MAP. To add a post: add one line to a branch. `url` is the reel's Instagram link
+  // (leave it out and the button opens the profile). `img` lives in assets/robin-sql/.
+  const PROFILE = "https://www.instagram.com/robin.sql/";
+  const BRANCHES = [
+    { name: "Relational roots", note: "Where tables and SQL began", color: "#ff5b1f", stories: [
+      { ep: 8,  year: "1965", title: "NULL",        tag: "The billion-dollar mistake" },
+      { ep: 3,  year: "1970", title: "E.F. Codd",   tag: "The paper that gave us tables" },
+      { ep: 4,  year: "1974", title: "SQL",         tag: "Why we say “sequel”" },
+      { ep: 5,  year: "1979", title: "Oracle",      tag: "The first SQL database for sale" },
+      { ep: 17, year: "1986", title: "Postgres",    tag: "The database nobody owns" },
+      { ep: 16, year: "2000", title: "SQLite",      tag: "From a warship to your phone" }
+    ]},
+    { name: "Big data", note: "When one machine wasn't enough", color: "#ffc21f", stories: [
+      { ep: 10, year: "2006", title: "Hadoop",      tag: "Named after a toy elephant" },
+      { ep: 2,  year: "2009", title: "Spark OOM",   tag: "Why your Spark job crashed" },
+      { ep: 1,  year: "2014", title: "Catalyst",    tag: "The brain behind Spark SQL" }
+    ]},
+    { name: "Modern data stack", note: "Cloud, pipelines and streams", color: "#3d8bff", stories: [
+      { ep: 15, year: "2010", title: "Kafka",       tag: "The tool named after a writer" },
+      { ep: 9,  year: "2012", title: "Snowflake",   tag: "3 engineers, 1 big bet" },
+      { ep: 6,  year: "",     title: "ETL → ELT", tag: "Why the T moved to the end" },
+      { ep: 13, year: "2014", title: "Airflow",     tag: "One engineer's side project" },
+      { ep: 14, year: "2016", title: "dbt",         tag: "The tiny firm that invented a job" }
+    ]},
+    { name: "Storage & lakehouse", note: "How data is kept", color: "#3ddc84", stories: [
+      { ep: 11, year: "1986", title: "Time Travel", tag: "An undo button for your data" },
+      { ep: 7,  year: "2013", title: "Parquet",     tag: "Why CSV is so slow" },
+      { ep: 12, year: "2020", title: "Lakehouse",   tag: "Warehouse + lake = ?" },
+      { next: true, title: "Next story", tag: "Coming soon. Follow so you don't miss it." }
+    ]}
+  ];
+
+  const pad = n => String(n).padStart(2, "0");
+  const tree = document.getElementById("tree");
+  const el = (tag, cls, text) => { const e = document.createElement(tag); if (cls) e.className = cls; if (text != null) e.textContent = text; return e; };
+  let count = 0;
+
+  BRANCHES.forEach(b => {
+    const col = el("div", "branch"); col.style.setProperty("--c", b.color);
+    const head = el("h3", "b-head", b.name); head.appendChild(el("small", null, b.note));
+    const list = el("ol", "stories");
+    b.stories.forEach((s, i) => {
+      const li = el("li", "story" + (s.next ? " next" : "")); li.style.setProperty("--i", i);
+      const btn = el(s.next ? "div" : "button", "s-btn");
+      const meta = el("span", "s-meta");
+      const top = el("span", "s-top");
+      if (s.next) { top.appendChild(el("b", null, "Up next")); }
+      else {
+        count++;
+        if (btn.tagName === "BUTTON") btn.type = "button";
+        const img = new Image(); img.src = "assets/robin-sql/ep" + pad(s.ep) + ".webp"; img.alt = ""; img.loading = "lazy"; img.decoding = "async"; img.width = 62; img.height = 110;
+        btn.appendChild(img);
+        top.appendChild(el("b", null, "EP " + pad(s.ep)));
+        if (s.year) top.appendChild(el("span", null, s.year));
+        btn.setAttribute("aria-label", "Episode " + s.ep + ": " + s.title + ". " + s.tag);
+        btn.addEventListener("click", () => open(s));
+      }
+      meta.appendChild(top);
+      meta.appendChild(el("span", "s-title", s.title));
+      meta.appendChild(el("span", "s-tag", s.tag));
+      btn.appendChild(meta);
+      li.appendChild(btn); list.appendChild(li);
+    });
+    col.appendChild(head); col.appendChild(list); tree.appendChild(col);
+  });
+  document.querySelector("[data-count-stories]").textContent = count;
+  document.querySelector("[data-count-branches]").textContent = BRANCHES.length;
+  document.querySelector("[data-year]").textContent = new Date().getFullYear();
+
+  // grow each branch line, then pop its stories in, as it scrolls into view
+  const lists = document.querySelectorAll(".stories");
+  if ("IntersectionObserver" in window) {
+    const io = new IntersectionObserver(entries => entries.forEach(e => {
+      if (!e.isIntersecting) return;
+      e.target.classList.add("in");
+      e.target.querySelectorAll(".story").forEach(s => s.classList.add("in"));
+      io.unobserve(e.target);
+    }), { threshold: 0.12 });
+    lists.forEach(l => io.observe(l));
+  } else lists.forEach(l => { l.classList.add("in"); l.querySelectorAll(".story").forEach(s => s.classList.add("in")); });
+
+  // story viewer
+  const dlg = document.getElementById("viewer");
+  function open(s) {
+    document.getElementById("v-img").src = "assets/robin-sql/ep" + pad(s.ep) + ".webp";
+    document.getElementById("v-img").alt = "Cover: " + s.title;
+    document.getElementById("v-title").textContent = "EP " + pad(s.ep) + " · " + s.title;
+    document.getElementById("v-tag").textContent = s.tag + (s.year ? " (" + s.year + ")" : "");
+    document.getElementById("v-link").href = s.url || PROFILE;
+    if (dlg.showModal) dlg.showModal(); else window.open(s.url || PROFILE, "_blank", "noopener");
+  }
+  document.getElementById("v-close").addEventListener("click", () => dlg.close());
+  dlg.addEventListener("click", e => { if (e.target === dlg) dlg.close(); });
+
+  // "Back" returns to wherever the visitor scrolled from, if they came from this site
+  const back = document.querySelector("[data-back]");
+  back.addEventListener("click", e => {
+    try { if (document.referrer && new URL(document.referrer).origin === location.origin && history.length > 1) { e.preventDefault(); history.back(); } } catch (_) {}
+  });
+})();
+</script>
+</body>
+</html>

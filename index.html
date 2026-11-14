@@ -54,6 +54,8 @@ a:focus-visible{outline:1px solid var(--ink);outline-offset:4px}
 .bio{margin:0;font-size:1.5vw;line-height:60px;letter-spacing:-.025em;text-transform:uppercase;text-align:justify;
   padding-left:max(40px,env(safe-area-inset-left,0px));padding-right:max(80px,env(safe-area-inset-right,0px))}
 .brand{color:var(--brand);font-weight:800;font-size:1.35em;letter-spacing:-.04em;vertical-align:-.06em;margin:0 4px}
+a.brand{cursor:pointer;transition:opacity .2s}
+a.brand:hover{opacity:.75;text-decoration:underline;text-decoration-thickness:2px;text-underline-offset:6px}
 .brand sup{font-size:.42em;color:var(--ink);font-weight:400;margin-left:2px;vertical-align:1.3em}
 
 /* zero-height slot so cut-outs never change line spacing; spring from below like the reference */
@@ -218,7 +220,7 @@ a.obj{cursor:pointer}
     " and write a lot of Python ",{o:"python",w:56,m:30,alt:"Python"},
     ", fuelled by a lot of coffee ",{o:"coffee",w:46,m:26,alt:"Starbucks coffee cup"},
     ". On the side I build AI tools ",{o:"laptop",w:88,m:46,href:"https://heyrobin.github.io/quiet-room/",alt:"MacBook"},
-    ". I teach SQL on Instagram as ",{b:"@ROBIN.SQL"},
+    ". I teach SQL on Instagram as ",{b:"@ROBIN.SQL",href:"robin-sql.html",alt:"@robin.sql data stories roadmap"},
     " ",{o:"insta",w:56,m:30,href:"https://www.instagram.com/robin.sql/",alt:"Instagram"},
     " and share my code on GitHub ",{o:"github",w:56,m:30,href:"https://github.com/heyrobin",alt:"GitHub"},
     ". For me, data is a way of thinking."
@@ -232,7 +234,7 @@ a.obj{cursor:pointer}
       const el=document.createElement('span');el.setAttribute('aria-hidden','true');bio.appendChild(el);
       parts.push({kind:'t',el,text:s,start:total});total+=s.length;
     }else if(s.b){
-      const el=document.createElement('span');el.className='brand';el.setAttribute('aria-hidden','true');bio.appendChild(el);
+      const el=document.createElement(s.href?'a':'span');el.className='brand';if(s.href){el.href=s.href;el.setAttribute('aria-label',s.alt)}else{el.setAttribute('aria-hidden','true')}bio.appendChild(el);
       parts.push({kind:'b',el,text:s.b,start:total});total+=s.b.length;
     }else{
       const el=document.createElement(s.href?'a':'span');el.className='obj';el.style.setProperty('--r',TILT[tiltI++%TILT.length]+'deg');
